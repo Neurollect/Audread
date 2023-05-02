@@ -1,3 +1,4 @@
+import 'package:audread/app/auth/welcome/welcome_carousel.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
@@ -17,31 +18,7 @@ class WelcomeScreenState extends State<WelcomeScreen> {
           mainAxisAlignment: MainAxisAlignment.center,
           crossAxisAlignment: CrossAxisAlignment.center,
           children: [
-            const Image(
-              image: AssetImage(
-                'assets/images/discover.png',
-              ),
-            ),
-            Text(
-              'LEARN ON THE GO',
-              style: GoogleFonts.urbanist(
-                fontSize: 28,
-                fontWeight: FontWeight.bold,
-                color: Colors.black,
-              ),
-            ),
-            const SizedBox(height: 10),
-            Padding(
-              padding: const EdgeInsets.only(left: 30, right: 30),
-              child: Text(
-                'For the things we have to learn before we can do them, we learn by doing them.',
-                textAlign: TextAlign.center,
-                style: GoogleFonts.roboto(
-                  fontSize: 18,
-                  color: Colors.grey.shade500,
-                ),
-              ),
-            ),
+            const WelcomeCarousel(),
             const SizedBox(height: 50),
             Padding(
               padding: const EdgeInsets.only(left: 30, right: 30),
