@@ -1,4 +1,4 @@
-import 'package:audread/app/auth/signin.dart';
+import 'package:audread/app/auth/signin/signin.dart';
 import 'package:audread/app/auth/signup/signup.dart';
 import 'package:audread/app/auth/welcome/welcome_carousel.dart';
 import 'package:flutter/material.dart';

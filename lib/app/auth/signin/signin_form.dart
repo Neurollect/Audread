@@ -2,14 +2,14 @@ import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:iconsax/iconsax.dart';
 
-class SignupForm extends StatefulWidget {
-  const SignupForm({Key? key}) : super(key: key);
+class SigninForm extends StatefulWidget {
+  const SigninForm({Key? key}) : super(key: key);
 
   @override
-  SignupFormState createState() => SignupFormState();
+  SigninFormState createState() => SigninFormState();
 }
 
-class SignupFormState extends State<SignupForm> {
+class SigninFormState extends State<SigninForm> {
   bool checked = false;
   @override
   Widget build(BuildContext context) {
