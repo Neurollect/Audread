@@ -11,14 +11,14 @@ class InputType {
 }
 
 class AudTextInput {
-  static InputType pwdInput = InputType(function: ([controller]) {
+  Widget emailInput([controller]) {
     return TextFormField(
-      controller: controller,
       style: GoogleFonts.urbanist(fontSize: 21),
+      keyboardType: TextInputType.emailAddress,
       decoration: InputDecoration(
         contentPadding: const EdgeInsets.all(15),
         filled: true,
-        fillColor: Colors.blue.shade100,
+        fillColor: Colors.blue.shade50,
         focusColor: Colors.black,
         prefixIcon: const Icon(
           Iconsax.user,
@@ -42,43 +42,9 @@ class AudTextInput {
         ),
       ),
     );
-  });
+  }
 
-  static TextFormField Function(dynamic controller) emailInput = (controller) {
-    return TextFormField(
-      controller: controller,
-      style: GoogleFonts.urbanist(fontSize: 21),
-      decoration: InputDecoration(
-        contentPadding: const EdgeInsets.all(15),
-        filled: true,
-        fillColor: Colors.blue.shade100,
-        focusColor: Colors.black,
-        prefixIcon: const Icon(
-          Iconsax.user,
-          color: Colors.black,
-        ),
-        labelText: 'Email',
-        labelStyle: GoogleFonts.urbanist(
-          fontSize: 21,
-          color: Colors.black,
-        ),
-        hintText: 'email@email.com',
-        hintStyle: GoogleFonts.urbanist(fontSize: 16),
-        border: OutlineInputBorder(
-          gapPadding: 2,
-          borderRadius: BorderRadius.circular(8),
-        ),
-        focusedBorder: const OutlineInputBorder(
-          borderSide: BorderSide(
-            color: Colors.black,
-          ),
-        ),
-      ),
-    );
-  };
-
-  static TextFormField Function(TextEditingController controller)
-      passwordInput = (controller) {
+  Widget passwordInput([controller]) {
     return TextFormField(
       style: GoogleFonts.urbanist(fontSize: 21),
       keyboardType: TextInputType.emailAddress,
@@ -87,9 +53,9 @@ class AudTextInput {
       decoration: InputDecoration(
         contentPadding: const EdgeInsets.all(15),
         filled: true,
-        fillColor: Colors.blue.shade100,
+        fillColor: Colors.blue.shade50,
         focusColor: Colors.black,
-        labelText: '********',
+        labelText: 'Password',
         labelStyle: GoogleFonts.urbanist(
           fontSize: 21,
           color: Colors.black,
@@ -107,9 +73,10 @@ class AudTextInput {
         focusedBorder: const OutlineInputBorder(
           borderSide: BorderSide(
             color: Colors.black,
+            width: 1,
           ),
         ),
       ),
     );
-  };
+  }
 }

@@ -45,7 +45,7 @@ class SignInScreenState extends State<SignInScreen> {
             children: [
               const SizedBox(height: 15),
               Text(
-                'Log Into\nAccount',
+                'Log Into\nYour Account',
                 style: GoogleFonts.urbanist(
                   fontSize: 50,
                   fontWeight: FontWeight.bold,

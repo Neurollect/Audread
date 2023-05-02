@@ -1,3 +1,4 @@
+import 'package:audread/utils/utils.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:iconsax/iconsax.dart';
@@ -10,6 +11,7 @@ class SignupForm extends StatefulWidget {
 }
 
 class SignupFormState extends State<SignupForm> {
+  final utils = Utils();
   bool checked = false;
   @override
   Widget build(BuildContext context) {
@@ -25,36 +27,6 @@ class SignupFormState extends State<SignupForm> {
             ),
           ),
           const SizedBox(height: 10),
-          TextFormField(
-            style: GoogleFonts.urbanist(fontSize: 21),
-            keyboardType: TextInputType.emailAddress,
-            decoration: InputDecoration(
-              contentPadding: const EdgeInsets.all(15),
-              filled: true,
-              fillColor: Colors.blue.shade100,
-              focusColor: Colors.black,
-              prefixIcon: const Icon(
-                Iconsax.user,
-                color: Colors.black,
-              ),
-              labelText: 'Email',
-              labelStyle: GoogleFonts.urbanist(
-                fontSize: 21,
-                color: Colors.black,
-              ),
-              hintText: 'email@email.com',
-              hintStyle: GoogleFonts.urbanist(fontSize: 16),
-              border: OutlineInputBorder(
-                gapPadding: 2,
-                borderRadius: BorderRadius.circular(8),
-              ),
-              focusedBorder: const OutlineInputBorder(
-                borderSide: BorderSide(
-                  color: Colors.black,
-                ),
-              ),
-            ),
-          ),
           const SizedBox(height: 30),
           Text(
             'Password',
@@ -63,39 +35,6 @@ class SignupFormState extends State<SignupForm> {
             ),
           ),
           const SizedBox(height: 10),
-          TextFormField(
-            style: GoogleFonts.urbanist(fontSize: 21),
-            keyboardType: TextInputType.emailAddress,
-            obscureText: true,
-            obscuringCharacter: '*',
-            decoration: InputDecoration(
-              contentPadding: const EdgeInsets.all(15),
-              filled: true,
-              fillColor: Colors.blue.shade100,
-              focusColor: Colors.black,
-              labelText: 'Password',
-              labelStyle: GoogleFonts.urbanist(
-                fontSize: 21,
-                color: Colors.black,
-              ),
-              prefixIcon: const Icon(
-                Iconsax.password_check,
-                color: Colors.black,
-              ),
-              hintText: '********',
-              hintStyle: GoogleFonts.urbanist(fontSize: 16),
-              border: OutlineInputBorder(
-                gapPadding: 2,
-                borderRadius: BorderRadius.circular(8),
-              ),
-              focusedBorder: const OutlineInputBorder(
-                borderSide: BorderSide(
-                  color: Colors.black,
-                  width: 1,
-                ),
-              ),
-            ),
-          ),
           const SizedBox(height: 30),
           Row(
             children: [
@@ -118,44 +57,9 @@ class SignupFormState extends State<SignupForm> {
             ],
           ),
           const SizedBox(height: 30),
-          SizedBox(
-            width: double.infinity,
-            child: ElevatedButton(
-              onPressed: (() {}),
-              style: Theme.of(context).elevatedButtonTheme.style,
-              child: Text(
-                'Create Account',
-                textAlign: TextAlign.center,
-                style: GoogleFonts.urbanist(
-                  fontWeight: FontWeight.w800,
-                  fontSize: 20,
-                ),
-              ),
-            ),
-          ),
+          utils.buttons.authButton('Create Account', context),
           const SizedBox(height: 22),
-          SizedBox(
-            width: double.infinity,
-            child: OutlinedButton(
-              onPressed: (() {}),
-              style: Theme.of(context).outlinedButtonTheme.style,
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  const Icon(Icons.g_mobiledata),
-                  const SizedBox(width: 10),
-                  Text(
-                    'Signup with Google',
-                    textAlign: TextAlign.center,
-                    style: GoogleFonts.urbanist(
-                      fontWeight: FontWeight.w800,
-                      fontSize: 20,
-                    ),
-                  ),
-                ],
-              ),
-            ),
-          ),
+          utils.buttons.googleAuthButton('Signup with Google', context),
           const SizedBox(height: 30),
           Text(
             'Already Have an Account?',
