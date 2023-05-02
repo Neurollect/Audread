@@ -1,6 +1,9 @@
 import 'package:audread/utils/utils.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
+
+import '../../../controllers/signin_controller.dart';
 
 class SigninForm extends StatefulWidget {
   const SigninForm({Key? key}) : super(key: key);
@@ -11,6 +14,8 @@ class SigninForm extends StatefulWidget {
 
 class SigninFormState extends State<SigninForm> {
   final utils = Utils();
+  final controller = Get.put(SigninController());
+
   bool checked = false;
   @override
   Widget build(BuildContext context) {

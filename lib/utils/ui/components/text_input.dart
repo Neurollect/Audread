@@ -2,14 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:iconsax/iconsax.dart';
 
-class InputType {
-  Key? key;
-  TextEditingController? controller;
-  Function? function;
-
-  InputType({this.controller, this.function, this.key});
-}
-
 class AudTextInput {
   Widget emailInput([controller]) {
     return TextFormField(

@@ -1,7 +1,9 @@
 import 'package:audread/utils/utils.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:iconsax/iconsax.dart';
+
+import '../../../controllers/signup_controller.dart';
 
 class SignupForm extends StatefulWidget {
   const SignupForm({Key? key}) : super(key: key);
@@ -12,7 +14,10 @@ class SignupForm extends StatefulWidget {
 
 class SignupFormState extends State<SignupForm> {
   final utils = Utils();
+  final controller = Get.put(SignupController());
+
   bool checked = false;
+
   @override
   Widget build(BuildContext context) {
     return Form(
@@ -27,6 +32,7 @@ class SignupFormState extends State<SignupForm> {
             ),
           ),
           const SizedBox(height: 10),
+          utils.inputFields.emailInput(),
           const SizedBox(height: 30),
           Text(
             'Password',
@@ -35,6 +41,7 @@ class SignupFormState extends State<SignupForm> {
             ),
           ),
           const SizedBox(height: 10),
+          utils.inputFields.passwordInput(),
           const SizedBox(height: 30),
           Row(
             children: [
