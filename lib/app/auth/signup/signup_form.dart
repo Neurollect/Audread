@@ -1,4 +1,3 @@
-import 'package:audread/configs/components/text_input.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:iconsax/iconsax.dart';
@@ -11,7 +10,7 @@ class SignupForm extends StatefulWidget {
 }
 
 class SignupFormState extends State<SignupForm> {
-  final inputs = AudTextInput();
+  bool checked = false;
   @override
   Widget build(BuildContext context) {
     return Form(
@@ -74,7 +73,7 @@ class SignupFormState extends State<SignupForm> {
               filled: true,
               fillColor: Colors.blue.shade100,
               focusColor: Colors.black,
-              labelText: '********',
+              labelText: 'Password',
               labelStyle: GoogleFonts.urbanist(
                 fontSize: 21,
                 color: Colors.black,
@@ -92,10 +91,79 @@ class SignupFormState extends State<SignupForm> {
               focusedBorder: const OutlineInputBorder(
                 borderSide: BorderSide(
                   color: Colors.black,
+                  width: 1,
                 ),
               ),
             ),
-          )
+          ),
+          const SizedBox(height: 30),
+          Row(
+            children: [
+              Checkbox(
+                value: checked,
+                onChanged: (value) {
+                  setState(() {
+                    checked = true;
+                  });
+                },
+              ),
+              Expanded(
+                child: Text(
+                  'I agree with the Terms and Conditions and Privacy Policy',
+                  style: GoogleFonts.urbanist(
+                    fontSize: 17,
+                  ),
+                ),
+              )
+            ],
+          ),
+          const SizedBox(height: 30),
+          SizedBox(
+            width: double.infinity,
+            child: ElevatedButton(
+              onPressed: (() {}),
+              style: Theme.of(context).elevatedButtonTheme.style,
+              child: Text(
+                'Create Account',
+                textAlign: TextAlign.center,
+                style: GoogleFonts.urbanist(
+                  fontWeight: FontWeight.w800,
+                  fontSize: 20,
+                ),
+              ),
+            ),
+          ),
+          const SizedBox(height: 22),
+          SizedBox(
+            width: double.infinity,
+            child: OutlinedButton(
+              onPressed: (() {}),
+              style: Theme.of(context).outlinedButtonTheme.style,
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  const Icon(Icons.g_mobiledata),
+                  const SizedBox(width: 10),
+                  Text(
+                    'Signup with Google',
+                    textAlign: TextAlign.center,
+                    style: GoogleFonts.urbanist(
+                      fontWeight: FontWeight.w800,
+                      fontSize: 20,
+                    ),
+                  ),
+                ],
+              ),
+            ),
+          ),
+          const SizedBox(height: 30),
+          Text(
+            'Already Have an Account?',
+            textAlign: TextAlign.center,
+            style: GoogleFonts.urbanist(
+              fontSize: 20,
+            ),
+          ),
         ],
       ),
     );
