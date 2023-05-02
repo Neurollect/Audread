@@ -1,10 +1,12 @@
+import 'package:audread/utils/components/form_validation.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:iconsax/iconsax.dart';
 
-class AudTextInput {
+class AudTextInput extends FormValidator {
   Widget emailInput([controller]) {
     return TextFormField(
+      validator: (value) => validateEmail(value),
       style: GoogleFonts.urbanist(fontSize: 21),
       keyboardType: TextInputType.emailAddress,
       decoration: InputDecoration(
@@ -38,8 +40,9 @@ class AudTextInput {
 
   Widget passwordInput([controller]) {
     return TextFormField(
-      style: GoogleFonts.urbanist(fontSize: 21),
+      validator: (value) => validatePassword(value),
       keyboardType: TextInputType.emailAddress,
+      style: GoogleFonts.urbanist(fontSize: 21),
       obscureText: true,
       obscuringCharacter: '*',
       decoration: InputDecoration(

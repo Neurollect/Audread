@@ -20,6 +20,7 @@ class SigninFormState extends State<SigninForm> {
   @override
   Widget build(BuildContext context) {
     return Form(
+      key: controller.formKey,
       child: Column(
         mainAxisAlignment: MainAxisAlignment.start,
         crossAxisAlignment: CrossAxisAlignment.start,
@@ -31,7 +32,7 @@ class SigninFormState extends State<SigninForm> {
             ),
           ),
           const SizedBox(height: 10),
-          utils.inputFields.emailInput(),
+          utils.inputFields.emailInput(controller.email),
           const SizedBox(height: 30),
           Text(
             'Password',
@@ -40,7 +41,7 @@ class SigninFormState extends State<SigninForm> {
             ),
           ),
           const SizedBox(height: 10),
-          utils.inputFields.passwordInput(),
+          utils.inputFields.passwordInput(controller.password),
           const SizedBox(height: 30),
           Row(
             children: [
@@ -55,7 +56,11 @@ class SigninFormState extends State<SigninForm> {
             ],
           ),
           const SizedBox(height: 30),
-          utils.buttons.authButton('Sign In', context),
+          utils.buttons.authButton(
+            'Sign In',
+            controller.signin,
+            context,
+          ),
           const SizedBox(height: 22),
           utils.buttons.googleAuthButton('Signin with Google', context),
           const SizedBox(height: 30),

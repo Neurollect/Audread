@@ -18,11 +18,11 @@ class AudButtons {
     );
   }
 
-  Widget authButton(text, context) {
+  Widget authButton(text, function, context) {
     return SizedBox(
       width: double.infinity,
       child: ElevatedButton(
-        onPressed: (() {}),
+        onPressed: function,
         style: Theme.of(context).elevatedButtonTheme.style,
         child: Text(
           text,
