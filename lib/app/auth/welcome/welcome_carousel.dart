@@ -9,6 +9,24 @@ class WelcomeCarousel extends StatelessWidget {
   Widget build(BuildContext context) {
     int pageIndex = 0;
 
+    final List<List<String>> carouselItems = [
+      [
+        'LEARN ON THE GO',
+        'assets/images/discover.png',
+        'For the things we have to learn before we can do them, we learn by doing them.'
+      ],
+      [
+        'GET STARTED FOR FREE',
+        'assets/images/get-started.png',
+        'For the things we have to learn before we can do them, we learn by doing them.'
+      ],
+      [
+        'A WORTHY EXPERIENCE',
+        'assets/images/testimonials.png',
+        'For the things we have to learn before we can do them, we learn by doing them.'
+      ],
+    ];
+
     return Column(
       children: [
         SizedBox(
@@ -19,18 +37,18 @@ class WelcomeCarousel extends StatelessWidget {
               pageIndex = value;
             }),
             children: [
-              for (var i = 0; i < 3; i++) ...[
+              for (var i in carouselItems) ...[
                 Column(
                   mainAxisAlignment: MainAxisAlignment.center,
                   crossAxisAlignment: CrossAxisAlignment.center,
                   children: [
-                    const Image(
+                    Image(
                       image: AssetImage(
-                        'assets/images/discover.png',
+                        i[1],
                       ),
                     ),
                     Text(
-                      'LEARN ON THE GO',
+                      i[0],
                       style: GoogleFonts.urbanist(
                         fontSize: 28,
                         fontWeight: FontWeight.bold,
@@ -41,7 +59,7 @@ class WelcomeCarousel extends StatelessWidget {
                     Padding(
                       padding: const EdgeInsets.only(left: 30, right: 30),
                       child: Text(
-                        'For the things we have to learn before we can do them, we learn by doing them.',
+                        i[2],
                         textAlign: TextAlign.center,
                         style: GoogleFonts.urbanist(
                           fontSize: 18,
