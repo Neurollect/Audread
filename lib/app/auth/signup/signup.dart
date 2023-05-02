@@ -1,5 +1,6 @@
 import 'package:audread/app/auth/signup/signup_form.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:iconsax/iconsax.dart';
 
@@ -20,7 +21,9 @@ class SignUpScreenState extends State<SignUpScreen> {
         leading: Container(
           padding: const EdgeInsets.only(left: 18),
           child: TextButton(
-            onPressed: () {},
+            onPressed: () {
+              Get.back();
+            },
             style: TextButton.styleFrom(
               backgroundColor: const Color.fromARGB(31, 0, 145, 255),
               shape: const CircleBorder(),

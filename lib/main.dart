@@ -1,4 +1,3 @@
-import 'package:audread/app/auth/signup/signup.dart';
 import 'package:audread/app/auth/splash.dart';
 import 'package:audread/configs/themes/themes.dart';
 import 'package:flutter/material.dart';
@@ -30,7 +29,7 @@ class MyApp extends StatelessWidget {
       title: 'Audread',
       theme: AppAudTheme.lightTheme,
       darkTheme: AppAudTheme.darkTheme,
-      home: SignUpScreen(),
+      home: Splash(),
     );
   }
 }

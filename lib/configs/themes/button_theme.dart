@@ -6,7 +6,7 @@ final colors = Utils().globalColors;
 class ElevatedButtonAudTheme {
   static ElevatedButtonThemeData lightTheme = ElevatedButtonThemeData(
     style: ElevatedButton.styleFrom(
-      elevation: 8,
+      elevation: 2,
       padding: const EdgeInsets.only(top: 12, bottom: 12),
       side: BorderSide(color: Colors.blue.shade800, width: 2),
       shadowColor: Colors.blue.shade500,
@@ -16,7 +16,7 @@ class ElevatedButtonAudTheme {
   );
   static ElevatedButtonThemeData darkTheme = ElevatedButtonThemeData(
     style: ElevatedButton.styleFrom(
-      elevation: 8,
+      elevation: 2,
       padding: const EdgeInsets.only(top: 12, bottom: 12),
       side: BorderSide(color: Colors.blue.shade800, width: 2),
       shadowColor: Colors.blue.shade500,
@@ -30,7 +30,7 @@ class OutlinedButtonAudTheme {
   static OutlinedButtonThemeData lightTheme = OutlinedButtonThemeData(
     style: OutlinedButton.styleFrom(
       shadowColor: Colors.blue.shade500,
-      elevation: 8,
+      elevation: 2,
       side: BorderSide(color: Colors.blue.shade800, width: 2),
       padding: const EdgeInsets.only(top: 12, bottom: 12),
       foregroundColor: Colors.blue.shade800,
@@ -40,7 +40,7 @@ class OutlinedButtonAudTheme {
   static OutlinedButtonThemeData darkTheme = OutlinedButtonThemeData(
     style: OutlinedButton.styleFrom(
       shadowColor: Colors.blue.shade500,
-      elevation: 8,
+      elevation: 2,
       side: BorderSide(color: Colors.blue.shade800, width: 2),
       padding: const EdgeInsets.only(top: 12, bottom: 12),
       foregroundColor: Colors.blue.shade800,

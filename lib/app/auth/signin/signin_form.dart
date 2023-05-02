@@ -99,17 +99,9 @@ class SigninFormState extends State<SigninForm> {
           const SizedBox(height: 30),
           Row(
             children: [
-              Checkbox(
-                value: checked,
-                onChanged: (value) {
-                  setState(() {
-                    checked = true;
-                  });
-                },
-              ),
               Expanded(
                 child: Text(
-                  'I agree with the Terms and Conditions and Privacy Policy',
+                  'Did you forget your Password?',
                   style: GoogleFonts.urbanist(
                     fontSize: 17,
                   ),
@@ -124,7 +116,7 @@ class SigninFormState extends State<SigninForm> {
               onPressed: (() {}),
               style: Theme.of(context).elevatedButtonTheme.style,
               child: Text(
-                'Create Account',
+                'Sign In',
                 textAlign: TextAlign.center,
                 style: GoogleFonts.urbanist(
                   fontWeight: FontWeight.w800,
@@ -145,7 +137,7 @@ class SigninFormState extends State<SigninForm> {
                   const Icon(Icons.g_mobiledata),
                   const SizedBox(width: 10),
                   Text(
-                    'Signup with Google',
+                    'Signin with Google',
                     textAlign: TextAlign.center,
                     style: GoogleFonts.urbanist(
                       fontWeight: FontWeight.w800,
@@ -158,7 +150,7 @@ class SigninFormState extends State<SigninForm> {
           ),
           const SizedBox(height: 30),
           Text(
-            'Already Have an Account?',
+            'Do not Have an Account?',
             textAlign: TextAlign.center,
             style: GoogleFonts.urbanist(
               fontSize: 17,
