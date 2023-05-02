@@ -1,4 +1,4 @@
-import 'package:audread/app/auth/welcome.dart';
+import 'package:audread/app/auth/welcome/welcome.dart';
 import 'package:get/get.dart';
 
 class SplashScreenController extends GetxController {

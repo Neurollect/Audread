@@ -1,5 +1,8 @@
+import 'package:audread/app/auth/signin.dart';
+import 'package:audread/app/auth/signup/signup.dart';
 import 'package:audread/app/auth/welcome/welcome_carousel.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 class WelcomeScreen extends StatefulWidget {
@@ -28,7 +31,9 @@ class WelcomeScreenState extends State<WelcomeScreen> {
                 children: [
                   Expanded(
                     child: ElevatedButton(
-                      onPressed: () {},
+                      onPressed: () {
+                        Get.to(const SignInScreen());
+                      },
                       style: Theme.of(context).elevatedButtonTheme.style,
                       child: Text(
                         'Sign in',
@@ -43,7 +48,9 @@ class WelcomeScreenState extends State<WelcomeScreen> {
                   const SizedBox(width: 30),
                   Expanded(
                     child: OutlinedButton(
-                      onPressed: () {},
+                      onPressed: () {
+                        Get.to(const SignUpScreen());
+                      },
                       style: Theme.of(context).outlinedButtonTheme.style,
                       child: Text(
                         'Sign up',
