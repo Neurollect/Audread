@@ -18,6 +18,15 @@ class SignupFormState extends State<SignupForm> {
 
   bool checked = false;
 
+  bool _obscureText = true;
+
+  // Toggles the password show status
+  void _toggle() {
+    setState(() {
+      _obscureText = !_obscureText;
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
     return Form(
@@ -42,7 +51,11 @@ class SignupFormState extends State<SignupForm> {
             ),
           ),
           const SizedBox(height: 10),
-          utils.inputFields.passwordInput(controller.password),
+          utils.inputFields.passwordInput(
+            _obscureText,
+            _toggle,
+            controller.password,
+          ),
           const SizedBox(height: 30),
           Row(
             children: [

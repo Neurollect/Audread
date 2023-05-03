@@ -38,12 +38,12 @@ class AudTextInput extends FormValidator {
     );
   }
 
-  Widget passwordInput([controller]) {
+  Widget passwordInput(obecurePassword, toggle, [controller]) {
     return TextFormField(
       validator: (value) => validatePassword(value),
       keyboardType: TextInputType.emailAddress,
       style: GoogleFonts.urbanist(fontSize: 21),
-      obscureText: true,
+      obscureText: obecurePassword,
       obscuringCharacter: '*',
       decoration: InputDecoration(
         contentPadding: const EdgeInsets.all(15),
@@ -58,6 +58,13 @@ class AudTextInput extends FormValidator {
         prefixIcon: const Icon(
           Iconsax.password_check,
           color: Colors.black,
+        ),
+        suffixIcon: IconButton(
+          onPressed: toggle,
+          icon: Icon(
+            obecurePassword ? Iconsax.eye : Iconsax.eye_slash,
+            color: Colors.black,
+          ),
         ),
         hintText: '********',
         hintStyle: GoogleFonts.urbanist(fontSize: 16),

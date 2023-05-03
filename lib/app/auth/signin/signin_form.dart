@@ -16,6 +16,15 @@ class SigninFormState extends State<SigninForm> {
   final utils = Utils();
   final controller = Get.put(SigninController());
 
+  bool _obscureText = true;
+
+  // Toggles the password show status
+  void _toggle() {
+    setState(() {
+      _obscureText = !_obscureText;
+    });
+  }
+
   bool checked = false;
   @override
   Widget build(BuildContext context) {
@@ -41,7 +50,11 @@ class SigninFormState extends State<SigninForm> {
             ),
           ),
           const SizedBox(height: 10),
-          utils.inputFields.passwordInput(controller.password),
+          utils.inputFields.passwordInput(
+            _obscureText,
+            _toggle,
+            controller.password,
+          ),
           const SizedBox(height: 30),
           Row(
             children: [
