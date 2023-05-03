@@ -59,29 +59,29 @@ class SigninFormState extends State<SigninForm> {
             controller.password,
           ),
           const SizedBox(height: 30),
-          Row(
-            children: [
-              Expanded(
-                child: Text(
-                  'Did you forget your Password?',
-                  style: GoogleFonts.urbanist(
-                    fontSize: 17,
-                  ),
-                ),
+          RichText(
+            text: TextSpan(
+              text: 'Forgot Password? ',
+              style: GoogleFonts.urbanist(
+                fontSize: 17,
+                color: Colors.black,
               ),
-              TextButton(
-                onPressed: () {
-                  Get.to(const ForgotPassword());
-                },
-                child: Text(
-                  ' Click Here',
+              children: <TextSpan>[
+                TextSpan(
+                  text: 'Reset it',
                   style: GoogleFonts.urbanist(
                     fontSize: 17,
                     color: Colors.blue.shade800,
                   ),
+                  recognizer: TapGestureRecognizer()
+                    ..onTap = () {
+                      Get.to(
+                        const ForgotPassword(),
+                      );
+                    },
                 ),
-              )
-            ],
+              ],
+            ),
           ),
           const SizedBox(height: 30),
           utils.buttons.authButton(

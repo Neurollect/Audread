@@ -52,7 +52,6 @@ class WelcomeCarousel extends StatelessWidget {
                       style: GoogleFonts.urbanist(
                         fontSize: 28,
                         fontWeight: FontWeight.bold,
-                        color: Colors.black,
                       ),
                     ),
                     const SizedBox(height: 10),
