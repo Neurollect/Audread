@@ -1,4 +1,6 @@
-abstract class AuthRepository {
+library authentication;
+
+abstract class AuthenticationRepository {
   Future signInEmailAndPassword(
     String email,
     String password,

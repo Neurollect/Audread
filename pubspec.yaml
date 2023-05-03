@@ -44,6 +44,7 @@ dependencies:
   iconsax: ^0.0.8
   email_validator: ^2.1.17
   flutter_otp_text_field: ^1.1.1
+  injectable: ^2.1.1
 
 dev_dependencies:
   flutter_test:

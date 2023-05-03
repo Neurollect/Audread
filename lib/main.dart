@@ -1,3 +1,4 @@
+import 'package:audread/services/supabase.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:get/route_manager.dart';
@@ -34,9 +35,9 @@ Future<void> main() async {
 class MyApp extends StatelessWidget {
   const MyApp({super.key});
 
-  // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
+    SupabaseService().listentoHeaders();
     return GetMaterialApp(
       debugShowCheckedModeBanner: false,
       title: 'Audread',
