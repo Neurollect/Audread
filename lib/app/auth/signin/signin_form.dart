@@ -1,10 +1,12 @@
-import 'package:audread/app/auth/forget_password/forgot_password.dart';
-import 'package:audread/utils/utils.dart';
+import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 import '../../../controllers/signin_controller.dart';
+import '../../../utils/utils.dart';
+import '../forget_password/forgot_password.dart';
+import '../signup/signup.dart';
 
 class SigninForm extends StatefulWidget {
   const SigninForm({Key? key}) : super(key: key);
@@ -90,11 +92,28 @@ class SigninFormState extends State<SigninForm> {
           const SizedBox(height: 22),
           utils.buttons.googleAuthButton('Signin with Google', context),
           const SizedBox(height: 30),
-          Text(
-            'Do not Have an Account?',
-            textAlign: TextAlign.center,
-            style: GoogleFonts.urbanist(
-              fontSize: 17,
+          RichText(
+            text: TextSpan(
+              text: 'Do not Have an Account? ',
+              style: GoogleFonts.urbanist(
+                fontSize: 17,
+                color: Colors.black,
+              ),
+              children: <TextSpan>[
+                TextSpan(
+                  text: 'Create Account',
+                  style: GoogleFonts.urbanist(
+                    fontSize: 17,
+                    color: Colors.blue.shade800,
+                  ),
+                  recognizer: TapGestureRecognizer()
+                    ..onTap = () {
+                      Get.to(
+                        const SignUpScreen(),
+                      );
+                    },
+                ),
+              ],
             ),
           ),
         ],

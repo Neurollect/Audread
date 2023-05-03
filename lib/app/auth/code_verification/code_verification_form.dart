@@ -38,9 +38,11 @@ class CodeVerificationFormState extends State<CodeVerificationForm> {
           OtpTextField(
             mainAxisAlignment: MainAxisAlignment.center,
             crossAxisAlignment: CrossAxisAlignment.start,
-            fieldWidth: 48,
+            fieldWidth: (MediaQuery.of(context).size.width / 8),
             clearText: true,
-            margin: const EdgeInsets.only(right: 8),
+            margin: EdgeInsets.only(
+              right: (MediaQuery.of(context).size.width / 41),
+            ),
             textStyle: GoogleFonts.urbanist(
               fontSize: 30,
               color: Colors.black,

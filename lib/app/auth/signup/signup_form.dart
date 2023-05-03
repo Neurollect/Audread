@@ -1,8 +1,10 @@
-import 'package:audread/utils/utils.dart';
+import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
 
+import '../../../utils/utils.dart';
+import '../signin/signin.dart';
 import '../../../controllers/signup_controller.dart';
 
 class SignupForm extends StatefulWidget {
@@ -68,13 +70,36 @@ class SignupFormState extends State<SignupForm> {
                 },
               ),
               Expanded(
-                child: Text(
-                  'I agree with the Terms and Conditions and Privacy Policy',
-                  style: GoogleFonts.urbanist(
-                    fontSize: 17,
+                child: RichText(
+                  text: TextSpan(
+                    text: 'I agree with the',
+                    style: GoogleFonts.urbanist(
+                      fontSize: 17,
+                      color: Colors.black,
+                    ),
+                    children: <TextSpan>[
+                      TextSpan(
+                        text: ' Terms and Conditions',
+                        style: GoogleFonts.urbanist(
+                          fontSize: 17,
+                          color: Colors.blue.shade800,
+                        ),
+                      ),
+                      TextSpan(
+                        text: ' and',
+                        style: GoogleFonts.urbanist(fontSize: 17),
+                      ),
+                      TextSpan(
+                        text: ' Privacy Policy',
+                        style: GoogleFonts.urbanist(
+                          fontSize: 17,
+                          color: Colors.blue.shade800,
+                        ),
+                      ),
+                    ],
                   ),
                 ),
-              )
+              ),
             ],
           ),
           const SizedBox(height: 30),
@@ -86,11 +111,28 @@ class SignupFormState extends State<SignupForm> {
           const SizedBox(height: 22),
           utils.buttons.googleAuthButton('Signup with Google', context),
           const SizedBox(height: 30),
-          Text(
-            'Already Have an Account?',
-            textAlign: TextAlign.center,
-            style: GoogleFonts.urbanist(
-              fontSize: 17,
+          RichText(
+            text: TextSpan(
+              text: 'Already Have an Account? ',
+              style: GoogleFonts.urbanist(
+                fontSize: 17,
+                color: Colors.black,
+              ),
+              children: <TextSpan>[
+                TextSpan(
+                  text: 'Sign In',
+                  style: GoogleFonts.urbanist(
+                    fontSize: 17,
+                    color: Colors.blue.shade800,
+                  ),
+                  recognizer: TapGestureRecognizer()
+                    ..onTap = () {
+                      Get.to(
+                        const SignInScreen(),
+                      );
+                    },
+                ),
+              ],
             ),
           ),
         ],
