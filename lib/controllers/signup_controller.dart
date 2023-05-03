@@ -21,7 +21,9 @@ class SignupController extends GetxController with LoadingMixin {
         email.text,
         password.text,
       );
-      if (res.runtimeType == AuthException) {}
+      if (res.runtimeType == AuthException) {
+        isLoading(false, context);
+      }
     }
   }
 }
