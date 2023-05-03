@@ -5,6 +5,7 @@ import 'package:get/route_manager.dart';
 import 'package:supabase_flutter/supabase_flutter.dart';
 
 import 'app/auth/splash.dart';
+import 'utils/components/loading.dart';
 import 'configs/themes/themes.dart';
 import 'controllers/secret_loader_controller.dart';
 import 'models/secret.dart';
@@ -43,6 +44,7 @@ class MyApp extends StatelessWidget {
       title: 'Audread',
       theme: AppAudTheme.lightTheme,
       darkTheme: AppAudTheme.darkTheme,
+      builder: LoadingScreen.init(),
       home: Splash(),
     );
   }

@@ -86,7 +86,7 @@ class SigninFormState extends State<SigninForm> {
           const SizedBox(height: 30),
           utils.buttons.authButton(
             'Sign In',
-            controller.signin,
+            () => controller.signin(context),
             context,
           ),
           const SizedBox(height: 22),

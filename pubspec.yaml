@@ -45,6 +45,8 @@ dependencies:
   email_validator: ^2.1.17
   flutter_otp_text_field: ^1.1.1
   injectable: ^2.1.1
+  loading_animation_widget: ^1.2.0+4
+  provider: ^6.0.5
 
 dev_dependencies:
   flutter_test:
