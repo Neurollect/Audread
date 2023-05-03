@@ -37,7 +37,7 @@ class SignInScreenState extends State<SignInScreen> {
         ),
       ),
       body: SafeArea(
-        child: Padding(
+        child: SingleChildScrollView(
           padding: const EdgeInsets.only(left: 18, right: 18),
           child: Column(
             mainAxisAlignment: MainAxisAlignment.start,

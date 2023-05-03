@@ -20,9 +20,7 @@ class SigninController extends GetxController with LoadingMixin {
         email.text,
         password.text,
       );
-      if (res.runtimeType == AuthException) {
-        print(res.message);
-      }
+      if (res.runtimeType == AuthException) {}
     }
   }
 }
