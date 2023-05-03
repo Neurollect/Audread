@@ -9,13 +9,10 @@ class SigninController extends GetxController {
   final password = TextEditingController();
 
   signin() {
-    print('A');
     try {
-      if (formKey.currentState!.validate()) {
-        print('B');
-      }
+      if (formKey.currentState!.validate()) {}
     } catch (e) {
-      print('C');
+      return e;
     }
   }
 }

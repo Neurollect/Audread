@@ -1,11 +1,22 @@
-import 'package:audread/app/auth/splash.dart';
-import 'package:audread/configs/themes/themes.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:get/route_manager.dart';
+import 'package:supabase_flutter/supabase_flutter.dart';
 
-void main() {
-  runApp(const MyApp());
+import 'app/auth/splash.dart';
+import 'configs/themes/themes.dart';
+import 'controllers/secret_loader_controller.dart';
+import 'models/secret.dart';
+
+Future<void> main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+  Secret secret = await SecretLoader().load();
+
+  await Supabase.initialize(
+    url: secret.supabaseUrl,
+    anonKey: secret.supabaseAnonKey,
+  );
+
   SystemChrome.setEnabledSystemUIMode(
     SystemUiMode.manual,
     overlays: [SystemUiOverlay.top],
@@ -16,6 +27,8 @@ void main() {
       systemNavigationBarColor: Colors.transparent,
     ),
   );
+
+  runApp(const MyApp());
 }
 
 class MyApp extends StatelessWidget {

@@ -9,13 +9,10 @@ class SignupController extends GetxController {
   final formKey = GlobalKey<FormState>();
 
   signup() {
-    print('A');
     try {
-      if (formKey.currentState!.validate()) {
-        print('B');
-      }
+      if (formKey.currentState!.validate()) {}
     } catch (e) {
-      print('C');
+      return e;
     }
   }
 }
