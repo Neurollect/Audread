@@ -1,17 +1,17 @@
-import 'package:audread/app/auth/signin/signin_form.dart';
+import 'package:audread/app/auth/forget_password/forgot_password_form.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:iconsax/iconsax.dart';
 
-class SignInScreen extends StatefulWidget {
-  const SignInScreen({Key? key}) : super(key: key);
+class ForgotPassword extends StatefulWidget {
+  const ForgotPassword({Key? key}) : super(key: key);
 
   @override
-  SignInScreenState createState() => SignInScreenState();
+  ForgotPasswordState createState() => ForgotPasswordState();
 }
 
-class SignInScreenState extends State<SignInScreen> {
+class ForgotPasswordState extends State<ForgotPassword> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -45,14 +45,14 @@ class SignInScreenState extends State<SignInScreen> {
             children: [
               const SizedBox(height: 15),
               Text(
-                'Log Into\nYour Account',
+                'Forgot\nPassword?',
                 style: GoogleFonts.urbanist(
                   fontSize: 50,
                   fontWeight: FontWeight.bold,
                 ),
               ),
               const SizedBox(height: 50),
-              const SigninForm(),
+              const ForgetPasswordForm()
             ],
           ),
         ),

@@ -57,6 +57,7 @@ class SignUpScreenState extends State<SignUpScreen> {
           ),
         ),
       ),
+      resizeToAvoidBottomInset: false,
     );
   }
 }

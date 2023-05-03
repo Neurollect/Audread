@@ -1,3 +1,4 @@
+import 'package:audread/app/auth/forget_password/forgot_password.dart';
 import 'package:audread/utils/utils.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
@@ -63,6 +64,18 @@ class SigninFormState extends State<SigninForm> {
                   'Did you forget your Password?',
                   style: GoogleFonts.urbanist(
                     fontSize: 17,
+                  ),
+                ),
+              ),
+              TextButton(
+                onPressed: () {
+                  Get.to(const ForgotPassword());
+                },
+                child: Text(
+                  ' Click Here',
+                  style: GoogleFonts.urbanist(
+                    fontSize: 17,
+                    color: Colors.blue.shade800,
                   ),
                 ),
               )
