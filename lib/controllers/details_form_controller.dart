@@ -1,3 +1,4 @@
+import 'package:audread/mixins/handle_exception_mixin.dart';
 import 'package:audread/mixins/loading_mixin.dart';
 import 'package:audread/models/avatar.dart';
 import 'package:flutter/material.dart';
@@ -7,7 +8,8 @@ import 'package:supabase_flutter/supabase_flutter.dart';
 
 import '../services/supabase_authentication.dart';
 
-class DetailsFormController extends GetxController with LoadingMixin {
+class DetailsFormController extends GetxController
+    with LoadingMixin, HandleExceptions {
   static DetailsFormController get instance => Get.find();
 
   final auth = SupabaseAuthentication(Supabase.instance.client);
@@ -25,7 +27,7 @@ class DetailsFormController extends GetxController with LoadingMixin {
       avatar.getSelectedItems.call().first.name;
     } catch (_) {
       isLoading(false, context);
-      return 'Gender and Avatar Required';
+      handleExceptions(context, _);
     }
   }
 

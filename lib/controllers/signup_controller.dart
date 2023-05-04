@@ -17,22 +17,29 @@ class SignupController extends GetxController
   final password = TextEditingController();
   final formKey = GlobalKey<FormState>();
 
-  signup(context) async {
+  signup(context, checked) async {
     if (formKey.currentState!.validate()) {
-      isLoading(true, context);
-      final res = await auth.signUpEmailAndPassword(
-        email.text,
-        password.text,
-      );
-      if (res.runtimeType != User) {
-        isLoading(false, context);
-        handleExceptions(context, res);
-      } else {
-        Get.to(
-          const CodeVerification(
-            codeType: 'SignUpConfirmation',
-          ),
+      if (!checked) {
+        handleExceptions(
+          context,
+          'You Must Agree to terms and Conditions to continue',
         );
+      } else {
+        isLoading(true, context);
+        final res = await auth.signUpEmailAndPassword(
+          email.text,
+          password.text,
+        );
+        if (res.runtimeType != User) {
+          isLoading(false, context);
+          handleExceptions(context, res);
+        } else {
+          Get.to(
+            const CodeVerification(
+              codeType: 'SignUpConfirmation',
+            ),
+          );
+        }
       }
     }
   }

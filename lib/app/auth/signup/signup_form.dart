@@ -105,7 +105,7 @@ class SignupFormState extends State<SignupForm> {
           const SizedBox(height: 30),
           utils.buttons.authButton(
             'Create Account',
-            () => controller.signup(context),
+            () => controller.signup(context, checked),
             context,
           ),
           const SizedBox(height: 22),

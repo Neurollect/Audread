@@ -1,6 +1,4 @@
-import 'package:audread/app/auth/signup/details_signup.dart';
 import 'package:flutter/material.dart';
-import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:iconsax/iconsax.dart';
 
@@ -42,9 +40,7 @@ class AudButtons {
     return SizedBox(
       width: double.infinity,
       child: OutlinedButton(
-        onPressed: () {
-          Get.to(const DetailsSignup());
-        },
+        onPressed: () {},
         style: Theme.of(context).outlinedButtonTheme.style,
         child: Row(
           mainAxisAlignment: MainAxisAlignment.center,
