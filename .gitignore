@@ -48,3 +48,6 @@ app.*.map.json
 
 #Secrets
 /lib/secrets.json
+
+#avatars
+/assets/images/avatars

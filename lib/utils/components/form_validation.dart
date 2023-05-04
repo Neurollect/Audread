@@ -23,4 +23,14 @@ class FormValidator {
       }
     }
   }
+
+  validateName(String? name) {
+    if (name!.isEmpty) {
+      return 'Name is Required';
+    } else {
+      if (name.length < 3) {
+        return 'Password must have more than 3 characters';
+      }
+    }
+  }
 }

@@ -81,4 +81,38 @@ class AudTextInput extends FormValidator {
       ),
     );
   }
+
+  Widget textInput([name, controller]) {
+    return TextFormField(
+      validator: (value) => validateName(value),
+      style: GoogleFonts.urbanist(fontSize: 21),
+      keyboardType: TextInputType.emailAddress,
+      decoration: InputDecoration(
+        contentPadding: const EdgeInsets.all(15),
+        filled: true,
+        fillColor: Colors.blue.shade50,
+        focusColor: Colors.black,
+        labelText: name[0],
+        labelStyle: GoogleFonts.urbanist(
+          fontSize: 21,
+          color: Colors.black,
+        ),
+        hintText: name[1],
+        hintStyle: GoogleFonts.urbanist(fontSize: 16),
+        prefixIcon: Icon(
+          name[2],
+          color: Colors.black,
+        ),
+        border: OutlineInputBorder(
+          gapPadding: 2,
+          borderRadius: BorderRadius.circular(8),
+        ),
+        focusedBorder: const OutlineInputBorder(
+          borderSide: BorderSide(
+            color: Colors.black,
+          ),
+        ),
+      ),
+    );
+  }
 }
