@@ -6,6 +6,7 @@ import 'package:iconsax/iconsax.dart';
 class AudTextInput extends FormValidator {
   Widget emailInput([controller]) {
     return TextFormField(
+      controller: controller,
       validator: (value) => validateEmail(value),
       style: GoogleFonts.urbanist(fontSize: 21),
       keyboardType: TextInputType.emailAddress,
@@ -40,6 +41,7 @@ class AudTextInput extends FormValidator {
 
   Widget passwordInput(obecurePassword, toggle, [controller]) {
     return TextFormField(
+      controller: controller,
       validator: (value) => validatePassword(value),
       keyboardType: TextInputType.emailAddress,
       style: GoogleFonts.urbanist(fontSize: 21),
@@ -84,6 +86,7 @@ class AudTextInput extends FormValidator {
 
   Widget textInput([name, controller]) {
     return TextFormField(
+      controller: controller,
       validator: (value) => validateName(value),
       style: GoogleFonts.urbanist(fontSize: 21),
       keyboardType: TextInputType.emailAddress,

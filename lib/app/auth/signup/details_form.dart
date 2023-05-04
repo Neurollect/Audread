@@ -24,90 +24,102 @@ class DetailsFormState extends State<DetailsForm> {
 
   String gender = '';
   bool isAvatarSelected = false;
+  bool checked = false;
   AvatarModel avatar = AvatarModel();
 
   @override
   Widget build(BuildContext context) {
-    print(gender);
-    return Column(
-      mainAxisAlignment: MainAxisAlignment.start,
-      crossAxisAlignment: CrossAxisAlignment.start,
-      children: [
-        Text(
-          'What should we call you?',
-          style: GoogleFonts.urbanist(fontSize: 20),
-        ),
-        const SizedBox(height: 11),
-        Row(
-          children: [
-            Expanded(
-              child: utils.inputFields.textInput(
-                ['First Name', 'John', Icons.person],
-              ),
-            ),
-            const SizedBox(width: 20),
-            Expanded(
-              child: utils.inputFields.textInput(
-                ['Last Name', 'Doe', Icons.person],
-              ),
-            ),
-          ],
-        ),
-        const SizedBox(height: 25),
-        Text(
-          "Where do you study?",
-          style: GoogleFonts.urbanist(fontSize: 20),
-        ),
-        const SizedBox(height: 11),
-        utils.inputFields.textInput(
-          ['First Name', 'Drake Schools', Icons.school],
-        ),
-        const SizedBox(height: 25),
-        Text(
-          "What's your Gender?",
-          style: GoogleFonts.urbanist(fontSize: 20),
-        ),
-        const SizedBox(height: 11),
-        MultiSelectContainer(
-          onChange: (List<Object?> selectedItems, Object? selectedItem) {
-            setState(() {
-              gender = selectedItem.toString();
-              buildShowModalBottomSheet(context);
-            });
-          },
-          maxSelectableCount: 1,
-          itemsPadding: const EdgeInsets.all(0),
-          itemsDecoration: MultiSelectDecorations(
-            decoration: BoxDecoration(color: Colors.indigo.withOpacity(0.1)),
-            selectedDecoration: BoxDecoration(
-              color: Colors.blue.shade500,
-            ),
-          ),
-          items: [
-            for (var i in genders) ...[
-              MultiSelectCard(
-                value: i[1],
-                child: selectItem(i[0], i[1]),
-              ),
-            ]
-          ],
-        ),
-        const SizedBox(height: 25),
-        if (isAvatarSelected) ...[
+    return Form(
+      key: controller.formKey,
+      child: Column(
+        mainAxisAlignment: MainAxisAlignment.start,
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
           Text(
-            "My Avatar?",
+            'What should we call you?',
             style: GoogleFonts.urbanist(fontSize: 20),
           ),
           const SizedBox(height: 11),
-          selectItem(avatar.path, avatar.name)
+          Row(
+            children: [
+              Expanded(
+                child: utils.inputFields.textInput(
+                  ['First Name', 'John', Icons.person],
+                  controller.firstName,
+                ),
+              ),
+              const SizedBox(width: 20),
+              Expanded(
+                child: utils.inputFields.textInput(
+                  ['Last Name', 'Doe', Icons.person],
+                  controller.lastName,
+                ),
+              ),
+            ],
+          ),
+          const SizedBox(height: 25),
+          Text(
+            "Where do you study?",
+            style: GoogleFonts.urbanist(fontSize: 20),
+          ),
+          const SizedBox(height: 11),
+          utils.inputFields.textInput(
+            ['First Name', 'Drake Schools', Icons.school],
+            controller.organization,
+          ),
+          const SizedBox(height: 25),
+          Text(
+            "What's your Gender?",
+            style: GoogleFonts.urbanist(fontSize: 20),
+          ),
+          const SizedBox(height: 11),
+          MultiSelectContainer(
+            onChange: (List<Object?> selectedItems, Object? selectedItem) {
+              setState(() {
+                gender = selectedItem.toString();
+                checked = !checked;
+                if (checked) {
+                  buildShowModalBottomSheet(context);
+                } else {
+                  isAvatarSelected = false;
+                }
+              });
+            },
+            controller: controller.gender,
+            maxSelectableCount: 1,
+            itemsPadding: const EdgeInsets.all(0),
+            itemsDecoration: MultiSelectDecorations(
+              decoration: BoxDecoration(color: Colors.indigo.withOpacity(0.1)),
+              selectedDecoration: BoxDecoration(
+                color: Colors.blue.shade500,
+              ),
+            ),
+            items: [
+              for (var i in genders) ...[
+                MultiSelectCard(
+                  value: i[1],
+                  child: selectItem(i[0], i[1]),
+                ),
+              ]
+            ],
+          ),
+          const SizedBox(height: 25),
+          if (isAvatarSelected) ...[
+            Text(
+              "My Avatar?",
+              style: GoogleFonts.urbanist(fontSize: 20),
+            ),
+            const SizedBox(height: 11),
+            selectItem(avatar.path, avatar.name)
+          ],
+          const SizedBox(height: 25),
+          utils.buttons.authButton(
+            'Create Profiles',
+            () => controller.submitDetails(context),
+            context,
+          ),
         ],
-        const SizedBox(height: 25),
-        utils.buttons.authButton(
-          'Create Account',
-          () => controller.submitDetails(context),
-          context,
-        ),
-      ],
+      ),
     );
   }
 
@@ -147,6 +159,7 @@ class DetailsFormState extends State<DetailsForm> {
                     isAvatarSelected = !isAvatarSelected;
                   });
                 },
+                controller: controller.avatar,
                 maxSelectableCount: 1,
                 itemsPadding: const EdgeInsets.all(0),
                 itemsDecoration: MultiSelectDecorations(
