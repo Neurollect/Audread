@@ -1,30 +1,50 @@
-import 'package:audread/app/auth/splash.dart';
-import 'package:audread/configs/themes/themes.dart';
+import 'package:audread/services/supabase.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:get/route_manager.dart';
+import 'package:supabase_flutter/supabase_flutter.dart';
 
-void main() {
-  runApp(const MyApp());
-  SystemChrome.setEnabledSystemUIMode(SystemUiMode.manual,
-      overlays: [SystemUiOverlay.top]);
-  SystemChrome.setSystemUIOverlayStyle(const SystemUiOverlayStyle(
+import 'app/auth/splash.dart';
+import 'utils/components/loading.dart';
+import 'configs/themes/themes.dart';
+import 'controllers/secret_loader_controller.dart';
+import 'models/secret.dart';
+
+Future<void> main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+  Secret secret = await SecretLoader().load();
+
+  await Supabase.initialize(
+    url: secret.supabaseUrl,
+    anonKey: secret.supabaseAnonKey,
+  );
+
+  SystemChrome.setEnabledSystemUIMode(
+    SystemUiMode.manual,
+    overlays: [SystemUiOverlay.top],
+  );
+  SystemChrome.setSystemUIOverlayStyle(
+    const SystemUiOverlayStyle(
       statusBarColor: Colors.transparent,
       systemNavigationBarColor: Colors.transparent,
-      systemNavigationBarIconBrightness: Brightness.dark));
+    ),
+  );
+
+  runApp(const MyApp());
 }
 
 class MyApp extends StatelessWidget {
   const MyApp({super.key});
 
-  // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
+    SupabaseService().listentoHeaders();
     return GetMaterialApp(
       debugShowCheckedModeBanner: false,
       title: 'Audread',
       theme: AppAudTheme.lightTheme,
       darkTheme: AppAudTheme.darkTheme,
+      builder: LoadingScreen.init(),
       home: Splash(),
     );
   }
