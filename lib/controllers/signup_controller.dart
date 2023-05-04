@@ -1,3 +1,4 @@
+import 'package:audread/app/auth/code_verification/code_verification.dart';
 import 'package:audread/mixins/loading_mixin.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
@@ -24,6 +25,11 @@ class SignupController extends GetxController with LoadingMixin {
       if (res.runtimeType == AuthException) {
         isLoading(false, context);
       }
+      Get.to(
+        const CodeVerification(
+          codeType: 'SignUpConfirmation',
+        ),
+      );
     }
   }
 }

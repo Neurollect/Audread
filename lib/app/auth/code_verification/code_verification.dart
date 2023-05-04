@@ -5,7 +5,8 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:iconsax/iconsax.dart';
 
 class CodeVerification extends StatefulWidget {
-  const CodeVerification({Key? key}) : super(key: key);
+  final String codeType;
+  const CodeVerification({Key? key, required this.codeType}) : super(key: key);
 
   @override
   CodeVerificationState createState() => CodeVerificationState();
@@ -14,6 +15,7 @@ class CodeVerification extends StatefulWidget {
 class CodeVerificationState extends State<CodeVerification> {
   @override
   Widget build(BuildContext context) {
+    final codeType = widget.codeType;
     return Scaffold(
       appBar: AppBar(
         elevation: 0,
@@ -52,7 +54,9 @@ class CodeVerificationState extends State<CodeVerification> {
                 ),
               ),
               const SizedBox(height: 50),
-              const CodeVerificationForm(),
+              CodeVerificationForm(
+                codeType: codeType,
+              ),
             ],
           ),
         ),

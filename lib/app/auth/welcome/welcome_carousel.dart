@@ -6,10 +6,10 @@ class WelcomeCarousel extends StatefulWidget {
   const WelcomeCarousel({Key? key}) : super(key: key);
 
   @override
-  _WelcomeCarouselState createState() => _WelcomeCarouselState();
+  WelcomeCarouselState createState() => WelcomeCarouselState();
 }
 
-class _WelcomeCarouselState extends State<WelcomeCarousel> {
+class WelcomeCarouselState extends State<WelcomeCarousel> {
   @override
   Widget build(BuildContext context) {
     int pageIndex = 0;

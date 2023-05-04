@@ -20,7 +20,9 @@ class ForgetPasswordController extends GetxController with LoadingMixin {
       final res = await auth.sendRecoveryCode(
         email.text,
       );
-      Get.to(const CodeVerification());
+      Get.to(const CodeVerification(
+        codeType: 'ResetPassword',
+      ));
       if (res.runtimeType == AuthException) {
         isLoading(false, context);
       }

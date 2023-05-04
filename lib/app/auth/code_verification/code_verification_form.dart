@@ -7,7 +7,9 @@ import '../../../controllers/code_verification_controller.dart';
 import '../../../utils/utils.dart';
 
 class CodeVerificationForm extends StatefulWidget {
-  const CodeVerificationForm({Key? key}) : super(key: key);
+  final String codeType;
+  const CodeVerificationForm({Key? key, required this.codeType})
+      : super(key: key);
 
   @override
   CodeVerificationFormState createState() => CodeVerificationFormState();
@@ -22,6 +24,7 @@ class CodeVerificationFormState extends State<CodeVerificationForm> {
 
   @override
   Widget build(BuildContext context) {
+    final codeType = widget.codeType;
     return Form(
       key: controller.formKey,
       child: Column(
@@ -73,7 +76,7 @@ class CodeVerificationFormState extends State<CodeVerificationForm> {
           const SizedBox(height: 30),
           utils.buttons.authButton(
             'Confirm Reset Code',
-            controller.verifyCode,
+            () => controller.verifyCode(context, codeType, otpCode),
             context,
           ),
           const SizedBox(height: 22),

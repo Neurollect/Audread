@@ -11,14 +11,18 @@ class CodeVerificationController extends GetxController with LoadingMixin {
   final auth = SupabaseAuthentication(Supabase.instance.client);
 
   final email = TextEditingController();
-  final code = '';
   final formKey = GlobalKey<FormState>();
 
-  verifyCode(context) async {
+  verifyCode(context, String codeType, String code) async {
     if (formKey.currentState!.validate()) {
       isLoading(true, context);
-      final res = await auth.verifyRecoveryCode(email.text, code);
-      if (res.runtimeType == AuthException) {}
+      if (codeType == 'ResetPassword') {
+        final res = await auth.verifyRecoveryCode(email.text, code);
+        if (res.runtimeType == AuthException) {}
+      } else {
+        final res = await auth.verifySignUp(email.text, code);
+        if (res.runtimeType == AuthException) {}
+      }
     }
   }
 }
