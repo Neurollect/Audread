@@ -49,7 +49,7 @@ class ForgetPasswordFormState extends State<ForgetPasswordForm> {
           const SizedBox(height: 30),
           utils.buttons.authButton(
             'Send Reset Code',
-            controller.sendResetCode,
+            () => controller.sendResetCode(context),
             context,
           ),
           const SizedBox(height: 22),

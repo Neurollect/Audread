@@ -2,9 +2,14 @@ import 'package:carousel_indicator/carousel_indicator.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
-class WelcomeCarousel extends StatelessWidget {
+class WelcomeCarousel extends StatefulWidget {
   const WelcomeCarousel({Key? key}) : super(key: key);
 
+  @override
+  _WelcomeCarouselState createState() => _WelcomeCarouselState();
+}
+
+class _WelcomeCarouselState extends State<WelcomeCarousel> {
   @override
   Widget build(BuildContext context) {
     int pageIndex = 0;
@@ -30,7 +35,7 @@ class WelcomeCarousel extends StatelessWidget {
     return Column(
       children: [
         SizedBox(
-          height: MediaQuery.of(context).size.height * 0.6,
+          height: MediaQuery.of(context).size.height * 0.75,
           width: double.infinity,
           child: PageView(
             onPageChanged: ((value) {

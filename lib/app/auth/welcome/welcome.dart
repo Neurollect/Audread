@@ -19,7 +19,7 @@ class WelcomeScreenState extends State<WelcomeScreen> {
       resizeToAvoidBottomInset: false,
       body: SafeArea(
         child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
+          mainAxisAlignment: MainAxisAlignment.start,
           crossAxisAlignment: CrossAxisAlignment.center,
           children: [
             const WelcomeCarousel(),
