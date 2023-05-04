@@ -21,10 +21,7 @@ class SupabaseAuthentication implements AuthenticationRepository {
         throw UnimplementedError();
       }
 
-      return user.id;
-    } on AuthException catch (e) {
-      // await bugsnag.notify(e, stack);
-      return e;
+      return user;
     } catch (err) {
       //Other Errors
       return err;
@@ -41,9 +38,7 @@ class SupabaseAuthentication implements AuthenticationRepository {
       );
 
       final user = response.user;
-      return user!.id;
-    } on AuthException catch (e) {
-      return e;
+      return user;
     } catch (err) {
       //Other Errors
       return err;
@@ -59,9 +54,7 @@ class SupabaseAuthentication implements AuthenticationRepository {
         type: OtpType.signup,
       );
 
-      return response.user!.id;
-    } on AuthException catch (e) {
-      return e;
+      return response.user;
     } catch (err) {
       //Other Errors
       return err;
@@ -75,9 +68,7 @@ class SupabaseAuthentication implements AuthenticationRepository {
 
       var res = 'You have recieved a password recovery code in your inbox.';
       return res;
-    } on AuthException catch (e) {
-      return e;
-    } on PostgrestException catch (e) {
+    } catch (e) {
       return e;
     }
   }
@@ -92,7 +83,7 @@ class SupabaseAuthentication implements AuthenticationRepository {
       );
 
       return response.user!.id;
-    } on AuthException catch (e) {
+    } catch (e) {
       return e;
     }
   }

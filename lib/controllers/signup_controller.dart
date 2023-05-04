@@ -1,4 +1,5 @@
 import 'package:audread/app/auth/code_verification/code_verification.dart';
+import 'package:audread/mixins/handle_exception_mixin.dart';
 import 'package:audread/mixins/loading_mixin.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
@@ -6,7 +7,8 @@ import 'package:supabase_flutter/supabase_flutter.dart';
 
 import '../services/supabase_authentication.dart';
 
-class SignupController extends GetxController with LoadingMixin {
+class SignupController extends GetxController
+    with LoadingMixin, HandleExceptions {
   static SignupController get instance => Get.find();
 
   final auth = SupabaseAuthentication(Supabase.instance.client);
@@ -22,14 +24,16 @@ class SignupController extends GetxController with LoadingMixin {
         email.text,
         password.text,
       );
-      if (res.runtimeType == AuthException) {
+      if (res.runtimeType != User) {
         isLoading(false, context);
+        handleExceptions(context, res);
+      } else {
+        Get.to(
+          const CodeVerification(
+            codeType: 'SignUpConfirmation',
+          ),
+        );
       }
-      Get.to(
-        const CodeVerification(
-          codeType: 'SignUpConfirmation',
-        ),
-      );
     }
   }
 }
