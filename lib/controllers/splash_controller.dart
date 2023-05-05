@@ -1,4 +1,3 @@
-import 'package:audread/app/auth/welcome/welcome.dart';
 import 'package:get/get.dart';
 import 'package:supabase_flutter/supabase_flutter.dart';
 

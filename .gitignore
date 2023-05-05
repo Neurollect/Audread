@@ -51,3 +51,4 @@ app.*.map.json
 
 #avatars
 /assets/images/avatars
+/assets/images/settings
