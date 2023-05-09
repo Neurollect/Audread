@@ -121,6 +121,7 @@ class AudTextInput extends FormValidator {
 
   Widget detailsInput(context, [iniValue, controller]) {
     return TextFormField(
+      controller: controller,
       initialValue: iniValue,
       decoration: InputDecoration(
         enabledBorder: OutlineInputBorder(

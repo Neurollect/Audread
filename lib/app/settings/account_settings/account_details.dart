@@ -65,50 +65,159 @@ class AccountDetailsState extends State<AccountDetails> {
                 shrinkWrap: true,
                 children: [
                   //Name
-                  TextButton(
-                    onPressed: () {},
-                    style: TextButton.styleFrom(
-                      padding: const EdgeInsets.only(right: 20),
-                      foregroundColor: const Color.fromARGB(255, 0, 36, 89),
+                  ListTile(
+                    trailing: TextButton(
+                      onPressed: () {
+                        setState(() {
+                          isEditing = !isEditing;
+                        });
+                      },
+                      style: TextButton.styleFrom(
+                        backgroundColor: const Color.fromARGB(31, 0, 145, 255),
+                        shape: const CircleBorder(),
+                        foregroundColor: const Color.fromARGB(255, 0, 36, 89),
+                      ),
+                      child: Icon(
+                        isEditing ? Icons.save_outlined : Iconsax.edit,
+                        size: 30,
+                        color: Colors.black,
+                      ),
                     ),
-                    child: ListTile(
-                      trailing: TextButton(
-                        onPressed: () {
-                          setState(() {
-                            isEditing = !isEditing;
-                          });
-                        },
-                        style: TextButton.styleFrom(
-                          backgroundColor:
-                              const Color.fromARGB(31, 0, 145, 255),
-                          shape: const CircleBorder(),
-                          foregroundColor: const Color.fromARGB(255, 0, 36, 89),
-                        ),
-                        child: Icon(
-                          isEditing ? Icons.save_outlined : Iconsax.edit,
-                          size: 30,
-                          color: Colors.black,
-                        ),
+                    title: Text(
+                      'Name',
+                      style: GoogleFonts.urbanist(
+                        fontSize: 16,
                       ),
-                      title: Text(
-                        'Name',
-                        style: GoogleFonts.urbanist(
-                          fontSize: 16,
-                        ),
-                      ),
-                      subtitle: isEditing
-                          ? utils.inputFields.detailsInput(
-                              context,
-                              value,
-                            )
-                          : Text(
-                              value,
-                              style: GoogleFonts.urbanist(
-                                fontSize: 21,
-                                fontWeight: FontWeight.bold,
-                              ),
+                    ),
+                    subtitle: isEditing
+                        ? utils.inputFields.detailsInput(context, value)
+                        : Text(
+                            value,
+                            style: GoogleFonts.urbanist(
+                              fontSize: 21,
+                              fontWeight: FontWeight.bold,
                             ),
+                          ),
+                  ),
+                  const SizedBox(height: 10),
+
+                  //School
+                  ListTile(
+                    trailing: TextButton(
+                      onPressed: () {
+                        setState(() {
+                          isEditing = !isEditing;
+                        });
+                      },
+                      style: TextButton.styleFrom(
+                        backgroundColor: const Color.fromARGB(31, 0, 145, 255),
+                        shape: const CircleBorder(),
+                        foregroundColor: const Color.fromARGB(255, 0, 36, 89),
+                      ),
+                      child: Icon(
+                        isEditing ? Icons.save_outlined : Iconsax.edit,
+                        size: 30,
+                        color: Colors.black,
+                      ),
                     ),
+                    title: Text(
+                      'School',
+                      style: GoogleFonts.urbanist(
+                        fontSize: 16,
+                      ),
+                    ),
+                    subtitle: isEditing
+                        ? utils.inputFields.detailsInput(
+                            context,
+                            'Olke Schools',
+                          )
+                        : Text(
+                            'Olke Schools',
+                            style: GoogleFonts.urbanist(
+                              fontSize: 21,
+                              fontWeight: FontWeight.bold,
+                            ),
+                          ),
+                  ),
+                  const SizedBox(height: 10),
+
+                  //School
+                  ListTile(
+                    trailing: TextButton(
+                      onPressed: () {
+                        setState(() {
+                          isEditing = !isEditing;
+                        });
+                      },
+                      style: TextButton.styleFrom(
+                        backgroundColor: const Color.fromARGB(31, 0, 145, 255),
+                        shape: const CircleBorder(),
+                        foregroundColor: const Color.fromARGB(255, 0, 36, 89),
+                      ),
+                      child: Icon(
+                        isEditing ? Icons.save_outlined : Iconsax.edit,
+                        size: 30,
+                        color: Colors.black,
+                      ),
+                    ),
+                    title: Text(
+                      'Gender',
+                      style: GoogleFonts.urbanist(
+                        fontSize: 16,
+                      ),
+                    ),
+                    subtitle: isEditing
+                        ? utils.inputFields.detailsInput(
+                            context,
+                            'Male',
+                          )
+                        : Text(
+                            'Male',
+                            style: GoogleFonts.urbanist(
+                              fontSize: 21,
+                              fontWeight: FontWeight.bold,
+                            ),
+                          ),
+                  ),
+                  const SizedBox(height: 10),
+
+                  //School
+                  ListTile(
+                    trailing: TextButton(
+                      onPressed: () {
+                        setState(() {
+                          isEditing = !isEditing;
+                        });
+                      },
+                      style: TextButton.styleFrom(
+                        backgroundColor: const Color.fromARGB(31, 0, 145, 255),
+                        shape: const CircleBorder(),
+                        foregroundColor: const Color.fromARGB(255, 0, 36, 89),
+                      ),
+                      child: Icon(
+                        isEditing ? Icons.save_outlined : Iconsax.edit,
+                        size: 30,
+                        color: Colors.black,
+                      ),
+                    ),
+                    title: Text(
+                      'Grade/Class',
+                      style: GoogleFonts.urbanist(
+                        fontSize: 16,
+                      ),
+                    ),
+                    subtitle: isEditing
+                        ? utils.inputFields.detailsInput(
+                            context,
+                            'Form 2',
+                          )
+                        : Text(
+                            'Form 2',
+                            style: GoogleFonts.urbanist(
+                              fontSize: 21,
+                              fontWeight: FontWeight.bold,
+                            ),
+                          ),
                   ),
                   const SizedBox(height: 10),
                 ],
