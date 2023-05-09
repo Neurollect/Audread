@@ -1,7 +1,12 @@
+import 'package:audread/app/settings/account_settings/account_details.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:iconsax/iconsax.dart';
+
+import '../../utils/utils.dart';
+
+final utils = Utils();
 
 class ProfileSettings extends StatefulWidget {
   const ProfileSettings({Key? key}) : super(key: key);
@@ -45,7 +50,7 @@ class ProfileSettingsState extends State<ProfileSettings> {
             children: [
               const SizedBox(height: 15),
               Text(
-                'My Profile',
+                'My Account',
                 style: GoogleFonts.urbanist(
                   fontSize: 50,
                   fontWeight: FontWeight.bold,
@@ -99,14 +104,14 @@ class ProfileSettingsState extends State<ProfileSettings> {
                 children: [
                   //Notifications
                   TextButton(
-                    onPressed: () {},
+                    onPressed: () => Get.to(const AccountDetails()),
                     style: TextButton.styleFrom(
                       padding: const EdgeInsets.only(right: 20),
                       foregroundColor: const Color.fromARGB(255, 0, 36, 89),
                     ),
                     child: ListTile(
                       trailing: TextButton(
-                        onPressed: () {},
+                        onPressed: () => Get.to(const AccountDetails()),
                         style: TextButton.styleFrom(
                           backgroundColor:
                               const Color.fromARGB(31, 0, 145, 255),

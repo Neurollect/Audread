@@ -19,14 +19,14 @@ class SettingsScreen extends StatefulWidget {
 class SettingsScreenState extends State<SettingsScreen> {
   final List settingsItems = [
     [Iconsax.setting_3, 'General\nSettings', Colors.orange],
-    [Iconsax.emoji_happy, 'Profile\nSettings', Colors.blue],
+    [Iconsax.emoji_happy, 'Account\nSettings', Colors.blue],
     [Iconsax.message_question, 'Help\nCenter', Colors.lightGreenAccent],
     [Iconsax.code, 'General\nInfo', Colors.purpleAccent],
   ];
 
-  final List settingsBottomItems = [
-    ['Share This App'],
-    ['Rate Our App'],
+  final List<List<String>> settingsBottomItems = [
+    ['Share This App', 'Helps us achieve our goal of reaching 2000 students'],
+    ['Rate Our App', 'Give us your feedback, It will Motivate'],
   ];
 
   @override
@@ -179,6 +179,13 @@ class SettingsScreenState extends State<SettingsScreen> {
                             fontWeight: FontWeight.bold,
                           ),
                         ),
+                        subtitle: Text(
+                          i.last,
+                          style: GoogleFonts.urbanist(
+                            fontSize: 17,
+                            fontWeight: FontWeight.bold,
+                          ),
+                        ),
                       ),
                     ),
                     const SizedBox(height: 10),
@@ -200,7 +207,7 @@ class SettingsScreenState extends State<SettingsScreen> {
         Get.to(const GeneralSettingsScreen());
         break;
 
-      case 'Profile\nSettings':
+      case 'Account\nSettings':
         Get.to(const ProfileSettings());
         break;
 
