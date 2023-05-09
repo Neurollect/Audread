@@ -72,6 +72,7 @@ class DeveloperInfoScreenState extends State<DeveloperInfoScreen> {
                   TextButton(
                     onPressed: () => Get.to(
                       InfoDisplayScreen(
+                        title: 'Terms and Conditions',
                         statement: termsAndConditionstext.statement,
                         info: termsAndConditionstext.info,
                       ),
@@ -87,7 +88,7 @@ class DeveloperInfoScreenState extends State<DeveloperInfoScreen> {
                         color: Colors.black,
                       ),
                       trailing: TextButton(
-                        onPressed: () => Get.to(const SettingsScreen()),
+                        onPressed: () {},
                         style: TextButton.styleFrom(
                           backgroundColor:
                               const Color.fromARGB(31, 0, 145, 255),
@@ -122,6 +123,7 @@ class DeveloperInfoScreenState extends State<DeveloperInfoScreen> {
                   TextButton(
                     onPressed: () => Get.to(
                       InfoDisplayScreen(
+                        title: 'Privacy Policy',
                         statement: privacyPolicytext.statement,
                         info: privacyPolicytext.info,
                       ),
@@ -137,7 +139,7 @@ class DeveloperInfoScreenState extends State<DeveloperInfoScreen> {
                         color: Colors.black,
                       ),
                       trailing: TextButton(
-                        onPressed: () => Get.to(const SettingsScreen()),
+                        onPressed: () {},
                         style: TextButton.styleFrom(
                           backgroundColor:
                               const Color.fromARGB(31, 0, 145, 255),
@@ -172,6 +174,7 @@ class DeveloperInfoScreenState extends State<DeveloperInfoScreen> {
                   TextButton(
                     onPressed: () => Get.to(
                       InfoDisplayScreen(
+                        title: 'Security',
                         statement: securitytext.statement,
                         info: securitytext.info,
                       ),
@@ -187,7 +190,7 @@ class DeveloperInfoScreenState extends State<DeveloperInfoScreen> {
                         color: Colors.black,
                       ),
                       trailing: TextButton(
-                        onPressed: () => Get.to(const SettingsScreen()),
+                        onPressed: () {},
                         style: TextButton.styleFrom(
                           backgroundColor:
                               const Color.fromARGB(31, 0, 145, 255),
@@ -222,6 +225,7 @@ class DeveloperInfoScreenState extends State<DeveloperInfoScreen> {
                   TextButton(
                     onPressed: () => Get.to(
                       InfoDisplayScreen(
+                        title: 'Developer Info & Credits',
                         info: developerInfotext.info,
                       ),
                     ),
@@ -236,7 +240,7 @@ class DeveloperInfoScreenState extends State<DeveloperInfoScreen> {
                         color: Colors.black,
                       ),
                       trailing: TextButton(
-                        onPressed: () => Get.to(const SettingsScreen()),
+                        onPressed: () {},
                         style: TextButton.styleFrom(
                           backgroundColor:
                               const Color.fromARGB(31, 0, 145, 255),

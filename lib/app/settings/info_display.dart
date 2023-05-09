@@ -7,8 +7,10 @@ import 'package:iconsax/iconsax.dart';
 final utils = Utils();
 
 class InfoDisplayScreen extends StatefulWidget {
-  const InfoDisplayScreen({Key? key, required this.info, this.statement})
+  const InfoDisplayScreen(
+      {Key? key, required this.title, required this.info, this.statement})
       : super(key: key);
+  final String title;
   final List info;
   final String? statement;
 
@@ -52,7 +54,7 @@ class InfoDisplayScreenState extends State<InfoDisplayScreen> {
             children: [
               const SizedBox(height: 15),
               Text(
-                'Data and\nPrivacy',
+                widget.title,
                 style: GoogleFonts.urbanist(
                   fontSize: 50,
                   fontWeight: FontWeight.bold,
