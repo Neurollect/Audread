@@ -1,3 +1,4 @@
+import 'package:audread/app/settings/data_and_privacy.dart';
 import 'package:audread/app/settings/general_settings.dart';
 import 'package:audread/utils/utils.dart';
 import 'package:flutter/material.dart';
@@ -16,15 +17,15 @@ class SettingsScreen extends StatefulWidget {
 
 class SettingsScreenState extends State<SettingsScreen> {
   final List settingsItems = [
-    [Iconsax.setting_3, 'General\nSettings', Colors.redAccent],
-    [Iconsax.user_edit, 'Profile\nSettings', Colors.blueAccent],
-    [Iconsax.lock, 'Data &\nPrivacy', Colors.lightGreenAccent],
-    [Iconsax.people, 'Developer\nInfo', Colors.amberAccent],
+    [Iconsax.setting_3, 'General\nSettings', Colors.orange],
+    [Iconsax.user_edit, 'Profile\nSettings', Colors.blue],
+    [Iconsax.message_question, 'Help\nGuide', Colors.lightGreenAccent],
+    [Iconsax.people, 'Developer\nInfo', Colors.purpleAccent],
   ];
 
   final List settingsBottomItems = [
-    ['Help and Guide'],
     ['Share This App'],
+    ['Rate Our App'],
   ];
 
   @override
@@ -73,7 +74,7 @@ class SettingsScreenState extends State<SettingsScreen> {
                 children: [
                   for (var i in settingsItems.reversed.skip(2)) ...[
                     TextButton(
-                      onPressed: navigation,
+                      onPressed: () => navigation(i[1]),
                       style: TextButton.styleFrom(
                         elevation: 5,
                         backgroundColor: i[2],
@@ -111,7 +112,7 @@ class SettingsScreenState extends State<SettingsScreen> {
                 children: [
                   for (var i in settingsItems.skip(2)) ...[
                     TextButton(
-                      onPressed: navigation,
+                      onPressed: () => navigation(i[1]),
                       style: TextButton.styleFrom(
                         elevation: 5,
                         backgroundColor: i[2],
@@ -190,8 +191,8 @@ class SettingsScreenState extends State<SettingsScreen> {
     );
   }
 
-  navigation() {
-    switch (settingsItems[0][1]) {
+  navigation(page) {
+    switch (page) {
       case 'General\nSettings':
         Get.to(const GeneralSettingsScreen());
         break;
@@ -200,15 +201,20 @@ class SettingsScreenState extends State<SettingsScreen> {
         Get.to(const GeneralSettingsScreen());
         break;
 
-      case 'Data &\nPrivacy':
-        Get.to(const GeneralSettingsScreen());
-        break;
-
       case 'Developer\nInfo':
         Get.to(const GeneralSettingsScreen());
         break;
 
+      case 'Help\nGuide':
+        Get.to(const DataAndPrivacyScreen());
+        break;
+
+      case 'Share this App':
+        Get.to(const DataAndPrivacyScreen());
+        break;
+
       default:
+        Get.to(const SettingsScreen());
     }
   }
 }
