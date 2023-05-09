@@ -4,21 +4,23 @@ import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:iconsax/iconsax.dart';
 
-import 'texts/data_privacy_text.dart';
-
 final utils = Utils();
 
-class DataAndPrivacyScreen extends StatefulWidget {
-  const DataAndPrivacyScreen({Key? key}) : super(key: key);
+class InfoDisplayScreen extends StatefulWidget {
+  const InfoDisplayScreen({Key? key, required this.info, this.statement})
+      : super(key: key);
+  final List info;
+  final String? statement;
 
   @override
-  DataAndPrivacyScreenState createState() => DataAndPrivacyScreenState();
+  InfoDisplayScreenState createState() => InfoDisplayScreenState();
 }
 
-class DataAndPrivacyScreenState extends State<DataAndPrivacyScreen>
-    with DataPrivacyText {
+class InfoDisplayScreenState extends State<InfoDisplayScreen> {
   @override
   Widget build(BuildContext context) {
+    String statement = widget.statement ?? '';
+    List info = widget.info;
     return Scaffold(
       appBar: AppBar(
         elevation: 0,

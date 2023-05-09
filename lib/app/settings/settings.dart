@@ -1,4 +1,3 @@
-import 'package:audread/app/settings/data_and_privacy.dart';
 import 'package:audread/app/settings/developer_info.dart';
 import 'package:audread/app/settings/general_settings.dart';
 import 'package:audread/utils/utils.dart';
@@ -21,7 +20,7 @@ class SettingsScreenState extends State<SettingsScreen> {
     [Iconsax.setting_3, 'General\nSettings', Colors.orange],
     [Iconsax.user_edit, 'Profile\nSettings', Colors.blue],
     [Iconsax.message_question, 'Help\nGuide', Colors.lightGreenAccent],
-    [Iconsax.people, 'Developer\nInfo', Colors.purpleAccent],
+    [Iconsax.code, 'General\nInfo', Colors.purpleAccent],
   ];
 
   final List settingsBottomItems = [
@@ -145,6 +144,7 @@ class SettingsScreenState extends State<SettingsScreen> {
                 ],
               ),
               const SizedBox(height: 20),
+              const Divider(),
               ListView(
                 shrinkWrap: true,
                 children: [
@@ -183,7 +183,8 @@ class SettingsScreenState extends State<SettingsScreen> {
                     const SizedBox(height: 10),
                   ],
                 ],
-              )
+              ),
+              const Divider(),
             ],
           ),
         ),
@@ -202,16 +203,14 @@ class SettingsScreenState extends State<SettingsScreen> {
         Get.to(const GeneralSettingsScreen());
         break;
 
-      case 'Developer\nInfo':
+      case 'General\nInfo':
         Get.to(const DeveloperInfoScreen());
         break;
 
       case 'Help\nGuide':
-        Get.to(const DataAndPrivacyScreen());
         break;
 
       case 'Share this App':
-        Get.to(const DataAndPrivacyScreen());
         break;
 
       default:
