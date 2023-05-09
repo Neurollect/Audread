@@ -1,3 +1,4 @@
+import 'package:audread/app/settings/general_settings.dart';
 import 'package:audread/utils/utils.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
@@ -15,30 +16,15 @@ class SettingsScreen extends StatefulWidget {
 
 class SettingsScreenState extends State<SettingsScreen> {
   final List settingsItems = [
-    [
-      Iconsax.setting_3,
-      'General\nSettings',
-      Colors.red,
-      utils.images.settingImages[0].path,
-    ],
-    [
-      Iconsax.user_edit,
-      'Profile\nSettings',
-      Colors.blue,
-      utils.images.settingImages[1].path,
-    ],
-    [
-      Iconsax.lock,
-      'Data &\nPrivacy',
-      Colors.lightGreen,
-      utils.images.settingImages[2].path,
-    ],
-    [
-      Iconsax.people,
-      'Developer\nInfo',
-      Colors.amber,
-      utils.images.settingImages[3].path,
-    ],
+    [Iconsax.setting_3, 'General\nSettings', Colors.redAccent],
+    [Iconsax.user_edit, 'Profile\nSettings', Colors.blueAccent],
+    [Iconsax.lock, 'Data &\nPrivacy', Colors.lightGreenAccent],
+    [Iconsax.people, 'Developer\nInfo', Colors.amberAccent],
+  ];
+
+  final List settingsBottomItems = [
+    ['Help and Guide'],
+    ['Share This App'],
   ];
 
   @override
@@ -87,7 +73,7 @@ class SettingsScreenState extends State<SettingsScreen> {
                 children: [
                   for (var i in settingsItems.reversed.skip(2)) ...[
                     TextButton(
-                      onPressed: () {},
+                      onPressed: navigation,
                       style: TextButton.styleFrom(
                         elevation: 5,
                         backgroundColor: i[2],
@@ -125,7 +111,7 @@ class SettingsScreenState extends State<SettingsScreen> {
                 children: [
                   for (var i in settingsItems.skip(2)) ...[
                     TextButton(
-                      onPressed: () {},
+                      onPressed: navigation,
                       style: TextButton.styleFrom(
                         elevation: 5,
                         backgroundColor: i[2],
@@ -160,67 +146,40 @@ class SettingsScreenState extends State<SettingsScreen> {
               ListView(
                 shrinkWrap: true,
                 children: [
-                  TextButton(
-                    onPressed: () => Get.to(const SettingsScreen()),
-                    style: TextButton.styleFrom(
-                      padding: const EdgeInsets.only(right: 20),
-                      foregroundColor: const Color.fromARGB(255, 0, 36, 89),
-                    ),
-                    child: ListTile(
-                      trailing: TextButton(
-                        onPressed: () => Get.to(const SettingsScreen()),
-                        style: TextButton.styleFrom(
-                          backgroundColor:
-                              const Color.fromARGB(31, 0, 145, 255),
-                          shape: const CircleBorder(),
-                          foregroundColor: const Color.fromARGB(255, 0, 36, 89),
-                        ),
-                        child: const Icon(
-                          Iconsax.arrow_right,
-                          size: 30,
-                          color: Colors.black,
-                        ),
+                  for (var i in settingsBottomItems) ...[
+                    TextButton(
+                      onPressed: () => Get.to(const SettingsScreen()),
+                      style: TextButton.styleFrom(
+                        padding: const EdgeInsets.only(right: 20),
+                        foregroundColor: const Color.fromARGB(255, 0, 36, 89),
                       ),
-                      title: Text(
-                        'Help and Guide',
-                        style: GoogleFonts.urbanist(
-                          fontSize: 20,
-                          fontWeight: FontWeight.bold,
+                      child: ListTile(
+                        trailing: TextButton(
+                          onPressed: () => Get.to(const SettingsScreen()),
+                          style: TextButton.styleFrom(
+                            backgroundColor:
+                                const Color.fromARGB(31, 0, 145, 255),
+                            shape: const CircleBorder(),
+                            foregroundColor:
+                                const Color.fromARGB(255, 0, 36, 89),
+                          ),
+                          child: const Icon(
+                            Iconsax.arrow_right,
+                            size: 30,
+                            color: Colors.black,
+                          ),
                         ),
-                      ),
-                    ),
-                  ),
-                  const SizedBox(height: 10),
-                  TextButton(
-                    onPressed: () => Get.to(const SettingsScreen()),
-                    style: TextButton.styleFrom(
-                      padding: const EdgeInsets.only(right: 20),
-                      foregroundColor: const Color.fromARGB(255, 0, 36, 89),
-                    ),
-                    child: ListTile(
-                      trailing: TextButton(
-                        onPressed: () => Get.to(const SettingsScreen()),
-                        style: TextButton.styleFrom(
-                          backgroundColor:
-                              const Color.fromARGB(31, 0, 145, 255),
-                          shape: const CircleBorder(),
-                          foregroundColor: const Color.fromARGB(255, 0, 36, 89),
-                        ),
-                        child: const Icon(
-                          Iconsax.arrow_right,
-                          size: 30,
-                          color: Colors.black,
-                        ),
-                      ),
-                      title: Text(
-                        'Rate and Share App',
-                        style: GoogleFonts.urbanist(
-                          fontSize: 20,
-                          fontWeight: FontWeight.bold,
+                        title: Text(
+                          i[0],
+                          style: GoogleFonts.urbanist(
+                            fontSize: 20,
+                            fontWeight: FontWeight.bold,
+                          ),
                         ),
                       ),
                     ),
-                  ),
+                    const SizedBox(height: 10),
+                  ],
                 ],
               )
             ],
@@ -229,5 +188,27 @@ class SettingsScreenState extends State<SettingsScreen> {
       ),
       resizeToAvoidBottomInset: false,
     );
+  }
+
+  navigation() {
+    switch (settingsItems[0][1]) {
+      case 'General\nSettings':
+        Get.to(const GeneralSettingsScreen());
+        break;
+
+      case 'Profile\nSettings':
+        Get.to(const GeneralSettingsScreen());
+        break;
+
+      case 'Data &\nPrivacy':
+        Get.to(const GeneralSettingsScreen());
+        break;
+
+      case 'Developer\nInfo':
+        Get.to(const GeneralSettingsScreen());
+        break;
+
+      default:
+    }
   }
 }
