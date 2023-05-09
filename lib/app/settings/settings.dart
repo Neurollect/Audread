@@ -19,25 +19,25 @@ class SettingsScreenState extends State<SettingsScreen> {
       Iconsax.setting_3,
       'General\nSettings',
       Colors.red,
-      utils.images.settingImages[0]
+      utils.images.settingImages[0].path,
     ],
     [
       Iconsax.user_edit,
       'Profile\nSettings',
       Colors.blue,
-      utils.images.settingImages[1]
+      utils.images.settingImages[1].path,
     ],
     [
       Iconsax.lock,
       'Data &\nPrivacy',
       Colors.lightGreen,
-      utils.images.settingImages[2]
+      utils.images.settingImages[2].path,
     ],
     [
       Iconsax.people,
       'Developer\nInfo',
       Colors.amber,
-      utils.images.settingImages[3]
+      utils.images.settingImages[3].path,
     ],
   ];
 
@@ -156,6 +156,73 @@ class SettingsScreenState extends State<SettingsScreen> {
                   ],
                 ],
               ),
+              const SizedBox(height: 20),
+              ListView(
+                shrinkWrap: true,
+                children: [
+                  TextButton(
+                    onPressed: () => Get.to(const SettingsScreen()),
+                    style: TextButton.styleFrom(
+                      padding: const EdgeInsets.only(right: 20),
+                      foregroundColor: const Color.fromARGB(255, 0, 36, 89),
+                    ),
+                    child: ListTile(
+                      trailing: TextButton(
+                        onPressed: () => Get.to(const SettingsScreen()),
+                        style: TextButton.styleFrom(
+                          backgroundColor:
+                              const Color.fromARGB(31, 0, 145, 255),
+                          shape: const CircleBorder(),
+                          foregroundColor: const Color.fromARGB(255, 0, 36, 89),
+                        ),
+                        child: const Icon(
+                          Iconsax.arrow_right,
+                          size: 30,
+                          color: Colors.black,
+                        ),
+                      ),
+                      title: Text(
+                        'Help and Guide',
+                        style: GoogleFonts.urbanist(
+                          fontSize: 20,
+                          fontWeight: FontWeight.bold,
+                        ),
+                      ),
+                    ),
+                  ),
+                  const SizedBox(height: 10),
+                  TextButton(
+                    onPressed: () => Get.to(const SettingsScreen()),
+                    style: TextButton.styleFrom(
+                      padding: const EdgeInsets.only(right: 20),
+                      foregroundColor: const Color.fromARGB(255, 0, 36, 89),
+                    ),
+                    child: ListTile(
+                      trailing: TextButton(
+                        onPressed: () => Get.to(const SettingsScreen()),
+                        style: TextButton.styleFrom(
+                          backgroundColor:
+                              const Color.fromARGB(31, 0, 145, 255),
+                          shape: const CircleBorder(),
+                          foregroundColor: const Color.fromARGB(255, 0, 36, 89),
+                        ),
+                        child: const Icon(
+                          Iconsax.arrow_right,
+                          size: 30,
+                          color: Colors.black,
+                        ),
+                      ),
+                      title: Text(
+                        'Rate and Share App',
+                        style: GoogleFonts.urbanist(
+                          fontSize: 20,
+                          fontWeight: FontWeight.bold,
+                        ),
+                      ),
+                    ),
+                  ),
+                ],
+              )
             ],
           ),
         ),

@@ -74,6 +74,7 @@ flutter:
   assets:
     - assets/images/
     - assets/images/avatars/
+    - assets/images/settings/
     - lib/secrets.json
 
   # An image asset can refer to one or more resolution-specific "variants", see
