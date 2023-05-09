@@ -19,7 +19,7 @@ class SettingsScreen extends StatefulWidget {
 class SettingsScreenState extends State<SettingsScreen> {
   final List settingsItems = [
     [Iconsax.setting_3, 'General\nSettings', Colors.orange],
-    [Iconsax.user_edit, 'Profile\nSettings', Colors.blue],
+    [Iconsax.emoji_happy, 'Profile\nSettings', Colors.blue],
     [Iconsax.message_question, 'Help\nCenter', Colors.lightGreenAccent],
     [Iconsax.code, 'General\nInfo', Colors.purpleAccent],
   ];
