@@ -1,30 +1,19 @@
-import 'package:audread/app/settings/info_display.dart';
-import 'package:audread/app/settings/texts/data_privacy_text.dart';
-import 'package:audread/app/settings/texts/developer_info_text.dart';
-import 'package:audread/app/settings/texts/terms_and_conditions_text.dart';
-import 'package:audread/utils/utils.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:iconsax/iconsax.dart';
 
-final utils = Utils();
-
-class DeveloperInfoScreen extends StatefulWidget {
-  const DeveloperInfoScreen({Key? key}) : super(key: key);
+class ProfileSettings extends StatefulWidget {
+  const ProfileSettings({Key? key}) : super(key: key);
 
   @override
-  DeveloperInfoScreenState createState() => DeveloperInfoScreenState();
+  ProfileSettingsState createState() => ProfileSettingsState();
 }
 
-class DeveloperInfoScreenState extends State<DeveloperInfoScreen> {
-  final termsAndConditionstext = TermsAndConditionsText();
-  final privacyPolicytext = DataPrivacyText();
-  final securitytext = TermsAndConditionsText();
-  final developerInfotext = DeveloperInfoText();
-
+class ProfileSettingsState extends State<ProfileSettings> {
   @override
   Widget build(BuildContext context) {
+    double side = MediaQuery.of(context).size.width / 6;
     return Scaffold(
       appBar: AppBar(
         elevation: 0,
@@ -56,35 +45,66 @@ class DeveloperInfoScreenState extends State<DeveloperInfoScreen> {
             children: [
               const SizedBox(height: 15),
               Text(
-                'Audread\nInfo & Credits',
+                'My Profile',
                 style: GoogleFonts.urbanist(
                   fontSize: 50,
                   fontWeight: FontWeight.bold,
                 ),
               ),
-              const SizedBox(height: 30),
+              const SizedBox(height: 20),
+
+              //Simple Profile View
+              Row(
+                children: [
+                  Container(
+                    height: side,
+                    width: side,
+                    alignment: Alignment.bottomCenter,
+                    decoration: BoxDecoration(
+                      borderRadius: BorderRadius.circular(10),
+                      image: const DecorationImage(
+                        opacity: 0.8,
+                        image: AssetImage('assets/images/avatars/mikee.png'),
+                      ),
+                    ),
+                  ),
+                  const SizedBox(width: 10),
+                  Column(
+                    mainAxisAlignment: MainAxisAlignment.start,
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Text(
+                        'Joseph Gakah',
+                        style: GoogleFonts.urbanist(
+                          fontSize: 35,
+                          fontWeight: FontWeight.bold,
+                        ),
+                      ),
+                      Text(
+                        'example@gmail.com',
+                        style: GoogleFonts.urbanist(
+                          fontSize: 20,
+                        ),
+                      ),
+                    ],
+                  ),
+                ],
+              ),
+              const SizedBox(height: 20),
+              const Divider(),
+
+              //Account Actions
               ListView(
                 shrinkWrap: true,
                 children: [
                   //Notifications
                   TextButton(
-                    onPressed: () => Get.to(
-                      InfoDisplayScreen(
-                        title: 'Terms and Conditions',
-                        statement: termsAndConditionstext.statement,
-                        info: termsAndConditionstext.info,
-                      ),
-                    ),
+                    onPressed: () {},
                     style: TextButton.styleFrom(
                       padding: const EdgeInsets.only(right: 20),
                       foregroundColor: const Color.fromARGB(255, 0, 36, 89),
                     ),
                     child: ListTile(
-                      leading: const Icon(
-                        Iconsax.menu_board,
-                        size: 30,
-                        color: Colors.black,
-                      ),
                       trailing: TextButton(
                         onPressed: () {},
                         style: TextButton.styleFrom(
@@ -100,14 +120,14 @@ class DeveloperInfoScreenState extends State<DeveloperInfoScreen> {
                         ),
                       ),
                       title: Text(
-                        'Terms and Conditions',
+                        'Account Details',
                         style: GoogleFonts.urbanist(
                           fontSize: 20,
                           fontWeight: FontWeight.bold,
                         ),
                       ),
                       subtitle: Text(
-                        'Community Guidelines',
+                        'View & Edit Details',
                         style: GoogleFonts.urbanist(
                           fontSize: 16,
                           fontWeight: FontWeight.bold,
@@ -119,23 +139,12 @@ class DeveloperInfoScreenState extends State<DeveloperInfoScreen> {
 
                   //Language Tile
                   TextButton(
-                    onPressed: () => Get.to(
-                      InfoDisplayScreen(
-                        title: 'Privacy Policy',
-                        statement: privacyPolicytext.statement,
-                        info: privacyPolicytext.info,
-                      ),
-                    ),
+                    onPressed: () {},
                     style: TextButton.styleFrom(
                       padding: const EdgeInsets.only(right: 20),
                       foregroundColor: const Color.fromARGB(255, 0, 36, 89),
                     ),
                     child: ListTile(
-                      leading: const Icon(
-                        Iconsax.lock,
-                        size: 30,
-                        color: Colors.black,
-                      ),
                       trailing: TextButton(
                         onPressed: () {},
                         style: TextButton.styleFrom(
@@ -151,14 +160,14 @@ class DeveloperInfoScreenState extends State<DeveloperInfoScreen> {
                         ),
                       ),
                       title: Text(
-                        'Privacy Policy',
+                        'Security and Password',
                         style: GoogleFonts.urbanist(
                           fontSize: 20,
                           fontWeight: FontWeight.bold,
                         ),
                       ),
                       subtitle: Text(
-                        'Our Application Policies',
+                        'Change Password, If Needed',
                         style: GoogleFonts.urbanist(
                           fontSize: 16,
                           fontWeight: FontWeight.bold,
@@ -170,23 +179,12 @@ class DeveloperInfoScreenState extends State<DeveloperInfoScreen> {
 
                   //Appearance
                   TextButton(
-                    onPressed: () => Get.to(
-                      InfoDisplayScreen(
-                        title: 'Security',
-                        statement: securitytext.statement,
-                        info: securitytext.info,
-                      ),
-                    ),
+                    onPressed: () {},
                     style: TextButton.styleFrom(
                       padding: const EdgeInsets.only(right: 20),
                       foregroundColor: const Color.fromARGB(255, 0, 36, 89),
                     ),
                     child: ListTile(
-                      leading: const Icon(
-                        Iconsax.key_square,
-                        size: 30,
-                        color: Colors.black,
-                      ),
                       trailing: TextButton(
                         onPressed: () {},
                         style: TextButton.styleFrom(
@@ -202,14 +200,14 @@ class DeveloperInfoScreenState extends State<DeveloperInfoScreen> {
                         ),
                       ),
                       title: Text(
-                        'Security',
+                        'Organizations',
                         style: GoogleFonts.urbanist(
                           fontSize: 20,
                           fontWeight: FontWeight.bold,
                         ),
                       ),
                       subtitle: Text(
-                        'Making secure',
+                        'View my organizations',
                         style: GoogleFonts.urbanist(
                           fontSize: 16,
                           fontWeight: FontWeight.bold,
@@ -221,22 +219,12 @@ class DeveloperInfoScreenState extends State<DeveloperInfoScreen> {
 
                   //Dark Mode
                   TextButton(
-                    onPressed: () => Get.to(
-                      InfoDisplayScreen(
-                        title: 'Developer Info & Credits',
-                        info: developerInfotext.info,
-                      ),
-                    ),
+                    onPressed: () {},
                     style: TextButton.styleFrom(
                       padding: const EdgeInsets.only(right: 20),
                       foregroundColor: const Color.fromARGB(255, 0, 36, 89),
                     ),
                     child: ListTile(
-                      leading: const Icon(
-                        Iconsax.convert_3d_cube,
-                        size: 30,
-                        color: Colors.black,
-                      ),
                       trailing: TextButton(
                         onPressed: () {},
                         style: TextButton.styleFrom(
@@ -252,14 +240,14 @@ class DeveloperInfoScreenState extends State<DeveloperInfoScreen> {
                         ),
                       ),
                       title: Text(
-                        'Developer Info & Credits',
+                        'Request Account Data',
                         style: GoogleFonts.urbanist(
                           fontSize: 20,
                           fontWeight: FontWeight.bold,
                         ),
                       ),
                       subtitle: Text(
-                        'About the developer',
+                        'Manage account information',
                         style: GoogleFonts.urbanist(
                           fontSize: 16,
                           fontWeight: FontWeight.bold,
@@ -269,12 +257,12 @@ class DeveloperInfoScreenState extends State<DeveloperInfoScreen> {
                   ),
                   const SizedBox(height: 10),
                 ],
-              )
+              ),
+              const Divider(),
             ],
           ),
         ),
       ),
-      resizeToAvoidBottomInset: false,
     );
   }
 }

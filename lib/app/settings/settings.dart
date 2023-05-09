@@ -1,5 +1,6 @@
 import 'package:audread/app/settings/developer_info.dart';
 import 'package:audread/app/settings/general_settings.dart';
+import 'package:audread/app/settings/profile_settings.dart';
 import 'package:audread/utils/utils.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
@@ -19,7 +20,7 @@ class SettingsScreenState extends State<SettingsScreen> {
   final List settingsItems = [
     [Iconsax.setting_3, 'General\nSettings', Colors.orange],
     [Iconsax.user_edit, 'Profile\nSettings', Colors.blue],
-    [Iconsax.message_question, 'Help\nGuide', Colors.lightGreenAccent],
+    [Iconsax.message_question, 'Help\nCenter', Colors.lightGreenAccent],
     [Iconsax.code, 'General\nInfo', Colors.purpleAccent],
   ];
 
@@ -200,14 +201,14 @@ class SettingsScreenState extends State<SettingsScreen> {
         break;
 
       case 'Profile\nSettings':
-        Get.to(const GeneralSettingsScreen());
+        Get.to(const ProfileSettings());
         break;
 
       case 'General\nInfo':
         Get.to(const DeveloperInfoScreen());
         break;
 
-      case 'Help\nGuide':
+      case 'Help\nCenter':
         break;
 
       case 'Share this App':
