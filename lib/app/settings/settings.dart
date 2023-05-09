@@ -1,4 +1,5 @@
 import 'package:audread/app/settings/data_and_privacy.dart';
+import 'package:audread/app/settings/developer_info.dart';
 import 'package:audread/app/settings/general_settings.dart';
 import 'package:audread/utils/utils.dart';
 import 'package:flutter/material.dart';
@@ -202,7 +203,7 @@ class SettingsScreenState extends State<SettingsScreen> {
         break;
 
       case 'Developer\nInfo':
-        Get.to(const GeneralSettingsScreen());
+        Get.to(const DeveloperInfoScreen());
         break;
 
       case 'Help\nGuide':

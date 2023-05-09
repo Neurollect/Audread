@@ -1,22 +1,21 @@
+import 'package:audread/app/settings/texts/developer_info_text.dart';
 import 'package:audread/utils/utils.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:iconsax/iconsax.dart';
 
-import 'texts/data_privacy_text.dart';
-
 final utils = Utils();
 
-class DataAndPrivacyScreen extends StatefulWidget {
-  const DataAndPrivacyScreen({Key? key}) : super(key: key);
+class DeveloperInfoScreen extends StatefulWidget {
+  const DeveloperInfoScreen({Key? key}) : super(key: key);
 
   @override
-  DataAndPrivacyScreenState createState() => DataAndPrivacyScreenState();
+  DeveloperInfoScreenState createState() => DeveloperInfoScreenState();
 }
 
-class DataAndPrivacyScreenState extends State<DataAndPrivacyScreen>
-    with DataPrivacyText {
+class DeveloperInfoScreenState extends State<DeveloperInfoScreen>
+    with DeveloperInfoText {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -50,21 +49,13 @@ class DataAndPrivacyScreenState extends State<DataAndPrivacyScreen>
             children: [
               const SizedBox(height: 15),
               Text(
-                'Data and\nPrivacy',
+                'Developer\nInfo & Credits',
                 style: GoogleFonts.urbanist(
                   fontSize: 50,
                   fontWeight: FontWeight.bold,
                 ),
               ),
               const SizedBox(height: 30),
-              Text(
-                statement,
-                textAlign: TextAlign.justify,
-                style: GoogleFonts.urbanist(
-                  fontSize: 16,
-                ),
-              ),
-              const SizedBox(height: 20),
               for (var info in info) ...[
                 Text(
                   info[0],
