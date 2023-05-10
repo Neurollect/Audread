@@ -119,30 +119,22 @@ class AudTextInput extends FormValidator {
     );
   }
 
-  Widget detailsInput(context, [iniValue, controller]) {
-    return TextFormField(
-      controller: controller,
-      initialValue: iniValue,
-      decoration: InputDecoration(
-        enabledBorder: OutlineInputBorder(
-          borderSide: BorderSide(
-            style: BorderStyle.none,
-            width: 0,
-            color: Theme.of(context).scaffoldBackgroundColor,
-          ),
-        ),
-        contentPadding: const EdgeInsets.all(0),
-        focusedBorder: OutlineInputBorder(
-          borderSide: BorderSide(
-            style: BorderStyle.none,
-            width: 0,
-            color: Theme.of(context).scaffoldBackgroundColor,
-          ),
+  InputDecoration detailsInputDecoration(context) {
+    return InputDecoration(
+      enabledBorder: OutlineInputBorder(
+        borderSide: BorderSide(
+          style: BorderStyle.none,
+          width: 0,
+          color: Theme.of(context).scaffoldBackgroundColor,
         ),
       ),
-      style: GoogleFonts.urbanist(
-        fontSize: 21,
-        fontWeight: FontWeight.bold,
+      contentPadding: const EdgeInsets.all(0),
+      focusedBorder: OutlineInputBorder(
+        borderSide: BorderSide(
+          style: BorderStyle.none,
+          width: 0,
+          color: Theme.of(context).scaffoldBackgroundColor,
+        ),
       ),
     );
   }
