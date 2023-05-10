@@ -57,7 +57,7 @@ class MyOrganizationsState extends State<MyOrganizations> {
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               Text(
-                'Organizations',
+                'Joined\nOrganizations',
                 style: GoogleFonts.urbanist(
                   fontSize: 50,
                   fontWeight: FontWeight.bold,
