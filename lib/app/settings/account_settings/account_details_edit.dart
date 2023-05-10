@@ -17,8 +17,6 @@ class AccountDetailsEdit extends StatefulWidget {
 
 class AccountDetailsEditState extends State<AccountDetailsEdit> {
   bool isEditing = false;
-  final schoolController = TextEditingController();
-  final schoolKey = GlobalKey<FormFieldState>();
 
   @override
   Widget build(BuildContext context) {
@@ -30,196 +28,69 @@ class AccountDetailsEditState extends State<AccountDetailsEdit> {
         return Consumer<AccountDetailsProvider>(
           builder: (context, provider, child) {
             MemberModel member = provider.member;
+            List detailsItems = [
+              ['Name', member.firstName! + member.lastName!],
+              ['Gender', member.gender],
+              ['School', member.organization],
+              ['Grade', member.grade],
+            ];
             return ListView(
               shrinkWrap: true,
               children: [
-                //Name
-                ListTile(
-                  trailing: TextButton(
-                    onPressed: () {
-                      setState(() {
-                        isEditing = !isEditing;
-                      });
-                    },
-                    style: TextButton.styleFrom(
-                      backgroundColor: const Color.fromARGB(31, 0, 145, 255),
-                      shape: const CircleBorder(),
-                      foregroundColor: const Color.fromARGB(255, 0, 36, 89),
-                    ),
-                    child: Icon(
-                      isEditing ? Icons.save_outlined : Iconsax.edit_2,
-                      size: 30,
-                      color: Colors.black,
-                    ),
-                  ),
-                  title: Text(
-                    'Name',
-                    style: GoogleFonts.urbanist(
-                      fontSize: 16,
-                    ),
-                  ),
-                  subtitle: isEditing
-                      ? TextFormField(
-                          decoration: inputTheme,
-                          initialValue: member.firstName! + member.lastName!,
-                          style: GoogleFonts.urbanist(
-                            fontSize: 21,
-                            fontWeight: FontWeight.bold,
-                          ),
-                        )
-                      : Text(
-                          '${member.firstName!} ${member.lastName!}',
-                          style: GoogleFonts.urbanist(
-                            fontSize: 21,
-                            fontWeight: FontWeight.bold,
-                          ),
-                        ),
-                ),
-                const SizedBox(height: 10),
-
-                //Gender
-                ListTile(
-                  trailing: TextButton(
-                    onPressed: () {
-                      setState(() {
-                        isEditing = !isEditing;
-                      });
-                    },
-                    style: TextButton.styleFrom(
-                      backgroundColor: const Color.fromARGB(31, 0, 145, 255),
-                      shape: const CircleBorder(),
-                      foregroundColor: const Color.fromARGB(255, 0, 36, 89),
-                    ),
-                    child: Icon(
-                      isEditing ? Icons.save_outlined : Iconsax.edit,
-                      size: 30,
-                      color: Colors.black,
-                    ),
-                  ),
-                  title: Text(
-                    'Gender',
-                    style: GoogleFonts.urbanist(
-                      fontSize: 16,
-                    ),
-                  ),
-                  subtitle: isEditing
-                      ? TextFormField(
-                          initialValue: member.gender,
-                          decoration: inputTheme,
-                          style: GoogleFonts.urbanist(
-                            fontSize: 21,
-                            fontWeight: FontWeight.bold,
-                          ),
-                        )
-                      : Text(
-                          member.gender!,
-                          style: GoogleFonts.urbanist(
-                            fontSize: 21,
-                            fontWeight: FontWeight.bold,
-                          ),
-                        ),
-                ),
-                const SizedBox(height: 10),
-
-                //School
-                ListTile(
-                  trailing: TextButton(
-                    onPressed: () {
-                      if (isEditing) {
-                        if (schoolKey.currentState!.validate()) {
+                for (var i in detailsItems) ...[
+                  ListTile(
+                    trailing: TextButton(
+                      onPressed: () {
+                        if (isEditing) {
+                          provider.changeAttribute(i[0]);
                           setState(() {
-                            provider.changeAttribute(
-                              schoolController.value.text,
-                            );
+                            isEditing = !isEditing;
+                          });
+                        } else {
+                          setState(() {
                             isEditing = !isEditing;
                           });
                         }
-                      } else {
-                        setState(() {
-                          isEditing = !isEditing;
-                        });
-                      }
-                    },
-                    style: TextButton.styleFrom(
-                      backgroundColor: const Color.fromARGB(31, 0, 145, 255),
-                      shape: const CircleBorder(),
-                      foregroundColor: const Color.fromARGB(255, 0, 36, 89),
+                      },
+                      style: TextButton.styleFrom(
+                        backgroundColor: const Color.fromARGB(31, 0, 145, 255),
+                        shape: const CircleBorder(),
+                        foregroundColor: const Color.fromARGB(255, 0, 36, 89),
+                      ),
+                      child: Icon(
+                        isEditing ? Icons.save_outlined : Iconsax.edit,
+                        size: 30,
+                        color: Colors.black,
+                      ),
                     ),
-                    child: Icon(
-                      isEditing ? Icons.save_outlined : Iconsax.edit,
-                      size: 30,
-                      color: Colors.black,
+                    title: Text(
+                      i[0],
+                      style: GoogleFonts.urbanist(
+                        fontSize: 16,
+                      ),
                     ),
-                  ),
-                  title: Text(
-                    'School',
-                    style: GoogleFonts.urbanist(
-                      fontSize: 16,
-                    ),
-                  ),
-                  subtitle: isEditing
-                      ? TextFormField(
-                          key: schoolKey,
-                          controller: schoolController,
-                          decoration: inputTheme,
-                          style: GoogleFonts.urbanist(
-                            fontSize: 21,
-                            fontWeight: FontWeight.bold,
+                    subtitle: isEditing
+                        ? TextFormField(
+                            initialValue: i[1],
+                            decoration: inputTheme,
+                            onChanged: (value) {
+                              provider.setValue(value);
+                            },
+                            style: GoogleFonts.urbanist(
+                              fontSize: 21,
+                              fontWeight: FontWeight.bold,
+                            ),
+                          )
+                        : Text(
+                            i[1],
+                            style: GoogleFonts.urbanist(
+                              fontSize: 21,
+                              fontWeight: FontWeight.bold,
+                            ),
                           ),
-                        )
-                      : Text(
-                          member.organization!,
-                          style: GoogleFonts.urbanist(
-                            fontSize: 21,
-                            fontWeight: FontWeight.bold,
-                          ),
-                        ),
-                ),
-                const SizedBox(height: 10),
-
-                //Grade
-                ListTile(
-                  trailing: TextButton(
-                    onPressed: () {
-                      setState(() {
-                        isEditing = !isEditing;
-                      });
-                    },
-                    style: TextButton.styleFrom(
-                      backgroundColor: const Color.fromARGB(31, 0, 145, 255),
-                      shape: const CircleBorder(),
-                      foregroundColor: const Color.fromARGB(255, 0, 36, 89),
-                    ),
-                    child: Icon(
-                      isEditing ? Icons.save_outlined : Iconsax.edit,
-                      size: 30,
-                      color: Colors.black,
-                    ),
                   ),
-                  title: Text(
-                    'Grade/Class',
-                    style: GoogleFonts.urbanist(
-                      fontSize: 16,
-                    ),
-                  ),
-                  subtitle: isEditing
-                      ? TextFormField(
-                          initialValue: member.grade,
-                          decoration: inputTheme,
-                          style: GoogleFonts.urbanist(
-                            fontSize: 21,
-                            fontWeight: FontWeight.bold,
-                          ),
-                        )
-                      : Text(
-                          member.grade!,
-                          style: GoogleFonts.urbanist(
-                            fontSize: 21,
-                            fontWeight: FontWeight.bold,
-                          ),
-                        ),
-                ),
-                const SizedBox(height: 10),
+                  const SizedBox(height: 10),
+                ],
               ],
             );
           },
