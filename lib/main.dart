@@ -1,4 +1,4 @@
-import 'package:audread/services/supabase.dart';
+import 'package:audread/services/supabase/supabase.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:get/route_manager.dart';

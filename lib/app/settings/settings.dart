@@ -2,7 +2,7 @@ import 'package:audread/app/settings/developer_info.dart';
 import 'package:audread/app/settings/general_settings.dart';
 import 'package:audread/app/settings/profile_settings.dart';
 import 'package:audread/mixins/loading_mixin.dart';
-import 'package:audread/services/supabase_authentication.dart';
+import 'package:audread/services/supabase/supabase_authentication.dart';
 import 'package:audread/utils/utils.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';

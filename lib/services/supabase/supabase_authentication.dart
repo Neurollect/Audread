@@ -1,7 +1,7 @@
 import 'package:injectable/injectable.dart';
 import 'package:supabase_flutter/supabase_flutter.dart';
 
-import '../repositories/authentication_repository.dart';
+import '../../repositories/authentication_repository.dart';
 
 @Injectable(as: AuthenticationRepository)
 class SupabaseAuthentication implements AuthenticationRepository {

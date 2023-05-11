@@ -6,7 +6,7 @@ import 'package:flutter_multi_select_items/flutter_multi_select_items.dart';
 import 'package:get/get.dart';
 import 'package:supabase_flutter/supabase_flutter.dart';
 
-import '../services/supabase_authentication.dart';
+import '../services/supabase/supabase_authentication.dart';
 
 class DetailsFormController extends GetxController
     with LoadingMixin, HandleExceptions {
