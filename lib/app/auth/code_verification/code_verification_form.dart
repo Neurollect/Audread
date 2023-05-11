@@ -1,3 +1,4 @@
+import 'package:audread/mixins/loading_mixin.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -15,7 +16,8 @@ class CodeVerificationForm extends StatefulWidget {
   CodeVerificationFormState createState() => CodeVerificationFormState();
 }
 
-class CodeVerificationFormState extends State<CodeVerificationForm> {
+class CodeVerificationFormState extends State<CodeVerificationForm>
+    with LoadingMixin {
   final utils = Utils();
   final controller = Get.put(CodeVerificationController());
 
@@ -24,6 +26,7 @@ class CodeVerificationFormState extends State<CodeVerificationForm> {
 
   @override
   Widget build(BuildContext context) {
+    isLoading(false, context);
     final codeType = widget.codeType;
     return Form(
       key: controller.formKey,

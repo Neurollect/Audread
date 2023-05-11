@@ -60,7 +60,7 @@ class GeneralSettingsScreenState extends State<GeneralSettingsScreen> {
                 children: [
                   //Notifications
                   TextButton(
-                    onPressed: () => Get.to(const SettingsScreen()),
+                    onPressed: () {},
                     style: TextButton.styleFrom(
                       padding: const EdgeInsets.only(right: 20),
                       foregroundColor: const Color.fromARGB(255, 0, 36, 89),
@@ -72,7 +72,7 @@ class GeneralSettingsScreenState extends State<GeneralSettingsScreen> {
                         color: Colors.black,
                       ),
                       trailing: TextButton(
-                        onPressed: () => Get.to(const SettingsScreen()),
+                        onPressed: () {},
                         style: TextButton.styleFrom(
                           backgroundColor:
                               const Color.fromARGB(31, 0, 145, 255),
@@ -105,7 +105,7 @@ class GeneralSettingsScreenState extends State<GeneralSettingsScreen> {
 
                   //Language Tile
                   TextButton(
-                    onPressed: () => Get.to(const SettingsScreen()),
+                    onPressed: () {},
                     style: TextButton.styleFrom(
                       padding: const EdgeInsets.only(right: 20),
                       foregroundColor: const Color.fromARGB(255, 0, 36, 89),
@@ -117,7 +117,7 @@ class GeneralSettingsScreenState extends State<GeneralSettingsScreen> {
                         color: Colors.black,
                       ),
                       trailing: TextButton(
-                        onPressed: () => Get.to(const SettingsScreen()),
+                        onPressed: () {},
                         style: TextButton.styleFrom(
                           backgroundColor:
                               const Color.fromARGB(31, 0, 145, 255),
@@ -150,7 +150,7 @@ class GeneralSettingsScreenState extends State<GeneralSettingsScreen> {
 
                   //Appearance
                   TextButton(
-                    onPressed: () => Get.to(const SettingsScreen()),
+                    onPressed: () {},
                     style: TextButton.styleFrom(
                       padding: const EdgeInsets.only(right: 20),
                       foregroundColor: const Color.fromARGB(255, 0, 36, 89),
@@ -162,7 +162,7 @@ class GeneralSettingsScreenState extends State<GeneralSettingsScreen> {
                         color: Colors.black,
                       ),
                       trailing: TextButton(
-                        onPressed: () => Get.to(const SettingsScreen()),
+                        onPressed: () {},
                         style: TextButton.styleFrom(
                           backgroundColor:
                               const Color.fromARGB(31, 0, 145, 255),
@@ -195,7 +195,7 @@ class GeneralSettingsScreenState extends State<GeneralSettingsScreen> {
 
                   //Dark Mode
                   TextButton(
-                    onPressed: () => Get.to(const SettingsScreen()),
+                    onPressed: () {},
                     style: TextButton.styleFrom(
                       padding: const EdgeInsets.only(right: 20),
                       foregroundColor: const Color.fromARGB(255, 0, 36, 89),
@@ -207,7 +207,7 @@ class GeneralSettingsScreenState extends State<GeneralSettingsScreen> {
                         color: Colors.black,
                       ),
                       trailing: TextButton(
-                        onPressed: () => Get.to(const SettingsScreen()),
+                        onPressed: () {},
                         style: TextButton.styleFrom(
                           backgroundColor:
                               const Color.fromARGB(31, 0, 145, 255),

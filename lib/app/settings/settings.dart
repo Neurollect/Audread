@@ -1,6 +1,7 @@
 import 'package:audread/app/settings/developer_info.dart';
 import 'package:audread/app/settings/general_settings.dart';
 import 'package:audread/app/settings/profile_settings.dart';
+import 'package:audread/mixins/loading_mixin.dart';
 import 'package:audread/utils/utils.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
@@ -16,7 +17,7 @@ class SettingsScreen extends StatefulWidget {
   SettingsScreenState createState() => SettingsScreenState();
 }
 
-class SettingsScreenState extends State<SettingsScreen> {
+class SettingsScreenState extends State<SettingsScreen> with LoadingMixin {
   final List settingsItems = [
     [Iconsax.setting_3, 'General\nSettings', Colors.orange],
     [Iconsax.emoji_happy, 'Account\nSettings', Colors.blue],
@@ -31,6 +32,7 @@ class SettingsScreenState extends State<SettingsScreen> {
 
   @override
   Widget build(BuildContext context) {
+    isLoading(false, context);
     return Scaffold(
       appBar: AppBar(
         elevation: 0,

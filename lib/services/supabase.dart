@@ -1,3 +1,4 @@
+import 'package:audread/app/auth/welcome/welcome.dart';
 import 'package:get/get.dart';
 import 'package:supabase_flutter/supabase_flutter.dart';
 import 'package:audread/app/settings/settings.dart';
@@ -15,10 +16,10 @@ class SupabaseService {
         if (session != null) {
           Get.to(const SettingsScreen());
         } else {
-          Get.to(const SettingsScreen());
+          Get.to(const WelcomeScreen());
         }
       } else if (event == AuthChangeEvent.signedOut) {
-        Get.to(const SettingsScreen());
+        Get.to(const WelcomeScreen());
       }
     });
   }
