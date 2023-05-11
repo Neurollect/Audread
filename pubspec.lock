@@ -323,7 +323,7 @@ packages:
     source: hosted
     version: "3.0.1"
   hive:
-    dependency: transitive
+    dependency: "direct main"
     description:
       name: hive
       url: "https://pub.dartlang.org"

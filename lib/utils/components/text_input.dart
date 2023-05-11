@@ -118,4 +118,24 @@ class AudTextInput extends FormValidator {
       ),
     );
   }
+
+  InputDecoration detailsInputDecoration(context) {
+    return InputDecoration(
+      enabledBorder: OutlineInputBorder(
+        borderSide: BorderSide(
+          style: BorderStyle.none,
+          width: 0,
+          color: Theme.of(context).scaffoldBackgroundColor,
+        ),
+      ),
+      contentPadding: const EdgeInsets.all(0),
+      focusedBorder: OutlineInputBorder(
+        borderSide: BorderSide(
+          style: BorderStyle.none,
+          width: 0,
+          color: Theme.of(context).scaffoldBackgroundColor,
+        ),
+      ),
+    );
+  }
 }

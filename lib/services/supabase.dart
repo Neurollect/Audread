@@ -1,7 +1,6 @@
-import 'package:audread/app/auth/signin/signin.dart';
-import 'package:audread/app/auth/signup/signup.dart';
 import 'package:get/get.dart';
 import 'package:supabase_flutter/supabase_flutter.dart';
+import 'package:audread/app/settings/settings.dart';
 
 final supabase = Supabase.instance.client;
 
@@ -14,12 +13,12 @@ class SupabaseService {
       final session = authState.session;
       if (event == AuthChangeEvent.signedIn) {
         if (session != null) {
-          Get.to(const SignUpScreen());
+          Get.to(const SettingsScreen());
         } else {
-          Get.to(const SignInScreen());
+          Get.to(const SettingsScreen());
         }
       } else if (event == AuthChangeEvent.signedOut) {
-        Get.to(const SignInScreen());
+        Get.to(const SettingsScreen());
       }
     });
   }
