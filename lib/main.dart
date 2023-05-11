@@ -1,23 +1,20 @@
+import 'package:audread/services/services.dart';
 import 'package:audread/services/supabase/supabase.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:get/route_manager.dart';
-import 'package:supabase_flutter/supabase_flutter.dart';
 
 import 'app/auth/splash.dart';
 import 'utils/components/loading.dart';
 import 'configs/themes/themes.dart';
-import 'controllers/secret_loader_controller.dart';
-import 'models/secret.dart';
+
+final services = Services();
 
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
-  Secret secret = await SecretLoader().load();
 
-  await Supabase.initialize(
-    url: secret.supabaseUrl,
-    anonKey: secret.supabaseAnonKey,
-  );
+  await services.hiveStorageService.init();
+  await services.supabaseService.init();
 
   SystemChrome.setEnabledSystemUIMode(
     SystemUiMode.manual,
