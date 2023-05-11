@@ -9,8 +9,12 @@ import '../../../utils/utils.dart';
 
 class CodeVerificationForm extends StatefulWidget {
   final String codeType;
-  const CodeVerificationForm({Key? key, required this.codeType})
-      : super(key: key);
+  final String email;
+  const CodeVerificationForm({
+    Key? key,
+    required this.codeType,
+    required this.email,
+  }) : super(key: key);
 
   @override
   CodeVerificationFormState createState() => CodeVerificationFormState();
@@ -28,6 +32,7 @@ class CodeVerificationFormState extends State<CodeVerificationForm>
   Widget build(BuildContext context) {
     isLoading(false, context);
     final codeType = widget.codeType;
+    final email = widget.email;
     return Form(
       key: controller.formKey,
       child: Column(
@@ -79,7 +84,12 @@ class CodeVerificationFormState extends State<CodeVerificationForm>
           const SizedBox(height: 30),
           utils.buttons.authButton(
             'Confirm Reset Code',
-            () => controller.verifyCode(context, codeType, otpCode),
+            () => controller.verifyCode(
+              context,
+              codeType,
+              otpCode,
+              email,
+            ),
             context,
           ),
           const SizedBox(height: 22),

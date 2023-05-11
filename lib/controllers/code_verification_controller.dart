@@ -12,20 +12,19 @@ class CodeVerificationController extends GetxController
 
   final auth = SupabaseAuthentication(Supabase.instance.client);
 
-  final email = TextEditingController();
   final formKey = GlobalKey<FormState>();
 
-  verifyCode(context, String codeType, String code) async {
+  verifyCode(context, String codeType, String code, email) async {
     if (formKey.currentState!.validate()) {
       isLoading(true, context);
       if (codeType == 'ResetPassword') {
-        final res = await auth.verifyRecoveryCode(email.text, code);
+        final res = await auth.verifyRecoveryCode(email, code);
         if (res.runtimeType != User) {
           isLoading(false, context);
           handleExceptions(context, res);
         } else {}
       } else {
-        final res = await auth.verifySignUp(email.text, code);
+        final res = await auth.verifySignUp(email, code);
         if (res.runtimeType != User) {
           isLoading(false, context);
           handleExceptions(context, res);

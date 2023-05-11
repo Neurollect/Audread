@@ -82,8 +82,9 @@ class SupabaseAuthentication implements AuthenticationRepository {
         type: OtpType.magiclink,
       );
 
-      return response.user!.id;
+      return response.user;
     } catch (e) {
+      print(e);
       return e;
     }
   }

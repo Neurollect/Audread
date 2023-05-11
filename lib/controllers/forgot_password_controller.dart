@@ -20,20 +20,17 @@ class ForgetPasswordController extends GetxController
     if (formKey.currentState!.validate()) {
       isLoading(true, context);
       final res = await auth.sendRecoveryCode(
-        email.text,
+        email.value.text,
       );
-      Get.to(const CodeVerification(
-        codeType: 'ResetPassword',
-      ));
-      if (res.runtimeType != User) {
+      var mail = email.value.text;
+      if (res.runtimeType != String) {
         isLoading(false, context);
         handleExceptions(context, res);
       } else {
-        Get.to(
-          const CodeVerification(
-            codeType: 'SignUpConfirmation',
-          ),
-        );
+        Get.to(CodeVerification(
+          codeType: 'ResetPassword',
+          email: mail,
+        ));
       }
     }
   }

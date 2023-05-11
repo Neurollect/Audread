@@ -35,8 +35,9 @@ class SignupController extends GetxController
           handleExceptions(context, res);
         } else {
           Get.to(
-            const CodeVerification(
+            CodeVerification(
               codeType: 'SignUpConfirmation',
+              email: email.value.text,
             ),
           );
         }
