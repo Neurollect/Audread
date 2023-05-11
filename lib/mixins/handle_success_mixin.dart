@@ -5,7 +5,7 @@ mixin HandleSuccessMixin {
   handleSuccess(context, mes) {
     ShowErrorMessage.showMessage(
       context,
-      ContentType.failure,
+      ContentType.success,
       mes,
       'Success',
     );

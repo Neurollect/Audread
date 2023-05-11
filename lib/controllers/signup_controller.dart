@@ -34,6 +34,10 @@ class SignupController extends GetxController
           isLoading(false, context);
           handleExceptions(context, res);
         } else {
+          handleSuccess(
+            context,
+            'Email confirmation code has been sent to your inbox',
+          );
           Get.to(
             CodeVerification(
               codeType: 'SignUpConfirmation',

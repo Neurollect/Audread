@@ -27,6 +27,7 @@ class ForgetPasswordController extends GetxController
         isLoading(false, context);
         handleExceptions(context, res);
       } else {
+        handleSuccess(context, res);
         Get.to(CodeVerification(
           codeType: 'ResetPassword',
           email: mail,

@@ -41,6 +41,7 @@ class CodeVerificationController extends GetxController
         isLoading(false, context);
         handleExceptions(context, res);
       } else {
+        isLoading(false, context);
         handleSuccess(context, res);
       }
     } else {
@@ -49,6 +50,7 @@ class CodeVerificationController extends GetxController
         isLoading(false, context);
         handleExceptions(context, res);
       } else {
+        isLoading(false, context);
         handleSuccess(context, 'Code has been Resent to your mail');
       }
     }

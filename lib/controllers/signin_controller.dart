@@ -34,6 +34,8 @@ class SigninController extends GetxController
             password: password.value.text,
           ));
         }
+      } else {
+        handleSuccess(context, 'Welcome Back');
       }
     }
   }
