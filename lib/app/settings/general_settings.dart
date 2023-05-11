@@ -1,4 +1,3 @@
-import 'package:audread/app/settings/settings.dart';
 import 'package:audread/utils/utils.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
