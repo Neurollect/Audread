@@ -8,8 +8,9 @@ import 'package:iconsax/iconsax.dart';
 class CodeVerification extends StatefulWidget {
   final String codeType;
   final String email;
+  final String? password;
   const CodeVerification(
-      {Key? key, required this.codeType, required this.email})
+      {Key? key, required this.codeType, required this.email, this.password})
       : super(key: key);
 
   @override
@@ -59,11 +60,9 @@ class CodeVerificationState extends State<CodeVerification> with LoadingMixin {
                   fontWeight: FontWeight.bold,
                 ),
               ),
-              const SizedBox(height: 50),
+              const SizedBox(height: 30),
               CodeVerificationForm(
-                codeType: codeType,
-                email: email,
-              ),
+                  codeType: codeType, email: email, password: widget.password),
             ],
           ),
         ),

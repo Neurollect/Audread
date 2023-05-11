@@ -10,10 +10,13 @@ import '../../../utils/utils.dart';
 class CodeVerificationForm extends StatefulWidget {
   final String codeType;
   final String email;
+
+  final String? password;
   const CodeVerificationForm({
     Key? key,
     required this.codeType,
     required this.email,
+    this.password,
   }) : super(key: key);
 
   @override
@@ -33,19 +36,21 @@ class CodeVerificationFormState extends State<CodeVerificationForm>
     isLoading(false, context);
     final codeType = widget.codeType;
     final email = widget.email;
+    var password = widget.password;
     return Form(
       key: controller.formKey,
       child: Column(
         mainAxisAlignment: MainAxisAlignment.start,
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
+          const SizedBox(height: 20),
           Text(
-            'Your Email',
+            'Enter the Six digit code',
             style: GoogleFonts.urbanist(
               fontSize: 20,
             ),
           ),
-          const SizedBox(height: 10),
+          const SizedBox(height: 20),
           OtpTextField(
             mainAxisAlignment: MainAxisAlignment.center,
             crossAxisAlignment: CrossAxisAlignment.start,
@@ -68,20 +73,19 @@ class CodeVerificationFormState extends State<CodeVerificationForm>
               },
             ),
           ),
-          const SizedBox(height: 30),
-          Row(
-            children: [
-              Expanded(
-                child: Text(
-                  'Input Reset code sent to email here above.',
-                  style: GoogleFonts.urbanist(
-                    fontSize: 17,
-                  ),
-                ),
+          const SizedBox(height: 10),
+          TextButton(
+            onPressed: () =>
+                controller.resendCode(context, codeType, email, password),
+            child: Text(
+              'Resend Code?',
+              style: GoogleFonts.urbanist(
+                fontSize: 17,
+                fontWeight: FontWeight.bold,
               ),
-            ],
+            ),
           ),
-          const SizedBox(height: 30),
+          const SizedBox(height: 20),
           utils.buttons.authButton(
             'Confirm Reset Code',
             () => controller.verifyCode(
@@ -93,6 +97,18 @@ class CodeVerificationFormState extends State<CodeVerificationForm>
             context,
           ),
           const SizedBox(height: 22),
+          Row(
+            children: [
+              Expanded(
+                child: Text(
+                  'Input Reset code sent to email here below.',
+                  style: GoogleFonts.urbanist(
+                    fontSize: 17,
+                  ),
+                ),
+              ),
+            ],
+          ),
         ],
       ),
     );

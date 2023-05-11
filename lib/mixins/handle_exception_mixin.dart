@@ -31,4 +31,13 @@ mixin HandleExceptions {
       );
     }
   }
+
+  handleSuccess(context, mes) {
+    ShowErrorMessage.showMessage(
+      context,
+      ContentType.failure,
+      mes,
+      'Success',
+    );
+  }
 }

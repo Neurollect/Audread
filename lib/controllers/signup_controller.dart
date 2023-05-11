@@ -27,8 +27,8 @@ class SignupController extends GetxController
       } else {
         isLoading(true, context);
         final res = await auth.signUpEmailAndPassword(
-          email.text,
-          password.text,
+          email.value.text,
+          password.value.text,
         );
         if (res.runtimeType != User) {
           isLoading(false, context);
@@ -38,6 +38,7 @@ class SignupController extends GetxController
             CodeVerification(
               codeType: 'SignUpConfirmation',
               email: email.value.text,
+              password: password.value.text,
             ),
           );
         }

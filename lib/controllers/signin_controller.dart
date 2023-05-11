@@ -28,7 +28,11 @@ class SigninController extends GetxController
         handleExceptions(context, res);
 
         if (res.message == 'Email Not Confirmed') {
-          Get.to(CodeVerification(codeType: 'Signup', email: email.value.text));
+          Get.to(CodeVerification(
+            codeType: 'Signup',
+            email: email.value.text,
+            password: password.value.text,
+          ));
         }
       }
     }

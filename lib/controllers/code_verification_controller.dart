@@ -19,7 +19,7 @@ class CodeVerificationController extends GetxController
       isLoading(true, context);
       if (codeType == 'ResetPassword') {
         final res = await auth.verifyRecoveryCode(email, code);
-        if (res.runtimeType != User) {
+        if (res.runtimeType != String) {
           isLoading(false, context);
           handleExceptions(context, res);
         } else {}
@@ -29,6 +29,27 @@ class CodeVerificationController extends GetxController
           isLoading(false, context);
           handleExceptions(context, res);
         } else {}
+      }
+    }
+  }
+
+  resendCode(context, String codeType, email, [password]) async {
+    isLoading(true, context);
+    if (codeType == 'ResetPassword') {
+      final res = await auth.sendRecoveryCode(email);
+      if (res.runtimeType != String) {
+        isLoading(false, context);
+        handleExceptions(context, res);
+      } else {
+        handleSuccess(context, res);
+      }
+    } else {
+      final res = await auth.signUpEmailAndPassword(email, password);
+      if (res.runtimeType != User) {
+        isLoading(false, context);
+        handleExceptions(context, res);
+      } else {
+        handleSuccess(context, 'Code has been Resent to your mail');
       }
     }
   }

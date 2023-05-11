@@ -84,7 +84,6 @@ class SupabaseAuthentication implements AuthenticationRepository {
 
       return response.user;
     } catch (e) {
-      print(e);
       return e;
     }
   }
