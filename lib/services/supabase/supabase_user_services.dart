@@ -1,4 +1,6 @@
+import 'package:audread/models/user.dart';
 import 'package:audread/repositories/user_repository.dart';
+import 'package:hive/hive.dart';
 import 'package:supabase_flutter/supabase_flutter.dart';
 
 class SupabaseUserServices implements UserRepository {
@@ -6,11 +8,21 @@ class SupabaseUserServices implements UserRepository {
   const SupabaseUserServices(this._supabaseClient);
 
   @override
-  Future getUser(String userId) async {
+  Future getUser() async {
+    final userBox = await Hive.openBox<UserModel>('user_box');
     try {
-      final res =
-          await _supabaseClient.from('profiles').select().eq('user_id', userId);
-      return res;
+      User usr = _supabaseClient.auth.currentSession!.user;
+
+      final res = await _supabaseClient
+          .from('profiles')
+          .select()
+          .eq('user_id', usr.id)
+          .single();
+
+      final user = UserModel.fromJson(res);
+      await userBox.put('user', user);
+
+      return user;
     } catch (e) {
       return e;
     }

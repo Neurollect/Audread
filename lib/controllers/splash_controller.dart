@@ -1,7 +1,10 @@
 import 'package:audread/app/auth/welcome/welcome.dart';
+import 'package:audread/models/user.dart';
 import 'package:get/get.dart';
+import 'package:hive/hive.dart';
 import 'package:supabase_flutter/supabase_flutter.dart';
 
+import '../app/auth/signup/details_signup.dart';
 import '../app/settings/settings.dart';
 
 class SplashScreenController extends GetxController {
@@ -22,12 +25,22 @@ class SplashScreenController extends GetxController {
     try {
       final session = response as Session?;
       if (session != null) {
-        Get.to(const SettingsScreen());
+        await iniload();
       } else {
         Get.to(const WelcomeScreen());
       }
     } catch (e) {
       Get.to(const WelcomeScreen());
+    }
+  }
+
+  iniload() async {
+    final userBox = await Hive.openBox<UserModel>('user_box');
+    final user = userBox.get('user');
+    if (user!.isNewUser == false) {
+      Get.to(const SettingsScreen());
+    } else {
+      Get.to(const DetailsSignup());
     }
   }
 }

@@ -1,7 +1,10 @@
+import 'package:audread/app/auth/signup/details_signup.dart';
 import 'package:audread/app/auth/welcome/welcome.dart';
 import 'package:audread/controllers/secret_loader_controller.dart';
 import 'package:audread/models/secret.dart';
+import 'package:audread/models/user.dart';
 import 'package:get/get.dart';
+import 'package:hive/hive.dart';
 import 'package:supabase_flutter/supabase_flutter.dart';
 import 'package:audread/app/settings/settings.dart';
 
@@ -16,7 +19,7 @@ class SupabaseService {
     );
   }
 
-  void listentoHeaders() {
+  void listentoHeaders() async {
     /// Listen for authentication events and redirect to
     /// correct page when key events are detected.
     Supabase.instance.client.auth.onAuthStateChange.listen((authState) {
@@ -24,7 +27,7 @@ class SupabaseService {
       final session = authState.session;
       if (event == AuthChangeEvent.signedIn) {
         if (session != null) {
-          Get.to(const SettingsScreen());
+          iniload();
         } else {
           Get.to(const WelcomeScreen());
         }
@@ -32,5 +35,15 @@ class SupabaseService {
         Get.to(const WelcomeScreen());
       }
     });
+  }
+
+  iniload() async {
+    final userBox = await Hive.openBox<UserModel>('user_box');
+    final user = userBox.get('user');
+    if (user!.isNewUser == false) {
+      Get.to(const SettingsScreen());
+    } else {
+      Get.to(const DetailsSignup());
+    }
   }
 }

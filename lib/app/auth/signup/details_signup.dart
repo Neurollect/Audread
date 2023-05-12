@@ -1,3 +1,4 @@
+import 'package:audread/mixins/loading_mixin.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -12,9 +13,10 @@ class DetailsSignup extends StatefulWidget {
   DetailsSignupState createState() => DetailsSignupState();
 }
 
-class DetailsSignupState extends State<DetailsSignup> {
+class DetailsSignupState extends State<DetailsSignup> with LoadingMixin {
   @override
   Widget build(BuildContext context) {
+    isLoading(false, context);
     return Scaffold(
       appBar: AppBar(
         elevation: 0,

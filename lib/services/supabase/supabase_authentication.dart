@@ -1,3 +1,4 @@
+import 'package:audread/services/supabase/supabase_user_services.dart';
 import 'package:injectable/injectable.dart';
 import 'package:supabase_flutter/supabase_flutter.dart';
 
@@ -10,6 +11,8 @@ class SupabaseAuthentication implements AuthenticationRepository {
 
   @override
   Future signInEmailAndPassword(String email, String password) async {
+    final userServices = SupabaseUserServices(_supabaseClient);
+
     try {
       final response = await _supabaseClient.auth.signInWithPassword(
         email: email,
@@ -21,6 +24,7 @@ class SupabaseAuthentication implements AuthenticationRepository {
         throw UnimplementedError();
       }
 
+      await userServices.getUser();
       return user;
     } catch (err) {
       //Other Errors

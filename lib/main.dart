@@ -2,7 +2,7 @@ import 'package:audread/services/services.dart';
 import 'package:audread/services/supabase/supabase.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:get/route_manager.dart';
+import 'package:get/get.dart';
 
 import 'app/auth/splash.dart';
 import 'utils/components/loading.dart';

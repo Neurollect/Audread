@@ -1,9 +1,7 @@
 library user;
 
 abstract class UserRepository {
-  Future getUser(
-    String userId,
-  );
+  Future getUser();
 
   Future getMemberProfile(
     String memberId,
