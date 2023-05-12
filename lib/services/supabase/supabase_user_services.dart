@@ -1,3 +1,4 @@
+import 'package:audread/models/member.dart';
 import 'package:audread/models/user.dart';
 import 'package:audread/repositories/user_repository.dart';
 import 'package:hive/hive.dart';
@@ -30,19 +31,27 @@ class SupabaseUserServices implements UserRepository {
 
   @override
   Future getMemberProfile(String memberId) async {
+    final memberBox = await Hive.openBox<MemberModel>('member_box');
+
     try {
       final res = await _supabaseClient
           .from('members')
           .select()
           .eq('member_id', memberId);
-      return res;
+
+      final member = MemberModel.fromJson(res);
+      await memberBox.put('member', member);
+
+      await getUser();
+
+      return member;
     } catch (e) {
       return e;
     }
   }
 
   @override
-  Future createMemberProfile(String firstName, String lastName, int avatar,
+  Future createMemberProfile(String firstName, String lastName, int? avatar,
       String gender, String grade, String organization) async {
     final userId = _supabaseClient.auth.currentUser?.id;
     try {
@@ -58,6 +67,9 @@ class SupabaseUserServices implements UserRepository {
           'user_id': userId,
         },
       ).select();
+
+      await getMemberProfile(res);
+
       return res;
     } catch (e) {
       return e;

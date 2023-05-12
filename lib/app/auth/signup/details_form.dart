@@ -4,6 +4,7 @@ import 'package:audread/utils/utils.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_multi_select_items/flutter_multi_select_items.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:iconsax/iconsax.dart';
 
 class DetailsForm extends StatefulWidget {
   const DetailsForm({Key? key}) : super(key: key);
@@ -64,7 +65,17 @@ class DetailsFormState extends State<DetailsForm> {
           ),
           const SizedBox(height: 11),
           utils.inputFields.textInput(
-            ['First Name', 'Drake Schools', Icons.school],
+            ['School or Organization', 'Drake Schools', Iconsax.book],
+            controller.grade,
+          ),
+          const SizedBox(height: 25),
+          Text(
+            "What is your level of Study?",
+            style: GoogleFonts.urbanist(fontSize: 20),
+          ),
+          const SizedBox(height: 11),
+          utils.inputFields.textInput(
+            ['Class or Form', 'Form 2', Icons.book_online_outlined],
             controller.organization,
           ),
           const SizedBox(height: 25),

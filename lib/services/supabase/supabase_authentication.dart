@@ -34,6 +34,8 @@ class SupabaseAuthentication implements AuthenticationRepository {
 
   @override
   Future signUpEmailAndPassword(String email, String password) async {
+    final userServices = SupabaseUserServices(_supabaseClient);
+
     try {
       final response = await _supabaseClient.auth.signUp(
         email: email,
@@ -42,6 +44,9 @@ class SupabaseAuthentication implements AuthenticationRepository {
       );
 
       final user = response.user;
+
+      await userServices.getUser();
+
       return user;
     } catch (err) {
       //Other Errors
@@ -51,12 +56,16 @@ class SupabaseAuthentication implements AuthenticationRepository {
 
   @override
   Future verifySignUp(String email, String token) async {
+    final userServices = SupabaseUserServices(_supabaseClient);
+
     try {
       final AuthResponse response = await _supabaseClient.auth.verifyOTP(
         email: email,
         token: token,
         type: OtpType.signup,
       );
+
+      await userServices.getUser();
 
       return response.user;
     } catch (err) {
@@ -79,12 +88,16 @@ class SupabaseAuthentication implements AuthenticationRepository {
 
   @override
   Future verifyRecoveryCode(String email, String token) async {
+    final userServices = SupabaseUserServices(_supabaseClient);
+
     try {
       final AuthResponse response = await _supabaseClient.auth.verifyOTP(
         email: email,
         token: token,
         type: OtpType.magiclink,
       );
+
+      await userServices.getUser();
 
       return response.user;
     } catch (e) {
