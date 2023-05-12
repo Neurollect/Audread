@@ -45,7 +45,8 @@ class DetailsFormController extends GetxController
         organization.value.text,
       );
 
-      if (res != String) {
+      if (res == Object) {
+        isLoading(false, context);
         handleExceptions(context, res);
       } else {
         SupabaseService().iniload();

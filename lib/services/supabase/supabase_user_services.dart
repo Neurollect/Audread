@@ -64,7 +64,7 @@ class SupabaseUserServices implements UserRepository {
           'p_gender': gender,
           'p_grade': grade,
           'p_organization': organization,
-          'user_id': userId,
+          'p_user_id': userId,
         },
       ).select();
 
