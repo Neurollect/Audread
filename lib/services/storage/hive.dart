@@ -1,7 +1,9 @@
 // ignore_for_file: depend_on_referenced_packages
 import 'package:path_provider/path_provider.dart';
-import 'package:audread/models/user.dart';
 import 'package:hive_flutter/hive_flutter.dart';
+
+import '../../models/member.dart';
+import '../../models/user.dart';
 
 class HiveStorage {
   init() async {
@@ -10,6 +12,7 @@ class HiveStorage {
 
     // Register Hive Adapter
     Hive.registerAdapter(UserModelAdapter());
+    Hive.registerAdapter(MemberModelAdapter());
 
     final directory = await getApplicationDocumentsDirectory();
     await Hive.initFlutter(directory.path);
