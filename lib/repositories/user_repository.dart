@@ -15,4 +15,6 @@ abstract class UserRepository {
     String grade,
     String organization,
   );
+
+  Future onUserSignout();
 }

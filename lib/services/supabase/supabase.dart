@@ -40,10 +40,11 @@ class SupabaseService {
   iniload() async {
     final userBox = await Hive.openBox<UserModel>('user_box');
     final user = userBox.get('user');
-    if (user!.isNewUser == false) {
-      Get.to(const SettingsScreen());
-    } else {
+    bool isNew = user?.isNewUser == null;
+    if (isNew) {
       Get.to(const DetailsSignup());
+    } else {
+      Get.to(const SettingsScreen());
     }
   }
 }

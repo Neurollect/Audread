@@ -24,7 +24,8 @@ class SupabaseAuthentication implements AuthenticationRepository {
         throw UnimplementedError();
       }
 
-      await userServices.getUser();
+      Future.wait([userServices.getUser()]);
+
       return user;
     } catch (err) {
       //Other Errors
@@ -45,7 +46,7 @@ class SupabaseAuthentication implements AuthenticationRepository {
 
       final user = response.user;
 
-      await userServices.getUser();
+      Future.wait([userServices.getUser()]);
 
       return user;
     } catch (err) {
@@ -65,7 +66,7 @@ class SupabaseAuthentication implements AuthenticationRepository {
         type: OtpType.signup,
       );
 
-      await userServices.getUser();
+      Future.wait([userServices.getUser()]);
 
       return response.user;
     } catch (err) {
@@ -97,7 +98,7 @@ class SupabaseAuthentication implements AuthenticationRepository {
         type: OtpType.magiclink,
       );
 
-      await userServices.getUser();
+      Future.wait([userServices.getUser()]);
 
       return response.user;
     } catch (e) {
@@ -107,6 +108,8 @@ class SupabaseAuthentication implements AuthenticationRepository {
 
   @override
   Future<void> signOut() async {
+    final userServices = SupabaseUserServices(_supabaseClient);
+    userServices.onUserSignout();
     await _supabaseClient.auth.signOut();
     return;
   }

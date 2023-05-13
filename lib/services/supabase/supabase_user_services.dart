@@ -21,7 +21,10 @@ class SupabaseUserServices implements UserRepository {
           .single();
 
       final user = UserModel.fromJson(res);
-      await userBox.put('user', user);
+      Future.wait([
+        userBox.delete('user'),
+        userBox.put('user', user),
+      ]);
 
       return user;
     } catch (e) {
@@ -42,7 +45,7 @@ class SupabaseUserServices implements UserRepository {
       final member = MemberModel.fromJson(res);
       await memberBox.put('member', member);
 
-      await getUser();
+      Future.wait([getUser()]);
 
       return member;
     } catch (e) {
@@ -68,11 +71,25 @@ class SupabaseUserServices implements UserRepository {
         },
       ).select();
 
-      await getMemberProfile(res);
+      Future.wait([
+        getUser(),
+        getMemberProfile(res),
+      ]);
 
       return res;
     } catch (e) {
       return e;
     }
+  }
+
+  @override
+  Future onUserSignout() async {
+    final memberBox = await Hive.openBox<MemberModel>('member_box');
+    final userBox = await Hive.openBox<UserModel>('user_box');
+
+    Future.wait([
+      memberBox.clear(),
+      userBox.clear(),
+    ]);
   }
 }

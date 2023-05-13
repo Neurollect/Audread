@@ -37,10 +37,10 @@ class SplashScreenController extends GetxController {
   iniload() async {
     final userBox = await Hive.openBox<UserModel>('user_box');
     final user = userBox.get('user');
-    if (user!.isNewUser == false) {
-      Get.to(const SettingsScreen());
-    } else {
+    if (user!.isNewUser == null || user.isNewUser == true) {
       Get.to(const DetailsSignup());
+    } else {
+      Get.to(const SettingsScreen());
     }
   }
 }
