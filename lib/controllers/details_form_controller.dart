@@ -49,7 +49,7 @@ class DetailsFormController extends GetxController
         isLoading(false, context);
         handleExceptions(context, res);
       } else {
-        Future.wait([SupabaseService().iniload()] as Iterable<Future>);
+        Future.wait(SupabaseService().iniload());
       }
     }
   }
