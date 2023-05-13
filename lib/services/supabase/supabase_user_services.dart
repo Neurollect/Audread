@@ -49,10 +49,6 @@ class SupabaseUserServices implements UserRepository {
 
       final member = MemberModel.fromJson(res);
       await memberBox.put('member', member);
-
-      print('Getting Member..');
-      print(member.firstName);
-
       Future.wait([getUser()]);
 
       return member;
