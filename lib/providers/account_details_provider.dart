@@ -1,16 +1,25 @@
-import 'package:audread/models/member.dart';
 import 'package:flutter/material.dart';
+import 'package:hive/hive.dart';
+
+import '../models/member.dart';
 
 class AccountDetailsProvider with ChangeNotifier {
   MemberModel member = MemberModel(
     id: 'id',
-    firstName: 'Joseph',
-    lastName: 'Gakah',
-    organization: 'braintraq',
-    grade: 'Grade 12',
+    firstName: 'loading',
+    lastName: '...',
+    organization: 'loading..',
+    grade: 'loading..',
     avatar: 4,
-    gender: 'Male',
+    gender: 'loading...',
   );
+
+  getMember() async {
+    final memberBox = await Hive.openBox<MemberModel>('member_box');
+    MemberModel? smember = memberBox.get('member');
+
+    member = smember as MemberModel;
+  }
 
   var _value = '';
 

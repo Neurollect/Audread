@@ -27,6 +27,7 @@ class AccountDetailsEditState extends State<AccountDetailsEdit> {
       builder: (context, _) {
         return Consumer<AccountDetailsProvider>(
           builder: (context, provider, child) {
+            provider.getMember();
             MemberModel member = provider.member;
             List detailsItems = [
               ['Name', member.firstName! + member.lastName!],

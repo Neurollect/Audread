@@ -38,13 +38,15 @@ class SupabaseService {
   }
 
   iniload() async {
-    final userBox = await Hive.openBox<UserModel>('user_box');
-    final user = userBox.get('user');
-    bool isNew = user?.isNewUser == null;
-    if (isNew) {
-      Get.to(const DetailsSignup());
-    } else {
-      Get.to(const SettingsScreen());
-    }
+    Future.delayed(const Duration(milliseconds: 2000)).then((value) async {
+      final userBox = await Hive.openBox<UserModel>('user_box');
+      final user = userBox.get('user');
+      bool isNew = user?.isNewUser == null;
+      if (isNew) {
+        Get.to(const DetailsSignup());
+      } else {
+        Get.to(const SettingsScreen());
+      }
+    });
   }
 }

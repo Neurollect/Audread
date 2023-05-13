@@ -24,7 +24,7 @@ class SupabaseAuthentication implements AuthenticationRepository {
         throw UnimplementedError();
       }
 
-      Future.wait([userServices.getUser()]);
+      await Future.wait([userServices.getUser()]);
 
       return user;
     } catch (err) {
