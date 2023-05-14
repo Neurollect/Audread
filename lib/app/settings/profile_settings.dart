@@ -5,8 +5,11 @@ import 'package:audread/app/settings/account_settings/security_and_password.dart
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:hive/hive.dart';
 import 'package:iconsax/iconsax.dart';
+import 'package:supabase_flutter/supabase_flutter.dart';
 
+import '../../models/member.dart';
 import '../../utils/utils.dart';
 
 final utils = Utils();
@@ -19,9 +22,36 @@ class ProfileSettings extends StatefulWidget {
 }
 
 class ProfileSettingsState extends State<ProfileSettings> {
+  late MemberModel member;
+  late String email;
+
+  void getUserFromStorage() async {
+    final memberBox = await Hive.openBox<MemberModel>('member_box');
+    final user = Supabase.instance.client.auth.currentUser;
+
+    setState(() {
+      member = memberBox.get('member')!;
+      email = user!.email.toString();
+    });
+  }
+
+  @override
+  void initState() {
+    getUserFromStorage();
+    super.initState();
+  }
+
+  @override
+  void dispose() {
+    super.dispose();
+  }
+
   @override
   Widget build(BuildContext context) {
     double side = MediaQuery.of(context).size.width / 6;
+    String username = member.firstName == null
+        ? 'loading...'
+        : '${member.firstName} ${member.lastName}';
     return Scaffold(
       appBar: AppBar(
         elevation: 0,
@@ -82,14 +112,14 @@ class ProfileSettingsState extends State<ProfileSettings> {
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                       Text(
-                        'Joseph Gakah',
+                        username,
                         style: GoogleFonts.urbanist(
                           fontSize: 35,
                           fontWeight: FontWeight.bold,
                         ),
                       ),
                       Text(
-                        'example@gmail.com',
+                        email,
                         style: GoogleFonts.urbanist(
                           fontSize: 20,
                         ),
