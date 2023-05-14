@@ -45,7 +45,8 @@ class SupabaseUserServices implements UserRepository {
       final res = await _supabaseClient
           .from('members')
           .select()
-          .eq('member_id', memberId);
+          .eq('member_id', memberId)
+          .single();
 
       final member = MemberModel.fromJson(res);
       await memberBox.put('member', member);

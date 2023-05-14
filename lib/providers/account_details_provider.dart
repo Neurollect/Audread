@@ -16,9 +16,8 @@ class AccountDetailsProvider with ChangeNotifier {
 
   getMember() async {
     final memberBox = await Hive.openBox<MemberModel>('member_box');
-    MemberModel? smember = memberBox.get('member');
-
-    member = smember as MemberModel;
+    member = memberBox.get('member')!;
+    notifyListeners();
   }
 
   var _value = '';

@@ -38,7 +38,7 @@ class SupabaseService {
   }
 
   iniload() async {
-    await Future.delayed(const Duration(milliseconds: 2000))
+    await Future.delayed(const Duration(milliseconds: 3000))
         .then((value) async {
       final userBox = await Hive.openBox<UserModel>('user_box');
       final user = userBox.get('user');

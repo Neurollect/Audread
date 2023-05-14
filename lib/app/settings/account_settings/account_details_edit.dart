@@ -30,7 +30,7 @@ class AccountDetailsEditState extends State<AccountDetailsEdit> {
             provider.getMember();
             MemberModel member = provider.member;
             List detailsItems = [
-              ['Name', member.firstName! + member.lastName!],
+              ['Name', '${member.firstName!} ${member.lastName!}'],
               ['Gender', member.gender],
               ['School', member.organization],
               ['Grade', member.grade],
@@ -83,7 +83,7 @@ class AccountDetailsEditState extends State<AccountDetailsEdit> {
                             ),
                           )
                         : Text(
-                            i[1],
+                            i[1].toString(),
                             style: GoogleFonts.urbanist(
                               fontSize: 21,
                               fontWeight: FontWeight.bold,

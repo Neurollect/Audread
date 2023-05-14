@@ -43,9 +43,9 @@ class MemberModel {
         avatar: json['avatar'] as int?,
         firstName: json['member_first_name'] as String?,
         lastName: json['member_last_name'] as String?,
-        gender: json['member_middle_name'] as String?,
-        grade: json['member_registration_number'] as String?,
-        organization: json['member_organization'] as String?,
+        gender: json['member_gender'] as String?,
+        grade: json['member_grade'] as String?,
+        organization: json['member_school'] as String?,
         dateJoined: json['date_joined'] as String?,
       );
 
@@ -54,9 +54,9 @@ class MemberModel {
         'avatar': avatar,
         'member_first_name': firstName,
         'member_last_name': lastName,
-        'member_registration_number': gender,
-        'member_home_phone': grade,
-        'member_organization': organization,
+        'member_gender': gender,
+        'member_grade': grade,
+        'member_school': organization,
         'date_joined': dateJoined,
       };
 }
