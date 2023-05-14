@@ -22,8 +22,8 @@ class ProfileSettings extends StatefulWidget {
 }
 
 class ProfileSettingsState extends State<ProfileSettings> {
-  late MemberModel member;
-  late String email;
+  late MemberModel member = MemberModel(id: 'id');
+  late String email = 'loading...';
 
   void getUserFromStorage() async {
     final memberBox = await Hive.openBox<MemberModel>('member_box');
@@ -33,6 +33,13 @@ class ProfileSettingsState extends State<ProfileSettings> {
       member = memberBox.get('member')!;
       email = user!.email.toString();
     });
+  }
+
+  getUserAvatar(id) {
+    List avatarList = member.gender == 'Male'
+        ? utils.avatars.maleAvatars
+        : utils.avatars.femaleAvatars;
+    return avatarList[id - 1].path;
   }
 
   @override
@@ -52,6 +59,10 @@ class ProfileSettingsState extends State<ProfileSettings> {
     String username = member.firstName == null
         ? 'loading...'
         : '${member.firstName} ${member.lastName}';
+    String avatar = member.avatar == null
+        ? 'assets/images/avatars/obi.png'
+        : getUserAvatar(member.avatar);
+
     return Scaffold(
       appBar: AppBar(
         elevation: 0,
@@ -100,9 +111,9 @@ class ProfileSettingsState extends State<ProfileSettings> {
                     alignment: Alignment.bottomCenter,
                     decoration: BoxDecoration(
                       borderRadius: BorderRadius.circular(10),
-                      image: const DecorationImage(
+                      image: DecorationImage(
                         opacity: 0.8,
-                        image: AssetImage('assets/images/avatars/mikee.png'),
+                        image: AssetImage(avatar),
                       ),
                     ),
                   ),
