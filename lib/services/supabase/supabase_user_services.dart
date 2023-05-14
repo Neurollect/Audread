@@ -88,6 +88,24 @@ class SupabaseUserServices implements UserRepository {
   }
 
   @override
+  Future chageUserPassword(String opassward, String npassword) async {
+    try {
+      final response = await _supabaseClient.rpc(
+        'change_user_password',
+        params: {
+          'current_plain_password': opassward,
+          'new_plain_password': npassword,
+        },
+      );
+
+      return response;
+    } catch (err) {
+      //Other Errors
+      return err;
+    }
+  }
+
+  @override
   Future onUserSignout() async {
     final memberBox = await Hive.openBox<MemberModel>('member_box');
     final userBox = await Hive.openBox<UserModel>('user_box');

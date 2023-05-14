@@ -16,5 +16,10 @@ abstract class UserRepository {
     String organization,
   );
 
+  Future chageUserPassword(
+    String opassword,
+    String npassword,
+  );
+
   Future onUserSignout();
 }
