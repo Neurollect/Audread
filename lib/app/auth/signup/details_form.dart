@@ -1,4 +1,4 @@
-import 'package:audread/controllers/details_form_controller.dart';
+import 'package:audread/controllers/auth_controlllers/details_form_controller.dart';
 import 'package:audread/models/avatar.dart';
 import 'package:audread/utils/utils.dart';
 import 'package:flutter/material.dart';

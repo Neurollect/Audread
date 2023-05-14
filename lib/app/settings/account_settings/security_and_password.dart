@@ -1,4 +1,4 @@
-import 'package:audread/controllers/change_user_password_controller.dart';
+import 'package:audread/controllers/auth_controlllers/change_user_password_controller.dart';
 import 'package:audread/utils/utils.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';

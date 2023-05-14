@@ -5,7 +5,7 @@ import 'package:google_fonts/google_fonts.dart';
 
 import '../../../utils/utils.dart';
 import '../signin/signin.dart';
-import '../../../controllers/signup_controller.dart';
+import '../../../controllers/auth_controlllers/signup_controller.dart';
 
 class SignupForm extends StatefulWidget {
   const SignupForm({Key? key}) : super(key: key);

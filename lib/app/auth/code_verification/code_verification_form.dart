@@ -4,7 +4,7 @@ import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:flutter_otp_text_field/flutter_otp_text_field.dart';
 
-import '../../../controllers/code_verification_controller.dart';
+import '../../../controllers/auth_controlllers/code_verification_controller.dart';
 import '../../../utils/utils.dart';
 
 class CodeVerificationForm extends StatefulWidget {
