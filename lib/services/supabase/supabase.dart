@@ -1,12 +1,12 @@
 import 'package:audread/app/auth/signup/details_signup.dart';
 import 'package:audread/app/auth/welcome/welcome.dart';
+import 'package:audread/app/home.dart';
 import 'package:audread/controllers/secret_loader_controller.dart';
 import 'package:audread/models/secret.dart';
 import 'package:audread/models/user.dart';
 import 'package:get/get.dart';
 import 'package:hive/hive.dart';
 import 'package:supabase_flutter/supabase_flutter.dart';
-import 'package:audread/app/settings/settings.dart';
 
 final supabase = Supabase.instance.client;
 
@@ -46,7 +46,7 @@ class SupabaseService {
       if (isNew) {
         Get.to(const DetailsSignup());
       } else {
-        Get.to(const SettingsScreen());
+        Get.to(const HomePage());
       }
     });
   }

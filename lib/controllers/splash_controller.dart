@@ -1,11 +1,11 @@
 import 'package:audread/app/auth/welcome/welcome.dart';
+import 'package:audread/app/home.dart';
 import 'package:audread/models/user.dart';
 import 'package:get/get.dart';
 import 'package:hive/hive.dart';
 import 'package:supabase_flutter/supabase_flutter.dart';
 
 import '../app/auth/signup/details_signup.dart';
-import '../app/settings/settings.dart';
 
 class SplashScreenController extends GetxController {
   static SplashScreenController get find => Get.find();
@@ -41,7 +41,7 @@ class SplashScreenController extends GetxController {
     if (isNew) {
       Get.to(const DetailsSignup());
     } else {
-      Get.to(const SettingsScreen());
+      Get.to(const HomePage());
     }
   }
 }
