@@ -1,7 +1,8 @@
 import 'package:audread/app/widgets/header.dart';
+import 'package:audread/utils/utils.dart';
 import 'package:flutter/material.dart';
-import 'package:google_fonts/google_fonts.dart';
-import 'package:iconsax/iconsax.dart';
+
+final utils = Utils();
 
 class HomePage extends StatefulWidget {
   const HomePage({Key? key}) : super(key: key);
@@ -24,42 +25,9 @@ class HomePageState extends State<HomePage> {
               const SizedBox(height: 40),
               TextFormField(
                 textAlign: TextAlign.center,
-                decoration: InputDecoration(
-                  contentPadding: const EdgeInsets.all(10),
-                  filled: true,
-                  fillColor: Colors.grey.shade200,
-                  label: Center(
-                    child: Row(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      crossAxisAlignment: CrossAxisAlignment.center,
-                      children: [
-                        Text(
-                          ' Search ',
-                          style: GoogleFonts.urbanist(
-                            fontSize: 21,
-                          ),
-                        ),
-                        const Icon(Iconsax.search_normal),
-                      ],
-                    ),
-                  ),
-                  focusColor: Colors.black,
-                  enabledBorder: OutlineInputBorder(
-                    gapPadding: 2,
-                    borderRadius: BorderRadius.circular(8),
-                    borderSide: const BorderSide(
-                      width: 0,
-                      color: Colors.transparent,
-                    ),
-                  ),
-                  focusedBorder: const OutlineInputBorder(
-                    borderSide: BorderSide(
-                      width: 0,
-                      color: Colors.transparent,
-                    ),
-                  ),
-                ),
+                decoration: utils.inputFields.searchButtonDecoration(context),
               ),
+              const SizedBox(height: 40),
             ],
           ),
         ),
