@@ -5,6 +5,7 @@ import 'package:supabase_flutter/supabase_flutter.dart';
 mixin HandleExceptions {
   handleExceptions(context, err) {
     if (err.runtimeType == AuthException) {
+      err as AuthException;
       ShowErrorMessage.showMessage(
         context,
         ContentType.failure,
@@ -14,6 +15,7 @@ mixin HandleExceptions {
     }
 
     if (err.runtimeType == PostgrestException) {
+      err as PostgrestException;
       ShowErrorMessage.showMessage(
         context,
         ContentType.failure,
@@ -30,5 +32,14 @@ mixin HandleExceptions {
         'Error',
       );
     }
+  }
+
+  handleSuccess(context, mes) {
+    ShowErrorMessage.showMessage(
+      context,
+      ContentType.success,
+      mes,
+      'Success',
+    );
   }
 }

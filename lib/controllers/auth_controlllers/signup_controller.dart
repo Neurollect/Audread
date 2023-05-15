@@ -5,7 +5,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:supabase_flutter/supabase_flutter.dart';
 
-import '../services/supabase_authentication.dart';
+import '../../services/supabase/supabase_authentication.dart';
 
 class SignupController extends GetxController
     with LoadingMixin, HandleExceptions {
@@ -27,16 +27,22 @@ class SignupController extends GetxController
       } else {
         isLoading(true, context);
         final res = await auth.signUpEmailAndPassword(
-          email.text,
-          password.text,
+          email.value.text,
+          password.value.text,
         );
         if (res.runtimeType != User) {
           isLoading(false, context);
           handleExceptions(context, res);
         } else {
+          handleSuccess(
+            context,
+            'Email confirmation code has been sent to your inbox',
+          );
           Get.to(
-            const CodeVerification(
+            CodeVerification(
               codeType: 'SignUpConfirmation',
+              email: email.value.text,
+              password: password.value.text,
             ),
           );
         }

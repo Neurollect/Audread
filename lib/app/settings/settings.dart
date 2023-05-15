@@ -1,11 +1,14 @@
 import 'package:audread/app/settings/developer_info.dart';
 import 'package:audread/app/settings/general_settings.dart';
 import 'package:audread/app/settings/profile_settings.dart';
+import 'package:audread/mixins/loading_mixin.dart';
+import 'package:audread/services/supabase/supabase_authentication.dart';
 import 'package:audread/utils/utils.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:iconsax/iconsax.dart';
+import 'package:supabase_flutter/supabase_flutter.dart';
 
 final utils = Utils();
 
@@ -16,7 +19,7 @@ class SettingsScreen extends StatefulWidget {
   SettingsScreenState createState() => SettingsScreenState();
 }
 
-class SettingsScreenState extends State<SettingsScreen> {
+class SettingsScreenState extends State<SettingsScreen> with LoadingMixin {
   final List settingsItems = [
     [Iconsax.setting_3, 'General\nSettings', Colors.orange],
     [Iconsax.emoji_happy, 'Account\nSettings', Colors.blue],
@@ -31,6 +34,7 @@ class SettingsScreenState extends State<SettingsScreen> {
 
   @override
   Widget build(BuildContext context) {
+    isLoading(false, context);
     return Scaffold(
       appBar: AppBar(
         elevation: 0,
@@ -54,7 +58,7 @@ class SettingsScreenState extends State<SettingsScreen> {
         ),
       ),
       body: SafeArea(
-        child: Padding(
+        child: SingleChildScrollView(
           padding: const EdgeInsets.only(left: 18, right: 18),
           child: Column(
             mainAxisAlignment: MainAxisAlignment.start,
@@ -190,6 +194,37 @@ class SettingsScreenState extends State<SettingsScreen> {
                     ),
                     const SizedBox(height: 10),
                   ],
+                  TextButton(
+                    onPressed: logout,
+                    style: TextButton.styleFrom(
+                      padding: const EdgeInsets.only(right: 20),
+                      foregroundColor: const Color.fromARGB(255, 0, 36, 89),
+                    ),
+                    child: ListTile(
+                      trailing: TextButton(
+                        onPressed: logout,
+                        style: TextButton.styleFrom(
+                          backgroundColor:
+                              const Color.fromARGB(31, 0, 145, 255),
+                          shape: const CircleBorder(),
+                          foregroundColor: const Color.fromARGB(255, 0, 36, 89),
+                        ),
+                        child: const Icon(
+                          Iconsax.logout_1,
+                          size: 30,
+                          color: Colors.black,
+                        ),
+                      ),
+                      title: Text(
+                        'Sign Out',
+                        style: GoogleFonts.urbanist(
+                          fontSize: 20,
+                          fontWeight: FontWeight.bold,
+                        ),
+                      ),
+                    ),
+                  ),
+                  const SizedBox(height: 10),
                 ],
               ),
               const Divider(),
@@ -199,6 +234,12 @@ class SettingsScreenState extends State<SettingsScreen> {
       ),
       resizeToAvoidBottomInset: false,
     );
+  }
+
+  final auth = SupabaseAuthentication(Supabase.instance.client);
+
+  logout() {
+    auth.signOut();
   }
 
   navigation(page) {

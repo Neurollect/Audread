@@ -1,21 +1,30 @@
+import 'package:audread/mixins/loading_mixin.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:flutter_otp_text_field/flutter_otp_text_field.dart';
 
-import '../../../controllers/code_verification_controller.dart';
+import '../../../controllers/auth_controlllers/code_verification_controller.dart';
 import '../../../utils/utils.dart';
 
 class CodeVerificationForm extends StatefulWidget {
   final String codeType;
-  const CodeVerificationForm({Key? key, required this.codeType})
-      : super(key: key);
+  final String email;
+
+  final String? password;
+  const CodeVerificationForm({
+    Key? key,
+    required this.codeType,
+    required this.email,
+    this.password,
+  }) : super(key: key);
 
   @override
   CodeVerificationFormState createState() => CodeVerificationFormState();
 }
 
-class CodeVerificationFormState extends State<CodeVerificationForm> {
+class CodeVerificationFormState extends State<CodeVerificationForm>
+    with LoadingMixin {
   final utils = Utils();
   final controller = Get.put(CodeVerificationController());
 
@@ -24,20 +33,24 @@ class CodeVerificationFormState extends State<CodeVerificationForm> {
 
   @override
   Widget build(BuildContext context) {
+    isLoading(false, context);
     final codeType = widget.codeType;
+    final email = widget.email;
+    var password = widget.password;
     return Form(
       key: controller.formKey,
       child: Column(
         mainAxisAlignment: MainAxisAlignment.start,
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
+          const SizedBox(height: 20),
           Text(
-            'Your Email',
+            'Enter the Six digit code',
             style: GoogleFonts.urbanist(
               fontSize: 20,
             ),
           ),
-          const SizedBox(height: 10),
+          const SizedBox(height: 20),
           OtpTextField(
             mainAxisAlignment: MainAxisAlignment.center,
             crossAxisAlignment: CrossAxisAlignment.start,
@@ -60,12 +73,35 @@ class CodeVerificationFormState extends State<CodeVerificationForm> {
               },
             ),
           ),
-          const SizedBox(height: 30),
+          const SizedBox(height: 10),
+          TextButton(
+            onPressed: () =>
+                controller.resendCode(context, codeType, email, password),
+            child: Text(
+              'Resend Code?',
+              style: GoogleFonts.urbanist(
+                fontSize: 17,
+                fontWeight: FontWeight.bold,
+              ),
+            ),
+          ),
+          const SizedBox(height: 20),
+          utils.buttons.authButton(
+            'Confirm Reset Code',
+            () => controller.verifyCode(
+              context,
+              codeType,
+              otpCode,
+              email,
+            ),
+            context,
+          ),
+          const SizedBox(height: 22),
           Row(
             children: [
               Expanded(
                 child: Text(
-                  'Input Reset code sent to email here above.',
+                  'Input Reset code sent to email here below.',
                   style: GoogleFonts.urbanist(
                     fontSize: 17,
                   ),
@@ -73,13 +109,6 @@ class CodeVerificationFormState extends State<CodeVerificationForm> {
               ),
             ],
           ),
-          const SizedBox(height: 30),
-          utils.buttons.authButton(
-            'Confirm Reset Code',
-            () => controller.verifyCode(context, codeType, otpCode),
-            context,
-          ),
-          const SizedBox(height: 22),
         ],
       ),
     );

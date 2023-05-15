@@ -5,7 +5,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:supabase_flutter/supabase_flutter.dart';
 
-import '../services/supabase_authentication.dart';
+import '../../services/supabase/supabase_authentication.dart';
 
 class ForgetPasswordController extends GetxController
     with LoadingMixin, HandleExceptions {
@@ -20,20 +20,18 @@ class ForgetPasswordController extends GetxController
     if (formKey.currentState!.validate()) {
       isLoading(true, context);
       final res = await auth.sendRecoveryCode(
-        email.text,
+        email.value.text,
       );
-      Get.to(const CodeVerification(
-        codeType: 'ResetPassword',
-      ));
-      if (res.runtimeType != User) {
+      var mail = email.value.text;
+      if (res.runtimeType != String) {
         isLoading(false, context);
         handleExceptions(context, res);
       } else {
-        Get.to(
-          const CodeVerification(
-            codeType: 'SignUpConfirmation',
-          ),
-        );
+        handleSuccess(context, res);
+        Get.to(CodeVerification(
+          codeType: 'ResetPassword',
+          email: mail,
+        ));
       }
     }
   }

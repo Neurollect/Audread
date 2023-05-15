@@ -1,7 +1,8 @@
+import 'package:audread/services/supabase/supabase_user_services.dart';
 import 'package:injectable/injectable.dart';
 import 'package:supabase_flutter/supabase_flutter.dart';
 
-import '../repositories/authentication_repository.dart';
+import '../../repositories/authentication_repository.dart';
 
 @Injectable(as: AuthenticationRepository)
 class SupabaseAuthentication implements AuthenticationRepository {
@@ -10,6 +11,8 @@ class SupabaseAuthentication implements AuthenticationRepository {
 
   @override
   Future signInEmailAndPassword(String email, String password) async {
+    final userServices = SupabaseUserServices(_supabaseClient);
+
     try {
       final response = await _supabaseClient.auth.signInWithPassword(
         email: email,
@@ -21,6 +24,8 @@ class SupabaseAuthentication implements AuthenticationRepository {
         throw UnimplementedError();
       }
 
+      await Future.wait([userServices.getUser()]);
+
       return user;
     } catch (err) {
       //Other Errors
@@ -30,6 +35,8 @@ class SupabaseAuthentication implements AuthenticationRepository {
 
   @override
   Future signUpEmailAndPassword(String email, String password) async {
+    final userServices = SupabaseUserServices(_supabaseClient);
+
     try {
       final response = await _supabaseClient.auth.signUp(
         email: email,
@@ -38,6 +45,9 @@ class SupabaseAuthentication implements AuthenticationRepository {
       );
 
       final user = response.user;
+
+      Future.wait([userServices.getUser()]);
+
       return user;
     } catch (err) {
       //Other Errors
@@ -47,12 +57,16 @@ class SupabaseAuthentication implements AuthenticationRepository {
 
   @override
   Future verifySignUp(String email, String token) async {
+    final userServices = SupabaseUserServices(_supabaseClient);
+
     try {
       final AuthResponse response = await _supabaseClient.auth.verifyOTP(
         email: email,
         token: token,
         type: OtpType.signup,
       );
+
+      Future.wait([userServices.getUser()]);
 
       return response.user;
     } catch (err) {
@@ -75,6 +89,8 @@ class SupabaseAuthentication implements AuthenticationRepository {
 
   @override
   Future verifyRecoveryCode(String email, String token) async {
+    final userServices = SupabaseUserServices(_supabaseClient);
+
     try {
       final AuthResponse response = await _supabaseClient.auth.verifyOTP(
         email: email,
@@ -82,7 +98,9 @@ class SupabaseAuthentication implements AuthenticationRepository {
         type: OtpType.magiclink,
       );
 
-      return response.user!.id;
+      Future.wait([userServices.getUser()]);
+
+      return response.user;
     } catch (e) {
       return e;
     }
@@ -90,6 +108,8 @@ class SupabaseAuthentication implements AuthenticationRepository {
 
   @override
   Future<void> signOut() async {
+    final userServices = SupabaseUserServices(_supabaseClient);
+    userServices.onUserSignout();
     await _supabaseClient.auth.signOut();
     return;
   }

@@ -1,3 +1,4 @@
+import 'package:audread/controllers/auth_controlllers/change_user_password_controller.dart';
 import 'package:audread/utils/utils.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
@@ -16,7 +17,7 @@ class SecurityAndPasswordSettings extends StatefulWidget {
 
 class SecurityAndPasswordSettingsState
     extends State<SecurityAndPasswordSettings> {
-  bool checked = false;
+  final controller = Get.put(ChangeUserPasswordController());
 
   bool _obscureText = true;
 
@@ -77,6 +78,7 @@ class SecurityAndPasswordSettingsState
               const SizedBox(height: 20),
               const Divider(),
               Form(
+                key: controller.formKey,
                 child: Column(
                   mainAxisAlignment: MainAxisAlignment.start,
                   crossAxisAlignment: CrossAxisAlignment.start,
@@ -91,6 +93,7 @@ class SecurityAndPasswordSettingsState
                     utils.inputFields.passwordInput(
                       _obscureText,
                       _toggle,
+                      controller.opassword,
                     ),
                     const SizedBox(height: 30),
                     Text(
@@ -103,11 +106,12 @@ class SecurityAndPasswordSettingsState
                     utils.inputFields.passwordInput(
                       _obscureText,
                       _toggle,
+                      controller.npassword,
                     ),
                     const SizedBox(height: 30),
                     utils.buttons.authButton(
                       'Change Password',
-                      () => {},
+                      () => controller.changeUserPassword(context),
                       context,
                     ),
                   ],

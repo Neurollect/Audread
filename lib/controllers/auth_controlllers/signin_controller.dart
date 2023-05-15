@@ -1,6 +1,7 @@
+import 'package:audread/app/auth/code_verification/code_verification.dart';
 import 'package:audread/mixins/handle_exception_mixin.dart';
 import 'package:audread/mixins/loading_mixin.dart';
-import 'package:audread/services/supabase_authentication.dart';
+import 'package:audread/services/supabase/supabase_authentication.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:supabase_flutter/supabase_flutter.dart';
@@ -25,6 +26,16 @@ class SigninController extends GetxController
       if (res.runtimeType != User) {
         isLoading(false, context);
         handleExceptions(context, res);
+
+        if (res.message == 'Email Not Confirmed') {
+          Get.to(CodeVerification(
+            codeType: 'Signup',
+            email: email.value.text,
+            password: password.value.text,
+          ));
+        }
+      } else {
+        handleSuccess(context, 'Welcome Back');
       }
     }
   }

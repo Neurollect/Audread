@@ -1,7 +1,6 @@
+import 'package:audread/mixins/loading_mixin.dart';
 import 'package:flutter/material.dart';
-import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:iconsax/iconsax.dart';
 
 import 'details_form.dart';
 
@@ -12,31 +11,11 @@ class DetailsSignup extends StatefulWidget {
   DetailsSignupState createState() => DetailsSignupState();
 }
 
-class DetailsSignupState extends State<DetailsSignup> {
+class DetailsSignupState extends State<DetailsSignup> with LoadingMixin {
   @override
   Widget build(BuildContext context) {
+    isLoading(false, context);
     return Scaffold(
-      appBar: AppBar(
-        elevation: 0,
-        backgroundColor: Colors.transparent,
-        leading: Container(
-          padding: const EdgeInsets.only(left: 18),
-          child: TextButton(
-            onPressed: () {
-              Get.back();
-            },
-            style: TextButton.styleFrom(
-              backgroundColor: const Color.fromARGB(31, 0, 145, 255),
-              shape: const CircleBorder(),
-              foregroundColor: const Color.fromARGB(255, 0, 36, 89),
-            ),
-            child: const Icon(
-              Iconsax.arrow_left,
-              size: 30,
-            ),
-          ),
-        ),
-      ),
       resizeToAvoidBottomInset: false,
       body: SafeArea(
         child: SingleChildScrollView(
