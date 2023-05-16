@@ -1,4 +1,5 @@
 import 'package:audread/app/explore/featured_topics.dart';
+import 'package:audread/app/explore/recent_subjects.dart';
 import 'package:audread/app/widgets/bottom_nav.dart';
 import 'package:audread/utils/utils.dart';
 import 'package:flutter/material.dart';
@@ -29,6 +30,8 @@ class ExploreTopicsPageState extends State<ExploreTopicsPage> {
                 textAlign: TextAlign.center,
                 decoration: utils.inputFields.searchButtonDecoration(context),
               ),
+              const SizedBox(height: 20),
+              const RecentSubjects(),
               const SizedBox(height: 20),
               const FeaturedTopics(),
             ],

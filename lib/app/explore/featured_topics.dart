@@ -16,7 +16,7 @@ class FeaturedTopicsState extends State<FeaturedTopics> {
   Widget build(BuildContext context) {
     return Column(
       children: [
-        //For You Section
+        //Featured Topics
         Row(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
