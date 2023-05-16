@@ -1,4 +1,5 @@
 import 'package:audread/app/home/for_you_section.dart';
+import 'package:audread/app/widgets/bottom_nav.dart';
 import 'package:audread/app/widgets/header.dart';
 import 'package:audread/utils/utils.dart';
 import 'package:flutter/material.dart';
@@ -24,12 +25,12 @@ class HomePageState extends State<HomePage> {
           child: Column(
             children: [
               const AudHeader(),
-              const SizedBox(height: 30),
+              const SizedBox(height: 20),
               TextFormField(
                 textAlign: TextAlign.center,
                 decoration: utils.inputFields.searchButtonDecoration(context),
               ),
-              const SizedBox(height: 30),
+              const SizedBox(height: 20),
 
               //Get Started Container
               Container(
@@ -80,7 +81,7 @@ class HomePageState extends State<HomePage> {
                   ],
                 ),
               ),
-              const SizedBox(height: 30),
+              const SizedBox(height: 25),
 
               //For You Section
               const ForYouSection(),
@@ -134,11 +135,12 @@ class HomePageState extends State<HomePage> {
                   ],
                 ),
               ),
-              const SizedBox(height: 30),
+              const SizedBox(height: 25),
             ],
           ),
         ),
       ),
+      bottomNavigationBar: const BottomNav(),
     );
   }
 }
