@@ -76,6 +76,8 @@ flutter:
 
   assets:
     - assets/images/
+    - assets/images/stock/
+    - assets/images/home/
     - assets/images/avatars/
     - lib/secrets.json
 

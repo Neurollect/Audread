@@ -17,17 +17,17 @@ class WelcomeCarouselState extends State<WelcomeCarousel> {
     final List<List<String>> carouselItems = [
       [
         'LEARN ON THE GO',
-        'assets/images/discover.png',
+        'assets/images/stock/discover.png',
         'For the things we have to learn before we can do them, we learn by doing them.'
       ],
       [
         'GET STARTED FOR FREE',
-        'assets/images/get-started.png',
+        'assets/images/stock/get-started.png',
         'For the things we have to learn before we can do them, we learn by doing them.'
       ],
       [
         'A WORTHY EXPERIENCE',
-        'assets/images/testimonials.png',
+        'assets/images/stock/testimonials.png',
         'For the things we have to learn before we can do them, we learn by doing them.'
       ],
     ];
