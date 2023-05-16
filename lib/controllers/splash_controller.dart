@@ -1,5 +1,5 @@
 import 'package:audread/app/auth/welcome/welcome.dart';
-import 'package:audread/app/home.dart';
+import 'package:audread/app/explore/explore.dart';
 import 'package:audread/models/user.dart';
 import 'package:get/get.dart';
 import 'package:hive/hive.dart';
@@ -41,7 +41,7 @@ class SplashScreenController extends GetxController {
     if (isNew) {
       Get.to(const DetailsSignup());
     } else {
-      Get.to(const HomePage());
+      Get.to(const ExploreTopicsPage());
     }
   }
 }
