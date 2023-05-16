@@ -51,6 +51,7 @@ dependencies:
   awesome_snackbar_content: ^0.1.2
   hive: ^2.2.3
   hive_flutter: ^1.1.0
+  flashy_tab_bar2: ^0.0.6
 
 dev_dependencies:
   build_runner: ^2.4.2
@@ -76,6 +77,8 @@ flutter:
 
   assets:
     - assets/images/
+    - assets/images/stock/
+    - assets/images/home/
     - assets/images/avatars/
     - lib/secrets.json
 

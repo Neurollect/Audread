@@ -138,4 +138,42 @@ class AudTextInput extends FormValidator {
       ),
     );
   }
+
+  InputDecoration searchButtonDecoration(context) {
+    return InputDecoration(
+      contentPadding: const EdgeInsets.all(10),
+      filled: true,
+      fillColor: Colors.grey.shade200,
+      label: Center(
+        child: Row(
+          mainAxisAlignment: MainAxisAlignment.center,
+          crossAxisAlignment: CrossAxisAlignment.center,
+          children: [
+            Text(
+              ' Search  ',
+              style: GoogleFonts.urbanist(
+                fontSize: 21,
+              ),
+            ),
+            const Icon(Iconsax.search_normal),
+          ],
+        ),
+      ),
+      focusColor: Colors.black,
+      enabledBorder: OutlineInputBorder(
+        gapPadding: 2,
+        borderRadius: BorderRadius.circular(8),
+        borderSide: const BorderSide(
+          width: 0,
+          color: Colors.transparent,
+        ),
+      ),
+      focusedBorder: const OutlineInputBorder(
+        borderSide: BorderSide(
+          width: 0,
+          color: Colors.transparent,
+        ),
+      ),
+    );
+  }
 }
