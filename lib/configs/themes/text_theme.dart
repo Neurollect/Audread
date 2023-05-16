@@ -6,21 +6,28 @@ final colors = Utils().globalColors;
 
 class TextAudTheme {
   static TextTheme lightTheme = TextTheme(
-      //Splash Text
-      titleLarge:
-          TextStyle(fontFamily: 'Blanka', fontSize: 42, color: colors.primary),
-
-      //Title
-      //Welcome Screen Page
-      titleMedium:
-          GoogleFonts.dmSans(fontWeight: FontWeight.bold, fontSize: 40));
+    titleLarge: TextStyle(
+      fontFamily: 'Blanka',
+      fontSize: 42,
+      color: colors.primary,
+    ),
+    titleMedium: GoogleFonts.dmSans(fontWeight: FontWeight.bold, fontSize: 40),
+    labelLarge: GoogleFonts.urbanist(fontSize: 23, fontWeight: FontWeight.bold),
+    labelMedium: GoogleFonts.urbanist(
+      fontSize: 20,
+      fontWeight: FontWeight.bold,
+      color: Colors.blue,
+    ),
+  );
 
   static TextTheme darkTheme = TextTheme(
-      //Splash Text
-      titleLarge: const TextStyle(fontFamily: 'Blanka', fontSize: 36),
-
-      //Title
-      //Welcome Screen Page
-      titleMedium:
-          GoogleFonts.dmSans(fontWeight: FontWeight.bold, fontSize: 40));
+    titleLarge: const TextStyle(fontFamily: 'Blanka', fontSize: 36),
+    titleMedium: GoogleFonts.dmSans(fontWeight: FontWeight.bold, fontSize: 40),
+    labelLarge: GoogleFonts.urbanist(fontSize: 23, fontWeight: FontWeight.bold),
+    labelMedium: GoogleFonts.urbanist(
+      fontSize: 20,
+      fontWeight: FontWeight.bold,
+      color: Colors.blue,
+    ),
+  );
 }
