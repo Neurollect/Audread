@@ -1,5 +1,6 @@
 import 'package:audread/app/explore/featured_topics.dart';
 import 'package:audread/app/explore/recent_subjects.dart';
+import 'package:audread/app/explore/subject_topics.dart';
 import 'package:audread/app/widgets/bottom_nav.dart';
 import 'package:audread/utils/utils.dart';
 import 'package:flutter/material.dart';
@@ -34,6 +35,8 @@ class ExploreTopicsPageState extends State<ExploreTopicsPage> {
               const RecentSubjects(),
               const SizedBox(height: 20),
               const FeaturedTopics(),
+              const SizedBox(height: 20),
+              const SubjectTopics(),
             ],
           ),
         ),

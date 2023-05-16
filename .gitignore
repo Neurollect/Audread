@@ -54,6 +54,7 @@ app.*.map.json
 /assets/images/stock
 /assets/images/home
 /assets/images/settings
+/assets/images/subjects
 
 #HiveGeneratedModels
 *.g.dart
