@@ -1,5 +1,8 @@
+import 'package:audread/app/explore/explore.dart';
+import 'package:audread/app/home.dart';
 import 'package:flutter/material.dart';
 import 'package:flashy_tab_bar2/flashy_tab_bar2.dart';
+import 'package:get/get.dart';
 import 'package:iconsax/iconsax.dart';
 
 class BottomNav extends StatefulWidget {
@@ -18,6 +21,17 @@ class BottomNavState extends State<BottomNav> {
       showElevation: true,
       onItemSelected: (index) => setState(() {
         _selectedIndex = index;
+        switch (index) {
+          case 0:
+            Get.to(const HomePage());
+            break;
+          case 1:
+            Get.to(const ExploreTopicsPage());
+            break;
+          case 2:
+            break;
+          default:
+        }
       }),
       items: [
         FlashyTabBarItem(
