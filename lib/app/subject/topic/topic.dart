@@ -203,6 +203,29 @@ class TopicViewState extends State<TopicView> {
                 ),
                 const SizedBox(height: 20),
               ],
+              TextButton(
+                  onPressed: () {},
+                  style: TextButton.styleFrom(
+                    foregroundColor: Colors.black,
+                  ),
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Text(
+                        'Next Lesson:',
+                        style: GoogleFonts.urbanist(
+                          fontSize: 14,
+                        ),
+                      ),
+                      Text(
+                        'Measurement I',
+                        style: GoogleFonts.urbanist(
+                          fontSize: 20,
+                        ),
+                      ),
+                    ],
+                  )),
+              const SizedBox(height: 10),
             ],
           ),
         ),
