@@ -7,21 +7,33 @@ class GradeTopics {
       [
         [
           'Form 1',
-          'Equilibrium and Center Gravity',
+          'Introduction to Physics',
           Colors.redAccent.shade700,
           'assets/images/subjects/physics/physics.png'
         ],
         [
           'Form 1',
-          'Newtons Laws of Motion',
+          'Introduction To Laboratory Practice',
           Colors.greenAccent.shade700,
           'assets/images/subjects/physics/teoff.png'
         ],
         [
           'Form 1',
-          'Fluid flow and Bernoulis',
+          'Force and Pressure',
           Colors.pinkAccent.shade700,
-          'assets/images/subjects/physics/fluid_flow.png'
+          'assets/images/subjects/physics/physics.png'
+        ],
+        [
+          'Form 1',
+          'Archimedes Principle And Law Of Flotation',
+          Colors.greenAccent.shade700,
+          'assets/images/subjects/physics/teoff.png'
+        ],
+        [
+          'Form 1',
+          'Structure And Properties Of Matter',
+          Colors.pinkAccent.shade700,
+          'assets/images/subjects/physics/physics.png'
         ],
       ]
     ],

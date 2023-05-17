@@ -18,7 +18,9 @@ class SubjectViewState extends State<SubjectView> {
       appBar: AppBar(
         backgroundColor: Theme.of(context).scaffoldBackgroundColor,
         elevation: 0,
-        leading: const SubjectViewHeader(),
+        leading: const SubjectViewHeader(
+          title: 'Physics',
+        ),
         leadingWidth: double.infinity,
       ),
       body: SafeArea(

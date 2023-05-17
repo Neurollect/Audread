@@ -93,13 +93,21 @@ class RecentSubjectsState extends State<RecentSubjects> {
                         ),
                       ),
                       const SizedBox(height: 8),
-                      Text(
-                        i[1],
-                        style: GoogleFonts.urbanist(
-                          fontSize: 24,
-                          fontWeight: FontWeight.bold,
-                          color: Colors.white,
-                        ),
+                      Row(
+                        children: [
+                          Expanded(
+                            child: Text(
+                              i[1],
+                              maxLines: 2,
+                              overflow: TextOverflow.ellipsis,
+                              style: GoogleFonts.urbanist(
+                                fontSize: 24,
+                                fontWeight: FontWeight.bold,
+                                color: Colors.white,
+                              ),
+                            ),
+                          ),
+                        ],
                       ),
                       const SizedBox(height: 10),
                       Row(

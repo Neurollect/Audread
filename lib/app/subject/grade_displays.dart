@@ -1,10 +1,9 @@
 import 'package:audread/app/subject/_topics.dart';
+import 'package:audread/app/subject/single_grade_view.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:iconsax/iconsax.dart';
-
-import '../subject/subject.dart';
 
 class GradeDisplay extends StatefulWidget {
   const GradeDisplay({Key? key}) : super(key: key);
@@ -29,7 +28,7 @@ class GradeDisplayState extends State<GradeDisplay> {
               ),
               TextButton(
                 onPressed: () {
-                  Get.to(const SubjectView());
+                  Get.to(const SingleGradeView());
                 },
                 style: TextButton.styleFrom(
                   backgroundColor: Colors.white,
@@ -76,13 +75,21 @@ class GradeDisplayState extends State<GradeDisplay> {
                           ),
                         ),
                         const SizedBox(height: 8),
-                        Text(
-                          a[1],
-                          style: GoogleFonts.urbanist(
-                            fontSize: 24,
-                            color: Colors.white,
-                            fontWeight: FontWeight.bold,
-                          ),
+                        Row(
+                          children: [
+                            Expanded(
+                              child: Text(
+                                a[1],
+                                maxLines: 2,
+                                overflow: TextOverflow.ellipsis,
+                                style: GoogleFonts.urbanist(
+                                  fontSize: 24,
+                                  fontWeight: FontWeight.bold,
+                                  color: Colors.white,
+                                ),
+                              ),
+                            ),
+                          ],
                         ),
                         const SizedBox(height: 10),
                         Row(

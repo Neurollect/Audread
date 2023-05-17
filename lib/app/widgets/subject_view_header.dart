@@ -3,7 +3,8 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:iconsax/iconsax.dart';
 
 class SubjectViewHeader extends StatefulWidget {
-  const SubjectViewHeader({Key? key}) : super(key: key);
+  final String title;
+  const SubjectViewHeader({Key? key, required this.title}) : super(key: key);
 
   @override
   SubjectViewHeaderState createState() => SubjectViewHeaderState();
@@ -18,7 +19,7 @@ class SubjectViewHeaderState extends State<SubjectViewHeader> {
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
           Text(
-            'Physics',
+            widget.title,
             style: GoogleFonts.urbanist(
               fontSize: 35,
               fontWeight: FontWeight.bold,
