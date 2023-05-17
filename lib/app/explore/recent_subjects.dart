@@ -11,9 +11,24 @@ class RecentSubjects extends StatefulWidget {
 
 class RecentSubjectsState extends State<RecentSubjects> {
   List recentCourses = [
-    ['Biology', 'Transport in Living Organisms', Colors.orangeAccent.shade700],
-    ['Physics', 'Turning Effect of a Force', Colors.blueAccent.shade700],
-    ['Chemistry', 'Structure and Bonding', Colors.yellowAccent.shade700],
+    [
+      'Biology',
+      'Transport in Living Organisms',
+      Colors.orangeAccent.shade700,
+      'assets/images/subjects/biology/circulatory_system.png'
+    ],
+    [
+      'Physics',
+      'Turning Effect of a Force',
+      Colors.blueAccent.shade700,
+      'assets/images/subjects/physics/teoff.png'
+    ],
+    [
+      'Chemistry',
+      'Structure and Bonding',
+      Colors.yellowAccent.shade700,
+      'assets/images/subjects/chemistry/teacher_stucture_bonding.png'
+    ],
   ];
 
   @override
@@ -43,10 +58,15 @@ class RecentSubjectsState extends State<RecentSubjects> {
               for (var i in recentCourses) ...[
                 Container(
                   padding: const EdgeInsets.all(10),
-                  width: MediaQuery.of(context).size.width * 0.5,
+                  width: MediaQuery.of(context).size.width * 0.6,
                   decoration: BoxDecoration(
                     color: i[2],
                     borderRadius: BorderRadius.circular(10),
+                    image: DecorationImage(
+                      image: AssetImage(i[3]),
+                      alignment: Alignment.centerRight,
+                      opacity: 0.6,
+                    ),
                   ),
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
@@ -55,8 +75,8 @@ class RecentSubjectsState extends State<RecentSubjects> {
                         i[0],
                         style: GoogleFonts.urbanist(
                           fontSize: 14,
-                          color: Colors.white,
                           fontWeight: FontWeight.bold,
+                          color: Colors.white,
                         ),
                       ),
                       const SizedBox(height: 8),
@@ -64,7 +84,7 @@ class RecentSubjectsState extends State<RecentSubjects> {
                         i[1],
                         style: GoogleFonts.urbanist(
                           fontSize: 24,
-                          fontWeight: FontWeight.w600,
+                          fontWeight: FontWeight.bold,
                           color: Colors.white,
                         ),
                       ),
@@ -76,7 +96,7 @@ class RecentSubjectsState extends State<RecentSubjects> {
                             '20 Min',
                             style: GoogleFonts.urbanist(
                               fontSize: 14,
-                              fontWeight: FontWeight.w600,
+                              fontWeight: FontWeight.bold,
                               color: Colors.white,
                             ),
                           ),

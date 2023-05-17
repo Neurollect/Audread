@@ -80,6 +80,10 @@ flutter:
     - assets/images/stock/
     - assets/images/home/
     - assets/images/avatars/
+    - assets/images/subjects/
+    - assets/images/subjects/biology/
+    - assets/images/subjects/physics/
+    - assets/images/subjects/chemistry/
     - lib/secrets.json
 
   # An image asset can refer to one or more resolution-specific "variants", see
