@@ -1,7 +1,11 @@
 import 'package:audread/app/subject/topic/_topic_info.dart';
 import 'package:audread/app/widgets/topic_view_header.dart';
+import 'package:audread/utils/utils.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:iconsax/iconsax.dart';
+
+final utils = Utils();
 
 class TopicView extends StatefulWidget {
   const TopicView({Key? key}) : super(key: key);
@@ -11,6 +15,8 @@ class TopicView extends StatefulWidget {
 }
 
 class TopicViewState extends State<TopicView> {
+  bool _searching = false;
+
   @override
   Widget build(BuildContext context) {
     double height = MediaQuery.of(context).size.height / 5;
@@ -80,12 +86,42 @@ class TopicViewState extends State<TopicView> {
                 ),
               ),
               const SizedBox(height: 20),
-              Text(
-                'Subtopics',
-                style: GoogleFonts.urbanist(
-                  fontSize: 16,
-                  fontWeight: FontWeight.w600,
-                ),
+              Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                crossAxisAlignment: CrossAxisAlignment.center,
+                children: [
+                  Expanded(
+                    child: Text(
+                      'Lessons',
+                      style: GoogleFonts.urbanist(
+                        fontSize: 30,
+                        fontWeight: FontWeight.bold,
+                      ),
+                    ),
+                  ),
+                  _searching
+                      ? Expanded(
+                          child: TextFormField(
+                            textAlign: TextAlign.left,
+                            decoration: utils.inputFields
+                                .topicSearchButtonDecoration(context),
+                            style: GoogleFonts.urbanist(
+                              fontSize: 21,
+                            ),
+                          ),
+                        )
+                      : IconButton(
+                          onPressed: () {
+                            setState(() {
+                              _searching = true;
+                            });
+                          },
+                          icon: const Icon(
+                            Iconsax.search_normal_1,
+                            weight: 20,
+                          ),
+                        )
+                ],
               ),
               const SizedBox(height: 10),
               for (var st in TopicDetails().topic[0]) ...[

@@ -34,7 +34,7 @@ class TopicViewHeaderState extends State<TopicViewHeader> {
               IconButton(
                 onPressed: () {},
                 icon: const Icon(
-                  Iconsax.search_normal_1,
+                  Iconsax.arrow_right,
                   weight: 50,
                 ),
               ),
