@@ -1,5 +1,6 @@
 import 'package:audread/app/subject/_topics.dart';
 import 'package:audread/app/subject/single_grade_view.dart';
+import 'package:audread/app/subject/topic/topic.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -104,7 +105,9 @@ class GradeDisplayState extends State<GradeDisplay> {
                               ),
                             ),
                             TextButton(
-                              onPressed: () {},
+                              onPressed: () {
+                                Get.to(const TopicView());
+                              },
                               style: TextButton.styleFrom(
                                 backgroundColor: Colors.white,
                                 foregroundColor: Colors.black,
