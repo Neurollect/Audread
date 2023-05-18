@@ -1,7 +1,10 @@
 import 'package:audread/utils/ui/avatars.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:iconsax/iconsax.dart';
+
+import '../subject/subject.dart';
 
 class ForYouSection extends StatefulWidget {
   const ForYouSection({Key? key}) : super(key: key);
@@ -23,9 +26,19 @@ class ForYouSectionState extends State<ForYouSection> {
               'For you',
               style: Theme.of(context).textTheme.labelLarge,
             ),
-            Text(
-              '-See All',
-              style: Theme.of(context).textTheme.labelMedium,
+            TextButton(
+              onPressed: () {
+                Get.to(const SubjectView());
+              },
+              style: TextButton.styleFrom(
+                backgroundColor: Colors.white,
+                foregroundColor: Colors.black,
+                shape: const CircleBorder(),
+              ),
+              child: Text(
+                '-See All',
+                style: Theme.of(context).textTheme.labelMedium,
+              ),
             ),
           ],
         ),

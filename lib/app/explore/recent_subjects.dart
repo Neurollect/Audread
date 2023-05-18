@@ -1,6 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:iconsax/iconsax.dart';
+
+import '../subject/subject.dart';
 
 class RecentSubjects extends StatefulWidget {
   const RecentSubjects({Key? key}) : super(key: key);
@@ -11,9 +14,24 @@ class RecentSubjects extends StatefulWidget {
 
 class RecentSubjectsState extends State<RecentSubjects> {
   List recentCourses = [
-    ['Biology', 'Transport in Living Organisms', Colors.orangeAccent.shade700],
-    ['Physics', 'Turning Effect of a Force', Colors.blueAccent.shade700],
-    ['Chemistry', 'Structure and Bonding', Colors.yellowAccent.shade700],
+    [
+      'Biology',
+      'Transport in Living Organisms',
+      Colors.orangeAccent.shade700,
+      'assets/images/subjects/biology/circulatory_system.png'
+    ],
+    [
+      'Physics',
+      'Turning Effect of a Force',
+      Colors.blueAccent.shade700,
+      'assets/images/subjects/physics/teoff.png'
+    ],
+    [
+      'Chemistry',
+      'Structure and Bonding',
+      Colors.yellowAccent.shade700,
+      'assets/images/subjects/chemistry/teacher_stucture_bonding.png'
+    ],
   ];
 
   @override
@@ -28,9 +46,19 @@ class RecentSubjectsState extends State<RecentSubjects> {
               'Recent Subjects',
               style: Theme.of(context).textTheme.labelLarge,
             ),
-            Text(
-              '-See All',
-              style: Theme.of(context).textTheme.labelMedium,
+            TextButton(
+              onPressed: () {
+                Get.to(const SubjectView());
+              },
+              style: TextButton.styleFrom(
+                backgroundColor: Colors.white,
+                foregroundColor: Colors.black,
+                shape: const CircleBorder(),
+              ),
+              child: Text(
+                '-See All',
+                style: Theme.of(context).textTheme.labelMedium,
+              ),
             ),
           ],
         ),
@@ -43,10 +71,15 @@ class RecentSubjectsState extends State<RecentSubjects> {
               for (var i in recentCourses) ...[
                 Container(
                   padding: const EdgeInsets.all(10),
-                  width: MediaQuery.of(context).size.width * 0.5,
+                  width: MediaQuery.of(context).size.width * 0.6,
                   decoration: BoxDecoration(
                     color: i[2],
                     borderRadius: BorderRadius.circular(10),
+                    image: DecorationImage(
+                      image: AssetImage(i[3]),
+                      alignment: Alignment.centerRight,
+                      opacity: 0.6,
+                    ),
                   ),
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
@@ -55,18 +88,26 @@ class RecentSubjectsState extends State<RecentSubjects> {
                         i[0],
                         style: GoogleFonts.urbanist(
                           fontSize: 14,
-                          color: Colors.white,
                           fontWeight: FontWeight.bold,
+                          color: Colors.white,
                         ),
                       ),
                       const SizedBox(height: 8),
-                      Text(
-                        i[1],
-                        style: GoogleFonts.urbanist(
-                          fontSize: 24,
-                          fontWeight: FontWeight.w600,
-                          color: Colors.white,
-                        ),
+                      Row(
+                        children: [
+                          Expanded(
+                            child: Text(
+                              i[1],
+                              maxLines: 2,
+                              overflow: TextOverflow.ellipsis,
+                              style: GoogleFonts.urbanist(
+                                fontSize: 24,
+                                fontWeight: FontWeight.bold,
+                                color: Colors.white,
+                              ),
+                            ),
+                          ),
+                        ],
                       ),
                       const SizedBox(height: 10),
                       Row(
@@ -76,7 +117,7 @@ class RecentSubjectsState extends State<RecentSubjects> {
                             '20 Min',
                             style: GoogleFonts.urbanist(
                               fontSize: 14,
-                              fontWeight: FontWeight.w600,
+                              fontWeight: FontWeight.bold,
                               color: Colors.white,
                             ),
                           ),

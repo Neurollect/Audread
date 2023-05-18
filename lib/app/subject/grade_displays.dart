@@ -1,73 +1,24 @@
+import 'package:audread/app/subject/_topics.dart';
+import 'package:audread/app/subject/single_grade_view.dart';
+import 'package:audread/app/subject/topic/topic.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:iconsax/iconsax.dart';
 
-import '../subject/subject.dart';
-
-class SubjectTopics extends StatefulWidget {
-  const SubjectTopics({Key? key}) : super(key: key);
+class GradeDisplay extends StatefulWidget {
+  const GradeDisplay({Key? key}) : super(key: key);
 
   @override
-  SubjectTopicsState createState() => SubjectTopicsState();
+  GradeDisplayState createState() => GradeDisplayState();
 }
 
-class SubjectTopicsState extends State<SubjectTopics> {
-  List topics = [
-    [
-      'Physics',
-      [
-        [
-          'Form 2',
-          'Equilibrium and Center Gravity',
-          Colors.redAccent.shade700,
-          'assets/images/subjects/physics/physics.png'
-        ],
-        [
-          'Form 3',
-          'Newtons Laws of Motion',
-          Colors.greenAccent.shade700,
-          'assets/images/subjects/physics/teoff.png'
-        ],
-        [
-          'Form 2',
-          'Fluid flow and Bernoulis',
-          Colors.pinkAccent.shade700,
-          'assets/images/subjects/physics/fluid_flow.png'
-        ],
-      ]
-    ],
-    [
-      'Chemistry',
-      [
-        [
-          'Form 2',
-          'Structure and Bonding',
-          Colors.purpleAccent.shade700,
-          'assets/images/subjects/chemistry/teacher_stucture_bonding.png'
-        ],
-        [
-          'Form 1',
-          'Hydrogen and Water',
-          Colors.blueAccent.shade700,
-          'assets/images/subjects/chemistry/lab_equipments.png'
-        ],
-        [
-          'Form 4',
-          'Organic Chemistry II',
-          Colors.orangeAccent.shade700,
-          'assets/images/subjects/chemistry/organic_chemistry.png'
-        ],
-      ]
-    ],
-  ];
-
+class GradeDisplayState extends State<GradeDisplay> {
+  final topics = GradeTopics().topics;
   @override
   Widget build(BuildContext context) {
     return Column(
       children: [
-        //For You Section
-
         for (var i in topics) ...[
           Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -78,7 +29,7 @@ class SubjectTopicsState extends State<SubjectTopics> {
               ),
               TextButton(
                 onPressed: () {
-                  Get.to(const SubjectView());
+                  Get.to(const SingleGradeView());
                 },
                 style: TextButton.styleFrom(
                   backgroundColor: Colors.white,
@@ -86,13 +37,13 @@ class SubjectTopicsState extends State<SubjectTopics> {
                   shape: const CircleBorder(),
                 ),
                 child: Text(
-                  '-See All',
+                  '- See All',
                   style: Theme.of(context).textTheme.labelMedium,
                 ),
               ),
             ],
           ),
-          const SizedBox(height: 20),
+          const SizedBox(height: 10),
           SingleChildScrollView(
             scrollDirection: Axis.horizontal,
             child: Row(
@@ -125,13 +76,21 @@ class SubjectTopicsState extends State<SubjectTopics> {
                           ),
                         ),
                         const SizedBox(height: 8),
-                        Text(
-                          a[1],
-                          style: GoogleFonts.urbanist(
-                            fontSize: 24,
-                            color: Colors.white,
-                            fontWeight: FontWeight.bold,
-                          ),
+                        Row(
+                          children: [
+                            Expanded(
+                              child: Text(
+                                a[1],
+                                maxLines: 2,
+                                overflow: TextOverflow.ellipsis,
+                                style: GoogleFonts.urbanist(
+                                  fontSize: 24,
+                                  fontWeight: FontWeight.bold,
+                                  color: Colors.white,
+                                ),
+                              ),
+                            ),
+                          ],
                         ),
                         const SizedBox(height: 10),
                         Row(
@@ -146,7 +105,9 @@ class SubjectTopicsState extends State<SubjectTopics> {
                               ),
                             ),
                             TextButton(
-                              onPressed: () {},
+                              onPressed: () {
+                                Get.to(const TopicView());
+                              },
                               style: TextButton.styleFrom(
                                 backgroundColor: Colors.white,
                                 foregroundColor: Colors.black,
@@ -164,7 +125,7 @@ class SubjectTopicsState extends State<SubjectTopics> {
               ],
             ),
           ),
-          const SizedBox(height: 20),
+          const SizedBox(height: 10),
         ],
       ],
     );
