@@ -37,7 +37,7 @@ class GradeDisplayState extends State<GradeDisplay> {
                   shape: const CircleBorder(),
                 ),
                 child: Text(
-                  '-See All',
+                  '- See All',
                   style: Theme.of(context).textTheme.labelMedium,
                 ),
               ),

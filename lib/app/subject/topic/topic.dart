@@ -1,7 +1,9 @@
 import 'package:audread/app/subject/topic/_topic_info.dart';
+import 'package:audread/app/subject/topic/lesson.dart';
 import 'package:audread/app/widgets/topic_view_header.dart';
 import 'package:audread/utils/utils.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:iconsax/iconsax.dart';
 
@@ -63,21 +65,45 @@ class TopicViewState extends State<TopicView> {
                             style: Theme.of(context).textTheme.labelLarge,
                           ),
                           const SizedBox(height: 15),
-                          TextButton(
-                            onPressed: () {},
-                            style: TextButton.styleFrom(
-                              backgroundColor: Colors.white,
-                              foregroundColor: Colors.blue,
-                              padding: const EdgeInsets.all(6),
-                            ),
-                            child: Text(
-                              'Continue',
-                              style: GoogleFonts.urbanist(
-                                fontSize: 15,
-                                fontWeight: FontWeight.bold,
+                          Row(
+                            children: [
+                              TextButton(
+                                onPressed: () {
+                                  Get.to(const LessonView());
+                                },
+                                style: TextButton.styleFrom(
+                                  backgroundColor: Colors.white,
+                                  foregroundColor: Colors.blue,
+                                  padding: const EdgeInsets.all(6),
+                                ),
+                                child: Text(
+                                  'Read Topic',
+                                  style: GoogleFonts.urbanist(
+                                    fontSize: 15,
+                                    fontWeight: FontWeight.bold,
+                                  ),
+                                ),
                               ),
-                            ),
-                          )
+                              const SizedBox(width: 20),
+                              TextButton(
+                                onPressed: () {
+                                  Get.to(const LessonView());
+                                },
+                                style: TextButton.styleFrom(
+                                  backgroundColor: Colors.white,
+                                  foregroundColor: Colors.blue,
+                                  padding: const EdgeInsets.all(6),
+                                ),
+                                child: Text(
+                                  'Continue',
+                                  style: GoogleFonts.urbanist(
+                                    fontSize: 15,
+                                    fontWeight: FontWeight.bold,
+                                  ),
+                                ),
+                              )
+                            ],
+                          ),
                         ],
                       ),
                     ),
@@ -163,7 +189,9 @@ class TopicViewState extends State<TopicView> {
                             Row(
                               children: [
                                 TextButton(
-                                  onPressed: () {},
+                                  onPressed: () {
+                                    Get.to(const LessonView());
+                                  },
                                   style: TextButton.styleFrom(
                                     backgroundColor: Colors.white,
                                     foregroundColor: Colors.blue,
