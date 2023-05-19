@@ -23,6 +23,7 @@ class SubjectViewHeaderState extends State<SubjectViewHeader> {
             style: GoogleFonts.urbanist(
               fontSize: 35,
               fontWeight: FontWeight.bold,
+              color: Theme.of(context).primaryColor,
             ),
           ),
           Row(
@@ -30,16 +31,18 @@ class SubjectViewHeaderState extends State<SubjectViewHeader> {
             children: [
               IconButton(
                 onPressed: () {},
-                icon: const Icon(
+                icon: Icon(
                   Iconsax.fatrows,
                   weight: 50,
+                  color: Theme.of(context).primaryColor,
                 ),
               ),
               IconButton(
                 onPressed: () {},
-                icon: const Icon(
+                icon: Icon(
                   Iconsax.search_normal_1,
                   weight: 50,
+                  color: Theme.of(context).primaryColor,
                 ),
               ),
             ],

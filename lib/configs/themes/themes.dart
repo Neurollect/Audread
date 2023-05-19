@@ -6,7 +6,7 @@ class AppAudTheme {
   AppAudTheme._();
 
   static ThemeData lightTheme = ThemeData(
-    primarySwatch: Colors.cyan,
+    primaryColor: Colors.black,
     brightness: Brightness.light,
     textTheme: TextAudTheme.lightTheme,
     appBarTheme: const AppBarTheme(),
@@ -15,7 +15,7 @@ class AppAudTheme {
   );
 
   static ThemeData darkTheme = ThemeData(
-    primarySwatch: Colors.blue,
+    primaryColor: Colors.white,
     brightness: Brightness.dark,
     textTheme: TextAudTheme.darkTheme,
     appBarTheme: const AppBarTheme(),

@@ -17,6 +17,8 @@ class ExploreTopicsPage extends StatefulWidget {
 }
 
 class ExploreTopicsPageState extends State<ExploreTopicsPage> {
+  GlobalKey<ScaffoldState> exploreScaffoldKey = GlobalKey<ScaffoldState>();
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -25,7 +27,9 @@ class ExploreTopicsPageState extends State<ExploreTopicsPage> {
           padding: const EdgeInsets.all(30),
           child: Column(
             children: [
-              const AudHeader(),
+              AudHeader(
+                scaffoldKey: exploreScaffoldKey,
+              ),
               const SizedBox(height: 20),
               TextFormField(
                 textAlign: TextAlign.center,
