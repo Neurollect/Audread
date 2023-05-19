@@ -25,6 +25,7 @@ class TopicViewHeaderState extends State<TopicViewHeader> {
               style: GoogleFonts.urbanist(
                 fontSize: 30,
                 fontWeight: FontWeight.bold,
+                color: Theme.of(context).primaryColor,
               ),
             ),
           ),
@@ -33,16 +34,18 @@ class TopicViewHeaderState extends State<TopicViewHeader> {
             children: [
               IconButton(
                 onPressed: () {},
-                icon: const Icon(
+                icon: Icon(
                   Iconsax.arrow_right,
                   weight: 50,
+                  color: Theme.of(context).primaryColor,
                 ),
               ),
               IconButton(
                 onPressed: () {},
-                icon: const Icon(
+                icon: Icon(
                   Iconsax.bookmark,
                   weight: 50,
+                  color: Theme.of(context).primaryColor,
                 ),
               ),
             ],
