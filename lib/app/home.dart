@@ -1,6 +1,7 @@
 import 'package:audread/app/home/for_you_section.dart';
 import 'package:audread/app/widgets/bottom_nav.dart';
 import 'package:audread/app/widgets/header.dart';
+import 'package:audread/app/widgets/navigation_drawer.dart';
 import 'package:audread/utils/utils.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -15,16 +16,27 @@ class HomePage extends StatefulWidget {
 }
 
 class HomePageState extends State<HomePage> {
+  GlobalKey<ScaffoldState> homeScaffoldKey = GlobalKey<ScaffoldState>();
+
+  @override
+  void initState() {
+    super.initState();
+  }
+
   @override
   Widget build(BuildContext context) {
     double height = MediaQuery.of(context).size.height / 5;
     return Scaffold(
+      key: homeScaffoldKey,
+      drawer: const NavDrawer(),
       body: SafeArea(
         child: SingleChildScrollView(
           padding: const EdgeInsets.all(30),
           child: Column(
             children: [
-              const AudHeader(),
+              AudHeader(
+                scaffoldKey: homeScaffoldKey,
+              ),
               const SizedBox(height: 20),
               TextFormField(
                 textAlign: TextAlign.center,

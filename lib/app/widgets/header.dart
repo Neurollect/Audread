@@ -3,7 +3,8 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:iconsax/iconsax.dart';
 
 class AudHeader extends StatefulWidget {
-  const AudHeader({Key? key}) : super(key: key);
+  final GlobalKey<ScaffoldState> scaffoldKey;
+  const AudHeader({Key? key, required this.scaffoldKey}) : super(key: key);
 
   @override
   AudHeaderState createState() => AudHeaderState();
@@ -53,17 +54,16 @@ class AudHeaderState extends State<AudHeader> {
             ),
             const SizedBox(width: 10),
             Container(
-              height: side * 0.8,
-              width: side * 0.8,
+              height: side * 0.9,
+              width: side * 0.9,
               decoration: BoxDecoration(
+                color: Colors.blue.shade50,
                 borderRadius: BorderRadius.circular(10),
-                border: Border.all(
-                  width: 1.2,
-                  color: Theme.of(context).primaryColor,
-                ),
               ),
               child: TextButton(
-                onPressed: () {},
+                onPressed: () {
+                  widget.scaffoldKey.currentState!.openDrawer();
+                },
                 style: TextButton.styleFrom(
                   padding: EdgeInsets.zero,
                 ),
