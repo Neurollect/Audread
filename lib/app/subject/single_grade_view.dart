@@ -1,6 +1,7 @@
 import 'package:audread/app/subject/_topics.dart';
 import 'package:audread/app/widgets/subject_view_header.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_animate/flutter_animate.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 class SingleGradeView extends StatefulWidget {
@@ -88,7 +89,11 @@ class SingleGradeViewState extends State<SingleGradeView> {
                 ),
                 const SizedBox(height: 20),
               ],
-            ],
+            ].animate().fade(
+                  duration: const Duration(
+                    milliseconds: 1000,
+                  ),
+                ),
           ),
         ),
       ),

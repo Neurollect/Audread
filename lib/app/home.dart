@@ -4,6 +4,7 @@ import 'package:audread/app/widgets/header.dart';
 import 'package:audread/app/widgets/navigation_drawer.dart';
 import 'package:audread/utils/utils.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_animate/flutter_animate.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 final utils = Utils();
@@ -92,7 +93,11 @@ class HomePageState extends State<HomePage> {
                     const Expanded(flex: 2, child: SizedBox()),
                   ],
                 ),
-              ),
+              ).animate().fade(
+                    duration: const Duration(
+                      milliseconds: 1000,
+                    ),
+                  ),
               const SizedBox(height: 25),
 
               //For You Section

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_animate/flutter_animate.dart';
 import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:iconsax/iconsax.dart';
@@ -90,7 +91,11 @@ class SubjectTopicsState extends State<SubjectTopics> {
                   style: Theme.of(context).textTheme.labelMedium,
                 ),
               ),
-            ],
+            ].animate().fade(
+                  duration: const Duration(
+                    milliseconds: 1000,
+                  ),
+                ),
           ),
           const SizedBox(height: 20),
           SingleChildScrollView(
@@ -161,7 +166,11 @@ class SubjectTopicsState extends State<SubjectTopics> {
                   ),
                   const SizedBox(width: 20),
                 ],
-              ],
+              ].animate().fade(
+                    duration: const Duration(
+                      milliseconds: 1000,
+                    ),
+                  ),
             ),
           ),
           const SizedBox(height: 20),

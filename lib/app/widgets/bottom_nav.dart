@@ -23,10 +23,16 @@ class BottomNavState extends State<BottomNav> {
         _selectedIndex = index;
         switch (index) {
           case 0:
-            Get.to(const HomePage());
+            Get.to(
+              const HomePage(),
+              transition: Transition.leftToRightWithFade,
+            );
             break;
           case 1:
-            Get.to(const ExploreTopicsPage());
+            Get.to(
+              const ExploreTopicsPage(),
+              transition: Transition.rightToLeftWithFade,
+            );
             break;
           case 2:
             break;

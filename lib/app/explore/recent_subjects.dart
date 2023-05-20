@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_animate/flutter_animate.dart';
 import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:iconsax/iconsax.dart';
@@ -134,7 +135,11 @@ class RecentSubjectsState extends State<RecentSubjects> {
                       ),
                     ],
                   ),
-                ),
+                ).animate().fade(
+                      duration: const Duration(
+                        milliseconds: 1000,
+                      ),
+                    ),
                 const SizedBox(width: 20),
               ],
             ],

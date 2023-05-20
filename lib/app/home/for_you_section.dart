@@ -1,5 +1,6 @@
 import 'package:audread/utils/ui/avatars.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_animate/flutter_animate.dart';
 import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:iconsax/iconsax.dart';
@@ -155,7 +156,11 @@ class ForYouSectionState extends State<ForYouSection> {
                     ),
                   ),
                   const SizedBox(height: 20),
-                ],
+                ].animate().animate().fade(
+                      duration: const Duration(
+                        milliseconds: 1000,
+                      ),
+                    ),
               ),
             ),
             const SizedBox(width: 15),
@@ -232,7 +237,11 @@ class ForYouSectionState extends State<ForYouSection> {
                       ],
                     ),
                   ),
-                ],
+                ].animate().animate().fade(
+                      duration: const Duration(
+                        milliseconds: 1000,
+                      ),
+                    ),
               ),
             )
           ],
