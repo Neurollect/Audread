@@ -3,6 +3,7 @@ import 'package:audread/app/subject/topic/lesson.dart';
 import 'package:audread/app/widgets/topic_view_header.dart';
 import 'package:audread/utils/utils.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_animate/flutter_animate.dart';
 import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:iconsax/iconsax.dart';
@@ -254,7 +255,11 @@ class TopicViewState extends State<TopicView> {
                     ],
                   )),
               const SizedBox(height: 10),
-            ],
+            ].animate().fade(
+                  duration: const Duration(
+                    milliseconds: 1000,
+                  ),
+                ),
           ),
         ),
       ),

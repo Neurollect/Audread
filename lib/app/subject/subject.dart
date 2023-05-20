@@ -1,6 +1,7 @@
 import 'package:audread/app/subject/grade_displays.dart';
 import 'package:audread/app/widgets/subject_view_header.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_animate/flutter_animate.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 class SubjectView extends StatefulWidget {
@@ -79,7 +80,11 @@ class SubjectViewState extends State<SubjectView> {
               ),
               const SizedBox(height: 20),
               const GradeDisplay(),
-            ],
+            ].animate().fade(
+                  duration: const Duration(
+                    milliseconds: 1000,
+                  ),
+                ),
           ),
         ),
       ),
