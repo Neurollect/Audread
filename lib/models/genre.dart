@@ -2,7 +2,7 @@ import 'package:hive/hive.dart';
 import 'academic_level.dart';
 part 'genre.g.dart';
 
-@HiveType(typeId: 3)
+@HiveType(typeId: 8)
 class GenreModel {
   @HiveField(0)
   String id;
