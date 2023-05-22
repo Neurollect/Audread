@@ -5,6 +5,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_animate/flutter_animate.dart';
 import 'package:google_fonts/google_fonts.dart';
 
+import 'lesson_loader.dart';
+
 final utils = Utils();
 
 class LessonView extends StatefulWidget {
@@ -21,9 +23,31 @@ class LessonViewState extends State<LessonView> {
     'Change the direction of a moving object.',
     'Distort (change the shape of) an object.',
   ];
+
+  late var lesson;
+
+  loadLesson() async {
+    var less = await LessonLoader().load();
+    setState(() {
+      lesson = less;
+    });
+  }
+
+  @override
+  void initState() {
+    loadLesson();
+    super.initState();
+  }
+
+  @override
+  void dispose() {
+    super.dispose();
+  }
+
   @override
   Widget build(BuildContext context) {
     double height = MediaQuery.of(context).size.height / 4;
+    print(lesson);
     return Scaffold(
       appBar: AppBar(
         backgroundColor: Theme.of(context).scaffoldBackgroundColor,

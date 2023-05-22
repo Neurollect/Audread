@@ -1,7 +1,7 @@
 import 'package:audread/app/auth/signup/details_signup.dart';
 import 'package:audread/app/auth/welcome/welcome.dart';
 import 'package:audread/app/home.dart';
-import 'package:audread/controllers/secret_loader_controller.dart';
+import 'package:audread/services/secret_loader.dart';
 import 'package:audread/models/secret.dart';
 import 'package:audread/models/user.dart';
 import 'package:get/get.dart';
