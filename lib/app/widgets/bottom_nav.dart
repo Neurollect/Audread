@@ -25,13 +25,13 @@ class BottomNavState extends State<BottomNav> {
           case 0:
             Get.to(
               const HomePage(),
-              transition: Transition.leftToRightWithFade,
+              transition: Transition.fadeIn,
             );
             break;
           case 1:
             Get.to(
               const ExploreTopicsPage(),
-              transition: Transition.rightToLeftWithFade,
+              transition: Transition.fadeIn,
             );
             break;
           case 2:
