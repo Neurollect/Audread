@@ -1,5 +1,4 @@
 import 'package:audread/app/subject/topic/_topic_info.dart';
-import 'package:audread/app/subject/topic/lesson.dart';
 import 'package:audread/app/widgets/topic_view_header.dart';
 import 'package:audread/utils/utils.dart';
 import 'package:flutter/material.dart';
@@ -7,6 +6,8 @@ import 'package:flutter_animate/flutter_animate.dart';
 import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:iconsax/iconsax.dart';
+
+import 'lesson/lesson_view.dart';
 
 final utils = Utils();
 

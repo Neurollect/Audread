@@ -3,7 +3,7 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:iconsax/iconsax.dart';
 
 class TopicViewHeader extends StatefulWidget {
-  final String title;
+  final String? title;
   const TopicViewHeader({Key? key, required this.title}) : super(key: key);
 
   @override
@@ -21,7 +21,7 @@ class TopicViewHeaderState extends State<TopicViewHeader> {
         children: [
           Expanded(
             child: Text(
-              widget.title,
+              widget.title.toString(),
               style: GoogleFonts.urbanist(
                 fontSize: 30,
                 fontWeight: FontWeight.bold,

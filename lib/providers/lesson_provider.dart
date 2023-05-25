@@ -15,7 +15,7 @@ class LessonDisplayProvider with ChangeNotifier {
     notifyListeners();
   }
 
-  loaLesson() async {
+  stuctureLesson() {
     final Map<String, dynamic> less = json.decode(lesson.lessonBody.toString());
     List lessList = [];
     for (var i in less.values) {
