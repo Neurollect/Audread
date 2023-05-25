@@ -4,7 +4,7 @@ import 'package:google_fonts/google_fonts.dart';
 
 final utils = Utils();
 
-class LessonViewTestFunction {
+class LessonWidgetsStructurer {
   lessonPlacer(List lesson, context) {
     var lsnView = [];
     for (var lsn in lesson) {

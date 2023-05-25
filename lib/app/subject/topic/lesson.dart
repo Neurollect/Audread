@@ -16,16 +16,8 @@ class LessonView extends StatefulWidget {
 class LessonViewState extends State<LessonView> {
   List lsn = [];
 
-  lsnLoad() async {
-    var res = await LessonViewTestFunction().loadLesson();
-    setState(() {
-      lsn = res;
-    });
-  }
-
   @override
   void initState() {
-    lsnLoad();
     super.initState();
   }
 

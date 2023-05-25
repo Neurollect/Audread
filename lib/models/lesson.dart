@@ -12,7 +12,7 @@ class LessonModel {
   int? lessonNo;
 
   @HiveField(2)
-  Map<String, dynamic>? lessonBody;
+  String? lessonBody;
 
   @HiveField(3)
   SubtopicModel? lessonSubtopic;
