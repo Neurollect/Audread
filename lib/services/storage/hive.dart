@@ -5,6 +5,7 @@ import 'package:hive_flutter/hive_flutter.dart';
 import '../../models/academic_level.dart';
 import '../../models/genre.dart';
 import '../../models/grade.dart';
+import '../../models/lesson.dart';
 import '../../models/member.dart';
 import '../../models/subject.dart';
 import '../../models/subtopic.dart';
@@ -25,6 +26,7 @@ class HiveStorage {
     Hive.registerAdapter(SubjectModelAdapter());
     Hive.registerAdapter(TopicModelAdapter());
     Hive.registerAdapter(SubtopicModelAdapter());
+    Hive.registerAdapter(LessonModelAdapter());
 
     final directory = await getApplicationDocumentsDirectory();
     await Hive.initFlutter(directory.path);
