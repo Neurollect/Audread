@@ -1,3 +1,4 @@
+import 'package:card_loading/card_loading.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:iconsax/iconsax.dart';
@@ -11,6 +12,10 @@ class TopicViewHeader extends StatefulWidget {
 }
 
 class TopicViewHeaderState extends State<TopicViewHeader> {
+  final CardLoadingTheme cardLoadingTheme = const CardLoadingTheme(
+    colorOne: Color.fromARGB(255, 240, 240, 240),
+    colorTwo: Color.fromARGB(255, 236, 235, 235),
+  );
   @override
   Widget build(BuildContext context) {
     return Padding(
@@ -19,16 +24,27 @@ class TopicViewHeaderState extends State<TopicViewHeader> {
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          Expanded(
-            child: Text(
-              widget.title.toString(),
-              style: GoogleFonts.urbanist(
-                fontSize: 30,
-                fontWeight: FontWeight.bold,
-                color: Theme.of(context).primaryColor,
+          if (widget.title == null) ...[
+            Expanded(
+              child: CardLoading(
+                height: 30,
+                borderRadius: const BorderRadius.all(Radius.circular(4)),
+                margin: const EdgeInsets.only(top: 12),
+                cardLoadingTheme: cardLoadingTheme,
               ),
             ),
-          ),
+          ] else ...[
+            Expanded(
+              child: Text(
+                widget.title.toString(),
+                style: GoogleFonts.urbanist(
+                  fontSize: 30,
+                  fontWeight: FontWeight.bold,
+                  color: Theme.of(context).primaryColor,
+                ),
+              ),
+            ),
+          ],
           Row(
             mainAxisAlignment: MainAxisAlignment.spaceEvenly,
             children: [

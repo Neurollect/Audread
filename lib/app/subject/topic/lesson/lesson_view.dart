@@ -1,3 +1,4 @@
+import 'package:audread/app/subject/topic/lesson/lesson_loading.dart';
 import 'package:audread/app/widgets/topic_view_header.dart';
 import 'package:audread/providers/lesson_provider.dart';
 import 'package:flutter/material.dart';
@@ -42,18 +43,22 @@ class LessonViewState extends State<LessonView> {
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
-                      for (var item in LessonWidgetsStructurer().lessonPlacer(
-                        provider.stuctureLesson(),
-                        context,
-                      )) ...[
-                        item,
-                        const SizedBox(
-                          height: 20,
-                        ),
+                      if (provider.lessonState == LessonStates.loading) ...[
+                        const LessonLoading(),
+                      ] else ...[
+                        for (var item in LessonWidgetsStructurer().lessonPlacer(
+                          provider.stuctureLesson(),
+                          context,
+                        )) ...[
+                          item,
+                          const SizedBox(
+                            height: 20,
+                          ),
+                        ],
+                        const SizedBox(height: 10),
+                        const NextLesson(topic: 'Types of Forces'),
+                        const SizedBox(height: 10),
                       ],
-                      const SizedBox(height: 10),
-                      const NextLesson(topic: 'Types of Forces'),
-                      const SizedBox(height: 10),
                     ],
                   ),
                 ),
