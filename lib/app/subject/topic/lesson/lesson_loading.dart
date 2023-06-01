@@ -1,13 +1,17 @@
 import 'package:audread/configs/themes/loading_theme.dart';
 import 'package:card_loading/card_loading.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/scheduler.dart';
 
 final loadingTheme = CardLoadingAudTheme();
+var brightness =
+    SchedulerBinding.instance.platformDispatcher.platformBrightness;
+bool isDarkMode = brightness == Brightness.dark;
 
 class LessonLoading extends StatelessWidget {
   LessonLoading({Key? key}) : super(key: key);
 
-  final cardLoadingTheme = ThemeMode.system == ThemeMode.light
+  final cardLoadingTheme = !isDarkMode
       ? CardLoadingAudTheme.lightTheme
       : CardLoadingAudTheme.darkTheme;
 

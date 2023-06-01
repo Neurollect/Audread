@@ -49,10 +49,11 @@ app.*.map.json
 #Secrets
 /lib/secrets.json
 
-#avatars
+#Images
 /assets/images/avatars
 /assets/images/stock
 /assets/images/home
+/assets/images/error/
 /assets/images/settings
 /assets/images/subjects
 

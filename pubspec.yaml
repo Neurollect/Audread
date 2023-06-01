@@ -80,6 +80,7 @@ flutter:
   assets:
     - assets/images/
     - assets/images/stock/
+    - assets/images/error/
     - assets/images/home/
     - assets/images/gif/err.gif
     - assets/images/avatars/

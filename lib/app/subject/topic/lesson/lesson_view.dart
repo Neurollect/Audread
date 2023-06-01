@@ -1,10 +1,11 @@
 import 'package:audread/app/subject/topic/lesson/lesson_loading.dart';
-import 'package:audread/app/widgets/loading_error.dart';
 import 'package:audread/app/widgets/topic_view_header.dart';
 import 'package:audread/providers/lesson_provider.dart';
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
 
+import 'lesson_error.dart';
 import 'next_lesson.dart';
 import 'lesson_structurer.dart';
 
@@ -50,7 +51,45 @@ class LessonViewState extends State<LessonView> {
                       ] else ...[
                         if (provider.lessonState ==
                             LessonStates.fetchError) ...[
-                          const LoadingError(),
+                          const LessonError(),
+                          const SizedBox(height: 30),
+                          Row(
+                            children: [
+                              Expanded(
+                                child: ElevatedButton(
+                                  onPressed: () {},
+                                  style: Theme.of(context)
+                                      .elevatedButtonTheme
+                                      .style,
+                                  child: Text(
+                                    'Go Back',
+                                    textAlign: TextAlign.center,
+                                    style: GoogleFonts.urbanist(
+                                      fontWeight: FontWeight.w800,
+                                      fontSize: 20,
+                                    ),
+                                  ),
+                                ),
+                              ),
+                              const SizedBox(width: 20),
+                              Expanded(
+                                child: ElevatedButton(
+                                  onPressed: () {},
+                                  style: Theme.of(context)
+                                      .elevatedButtonTheme
+                                      .style,
+                                  child: Text(
+                                    'Try Again',
+                                    textAlign: TextAlign.center,
+                                    style: GoogleFonts.urbanist(
+                                      fontWeight: FontWeight.w800,
+                                      fontSize: 20,
+                                    ),
+                                  ),
+                                ),
+                              ),
+                            ],
+                          ),
                         ] else ...[
                           for (var item
                               in LessonWidgetsStructurer().lessonPlacer(

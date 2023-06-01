@@ -1,9 +1,14 @@
 import 'package:card_loading/card_loading.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/scheduler.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:iconsax/iconsax.dart';
 
 import '../../configs/themes/loading_theme.dart';
+
+var brightness =
+    SchedulerBinding.instance.platformDispatcher.platformBrightness;
+bool isDarkMode = brightness == Brightness.dark;
 
 class TopicViewHeader extends StatefulWidget {
   final String? title;
@@ -14,7 +19,7 @@ class TopicViewHeader extends StatefulWidget {
 }
 
 class TopicViewHeaderState extends State<TopicViewHeader> {
-  final cardLoadingTheme = ThemeMode.system == ThemeMode.light
+  final cardLoadingTheme = !isDarkMode
       ? CardLoadingAudTheme.lightTheme
       : CardLoadingAudTheme.darkTheme;
 
