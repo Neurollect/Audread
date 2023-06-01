@@ -44,7 +44,7 @@ class LessonViewState extends State<LessonView> {
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                       if (provider.lessonState == LessonStates.loading) ...[
-                        const LessonLoading(),
+                        LessonLoading(),
                       ] else ...[
                         for (var item in LessonWidgetsStructurer().lessonPlacer(
                           provider.stuctureLesson(),

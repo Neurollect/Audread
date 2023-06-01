@@ -3,6 +3,8 @@ import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:iconsax/iconsax.dart';
 
+import '../../configs/themes/loading_theme.dart';
+
 class TopicViewHeader extends StatefulWidget {
   final String? title;
   const TopicViewHeader({Key? key, required this.title}) : super(key: key);
@@ -12,10 +14,10 @@ class TopicViewHeader extends StatefulWidget {
 }
 
 class TopicViewHeaderState extends State<TopicViewHeader> {
-  final CardLoadingTheme cardLoadingTheme = const CardLoadingTheme(
-    colorOne: Color.fromARGB(255, 240, 240, 240),
-    colorTwo: Color.fromARGB(255, 236, 235, 235),
-  );
+  final cardLoadingTheme = ThemeMode.system == ThemeMode.light
+      ? CardLoadingAudTheme.lightTheme
+      : CardLoadingAudTheme.darkTheme;
+
   @override
   Widget build(BuildContext context) {
     return Padding(

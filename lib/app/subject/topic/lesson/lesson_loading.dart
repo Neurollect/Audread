@@ -1,13 +1,15 @@
+import 'package:audread/configs/themes/loading_theme.dart';
 import 'package:card_loading/card_loading.dart';
 import 'package:flutter/material.dart';
 
-class LessonLoading extends StatelessWidget {
-  const LessonLoading({Key? key}) : super(key: key);
+final loadingTheme = CardLoadingAudTheme();
 
-  final CardLoadingTheme cardLoadingTheme = const CardLoadingTheme(
-    colorOne: Color.fromARGB(255, 240, 240, 240),
-    colorTwo: Color.fromARGB(255, 236, 235, 235),
-  );
+class LessonLoading extends StatelessWidget {
+  LessonLoading({Key? key}) : super(key: key);
+
+  final cardLoadingTheme = ThemeMode.system == ThemeMode.light
+      ? CardLoadingAudTheme.lightTheme
+      : CardLoadingAudTheme.darkTheme;
 
   loadingCard(double height, [width]) {
     return CardLoading(
