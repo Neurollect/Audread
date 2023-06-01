@@ -33,6 +33,27 @@ class TopicViewHeaderState extends State<TopicViewHeader> {
                 cardLoadingTheme: cardLoadingTheme,
               ),
             ),
+            const SizedBox(width: 10),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+              children: [
+                CardLoading(
+                  height: 30,
+                  width: 30,
+                  borderRadius: const BorderRadius.all(Radius.circular(4)),
+                  margin: const EdgeInsets.only(top: 12),
+                  cardLoadingTheme: cardLoadingTheme,
+                ),
+                const SizedBox(width: 12),
+                CardLoading(
+                  height: 30,
+                  width: 30,
+                  borderRadius: const BorderRadius.all(Radius.circular(4)),
+                  margin: const EdgeInsets.only(top: 12),
+                  cardLoadingTheme: cardLoadingTheme,
+                ),
+              ],
+            ),
           ] else ...[
             Expanded(
               child: Text(
@@ -44,28 +65,28 @@ class TopicViewHeaderState extends State<TopicViewHeader> {
                 ),
               ),
             ),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+              children: [
+                IconButton(
+                  onPressed: () {},
+                  icon: Icon(
+                    Iconsax.arrow_right,
+                    weight: 50,
+                    color: Theme.of(context).primaryColor,
+                  ),
+                ),
+                IconButton(
+                  onPressed: () {},
+                  icon: Icon(
+                    Iconsax.bookmark,
+                    weight: 50,
+                    color: Theme.of(context).primaryColor,
+                  ),
+                ),
+              ],
+            ),
           ],
-          Row(
-            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-            children: [
-              IconButton(
-                onPressed: () {},
-                icon: Icon(
-                  Iconsax.arrow_right,
-                  weight: 50,
-                  color: Theme.of(context).primaryColor,
-                ),
-              ),
-              IconButton(
-                onPressed: () {},
-                icon: Icon(
-                  Iconsax.bookmark,
-                  weight: 50,
-                  color: Theme.of(context).primaryColor,
-                ),
-              ),
-            ],
-          ),
         ],
       ),
     );

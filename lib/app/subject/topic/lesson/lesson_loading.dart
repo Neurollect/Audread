@@ -35,15 +35,23 @@ class LessonLoading extends StatelessWidget {
         loadingCard(150),
         Row(
           mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+          crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             Expanded(
+              flex: 1,
               child: loadingCard(150, MediaQuery.of(context).size.width * 0.4),
             ),
-            for (var i = 1; i < 4; i++) ...[
-              Expanded(
-                child: loadingCard(15),
+            const SizedBox(width: 20),
+            Expanded(
+              flex: 1,
+              child: Column(
+                children: [
+                  for (var i = 1; i < 7; i++) ...[
+                    loadingCard(15),
+                  ],
+                ],
               ),
-            ],
+            ),
           ],
         ),
       ],
