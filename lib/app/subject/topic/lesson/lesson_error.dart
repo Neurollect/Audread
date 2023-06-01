@@ -17,12 +17,7 @@ class LessonErrorState extends State<LessonError> {
       crossAxisAlignment: CrossAxisAlignment.center,
       mainAxisAlignment: MainAxisAlignment.center,
       children: [
-        const Image(image: AssetImage('assets/images/error/conn_error.png')),
-        LoadingAnimationWidget.waveDots(
-          color: utils.globalColors.primary,
-          size: 50,
-        ),
-        const SizedBox(height: 10),
+        const SizedBox(height: 40),
         Text(
           'Could not Fetch Lesson',
           style: GoogleFonts.urbanist(
@@ -30,6 +25,11 @@ class LessonErrorState extends State<LessonError> {
             fontWeight: FontWeight.bold,
           ),
           textAlign: TextAlign.center,
+        ),
+        const Image(image: AssetImage('assets/images/error/conn_error.png')),
+        LoadingAnimationWidget.waveDots(
+          color: utils.globalColors.primary,
+          size: 50,
         ),
         const SizedBox(height: 20),
         Text(
