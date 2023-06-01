@@ -59,3 +59,4 @@ app.*.map.json
 #HiveGeneratedModels
 *.g.dart
 lib/app/subject/topic/topic.json
+assets/images/gif/

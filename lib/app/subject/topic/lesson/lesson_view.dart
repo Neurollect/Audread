@@ -1,4 +1,5 @@
 import 'package:audread/app/subject/topic/lesson/lesson_loading.dart';
+import 'package:audread/app/widgets/loading_error.dart';
 import 'package:audread/app/widgets/topic_view_header.dart';
 import 'package:audread/providers/lesson_provider.dart';
 import 'package:flutter/material.dart';
@@ -23,6 +24,7 @@ class LessonViewState extends State<LessonView> {
         return Consumer<LessonDisplayProvider>(
           builder: (context, provider, child) {
             var lesson = provider.lesson;
+            provider.getLesson();
             return Scaffold(
               appBar: AppBar(
                 backgroundColor: Theme.of(context).scaffoldBackgroundColor,
@@ -46,18 +48,24 @@ class LessonViewState extends State<LessonView> {
                       if (provider.lessonState == LessonStates.loading) ...[
                         LessonLoading(),
                       ] else ...[
-                        for (var item in LessonWidgetsStructurer().lessonPlacer(
-                          provider.stuctureLesson(),
-                          context,
-                        )) ...[
-                          item,
-                          const SizedBox(
-                            height: 20,
-                          ),
+                        if (provider.lessonState ==
+                            LessonStates.fetchError) ...[
+                          const LoadingError(),
+                        ] else ...[
+                          for (var item
+                              in LessonWidgetsStructurer().lessonPlacer(
+                            provider.stuctureLesson(),
+                            context,
+                          )) ...[
+                            item,
+                            const SizedBox(
+                              height: 20,
+                            ),
+                          ],
+                          const SizedBox(height: 10),
+                          const NextLesson(topic: 'Types of Forces'),
+                          const SizedBox(height: 10),
                         ],
-                        const SizedBox(height: 10),
-                        const NextLesson(topic: 'Types of Forces'),
-                        const SizedBox(height: 10),
                       ],
                     ],
                   ),

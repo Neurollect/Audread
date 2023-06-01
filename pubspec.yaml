@@ -81,6 +81,7 @@ flutter:
     - assets/images/
     - assets/images/stock/
     - assets/images/home/
+    - assets/images/gif/err.gif
     - assets/images/avatars/
     - assets/images/subjects/
     - assets/images/subjects/biology/
