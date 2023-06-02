@@ -1,4 +1,4 @@
-import 'package:audread/app/subject/grade_displays.dart';
+import 'package:audread/app/subject/grade/grade_displays.dart';
 import 'package:audread/app/widgets/subject_view_header.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_animate/flutter_animate.dart';

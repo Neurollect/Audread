@@ -1,4 +1,4 @@
-import 'package:audread/app/subject/_topics.dart';
+import 'package:audread/app/subject/topic/_topics.dart';
 import 'package:audread/app/widgets/subject_view_header.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_animate/flutter_animate.dart';
