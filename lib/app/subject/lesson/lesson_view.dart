@@ -1,4 +1,4 @@
-import 'package:audread/app/subject/topic/lesson/lesson_loading.dart';
+import 'package:audread/app/subject/lesson/lesson_loading.dart';
 import 'package:audread/app/widgets/topic_view_header.dart';
 import 'package:audread/providers/lesson_provider.dart';
 import 'package:flutter/material.dart';

@@ -7,7 +7,7 @@ import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:iconsax/iconsax.dart';
 
-import 'lesson/lesson_view.dart';
+import '../lesson/lesson_view.dart';
 
 final utils = Utils();
 
