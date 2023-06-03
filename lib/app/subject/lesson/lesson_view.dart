@@ -17,15 +17,20 @@ class LessonView extends StatefulWidget {
 }
 
 class LessonViewState extends State<LessonView> {
+  GlobalKey<ScaffoldState> lsnScaffoldKey = GlobalKey<ScaffoldState>();
+
   displayDialog() {
     SchedulerBinding.instance.addPostFrameCallback((_) {
-      showDialog(
-        barrierColor: const Color.fromARGB(30, 44, 42, 42),
-        context: context,
-        builder: (context) {
-          return const LessonAlertDialog();
-        },
-      );
+      BuildContext lsntxt = lsnScaffoldKey.currentContext ?? context;
+      Future.delayed(const Duration(milliseconds: 10), () {
+        showDialog(
+          barrierColor: const Color.fromARGB(5, 71, 71, 71),
+          context: lsntxt,
+          builder: (context) {
+            return const LessonAlertDialog();
+          },
+        );
+      });
     });
   }
 
@@ -42,6 +47,7 @@ class LessonViewState extends State<LessonView> {
               displayDialog();
             }
             return Scaffold(
+              key: lsnScaffoldKey,
               appBar: AppBar(
                 backgroundColor: Theme.of(context).scaffoldBackgroundColor,
                 elevation: 0,

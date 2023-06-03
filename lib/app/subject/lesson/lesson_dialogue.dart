@@ -1,22 +1,16 @@
 //lesson_dialog.dart
 
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 
-class LessonAlertDialog extends StatefulWidget {
-  const LessonAlertDialog({
-    Key? key,
-  }) : super(key: key);
+class LessonAlertDialog extends StatelessWidget {
+  const LessonAlertDialog({super.key});
 
-  @override
-  LessonAlertDialogState createState() => LessonAlertDialogState();
-}
-
-class LessonAlertDialogState extends State<LessonAlertDialog> {
   @override
   Widget build(BuildContext context) {
     return Dialog(
       elevation: 0,
-      backgroundColor: const Color(0xffffffff),
+      backgroundColor: Theme.of(context).scaffoldBackgroundColor,
       shape: RoundedRectangleBorder(
         borderRadius: BorderRadius.circular(15.0),
       ),
@@ -37,54 +31,65 @@ class LessonAlertDialogState extends State<LessonAlertDialog> {
           const Divider(
             height: 1,
           ),
-          Container(
-            width: MediaQuery.of(context).size.width,
-            height: 50,
-            decoration: const BoxDecoration(
-              borderRadius: BorderRadius.only(
-                bottomLeft: Radius.circular(15.0),
-                bottomRight: Radius.circular(15.0),
-              ),
-            ),
-            child: TextButton(
-              onPressed: () {},
-              child: Center(
-                child: Text(
-                  "Continue",
-                  style: TextStyle(
-                    fontSize: 18.0,
-                    color: Theme.of(context).primaryColor,
-                    fontWeight: FontWeight.bold,
+          Row(
+            children: [
+              Expanded(
+                child: Container(
+                  height: 50,
+                  decoration: const BoxDecoration(
+                    borderRadius: BorderRadius.only(
+                      bottomLeft: Radius.circular(15.0),
+                      bottomRight: Radius.circular(15.0),
+                    ),
+                  ),
+                  child: TextButton(
+                    onPressed: () {
+                      Navigator.of(context).pop();
+                    },
+                    child: Center(
+                      child: Text(
+                        "Try Again?",
+                        style: TextStyle(
+                          fontSize: 18.0,
+                          color: Theme.of(context).primaryColor,
+                          fontWeight: FontWeight.bold,
+                        ),
+                      ),
+                    ),
                   ),
                 ),
               ),
-            ),
-          ),
-          const Divider(
-            height: 1,
-          ),
-          Container(
-            width: MediaQuery.of(context).size.width,
-            height: 50,
-            decoration: const BoxDecoration(
-              borderRadius: BorderRadius.only(
-                bottomLeft: Radius.circular(15.0),
-                bottomRight: Radius.circular(15.0),
+              const VerticalDivider(
+                width: 2,
               ),
-            ),
-            child: TextButton(
-              onPressed: () {},
-              child: const Center(
-                child: Text(
-                  "Cancel",
-                  style: TextStyle(
-                    fontSize: 16.0,
-                    fontWeight: FontWeight.normal,
+              Expanded(
+                child: Container(
+                  height: 50,
+                  decoration: const BoxDecoration(
+                    borderRadius: BorderRadius.only(
+                      bottomLeft: Radius.circular(15.0),
+                      bottomRight: Radius.circular(15.0),
+                    ),
+                  ),
+                  child: TextButton(
+                    onPressed: () {
+                      Get.back();
+                    },
+                    child: const Center(
+                      child: Text(
+                        "Go Back",
+                        style: TextStyle(
+                          fontSize: 16.0,
+                          fontWeight: FontWeight.normal,
+                          color: Colors.redAccent,
+                        ),
+                      ),
+                    ),
                   ),
                 ),
               ),
-            ),
-          ),
+            ],
+          )
         ],
       ),
     );
