@@ -19,15 +19,20 @@ class LessonView extends StatefulWidget {
 class LessonViewState extends State<LessonView> {
   GlobalKey<ScaffoldState> lsnScaffoldKey = GlobalKey<ScaffoldState>();
 
-  displayDialog() {
+  displayDialog(anyFunction) {
     SchedulerBinding.instance.addPostFrameCallback((_) {
       BuildContext lsntxt = lsnScaffoldKey.currentContext ?? context;
       Future.delayed(const Duration(milliseconds: 10), () {
         showDialog(
           barrierColor: const Color.fromARGB(5, 71, 71, 71),
+          barrierDismissible: false,
           context: lsntxt,
           builder: (context) {
-            return const LessonAlertDialog();
+            return LessonAlertDialog(
+              title: 'Error 3022',
+              description: 'Could not get Lesson',
+              callBack: anyFunction,
+            );
           },
         );
       });
@@ -42,9 +47,10 @@ class LessonViewState extends State<LessonView> {
         return Consumer<LessonDisplayProvider>(
           builder: (context, provider, child) {
             var lesson = provider.lesson;
-            provider.getLesson();
-            if (provider.lessonState == LessonStates.fetchError) {
-              displayDialog();
+            //provider.getLesson();
+            LessonStates lsnState = provider.lessonState;
+            if (lsnState == LessonStates.fetchError) {
+              displayDialog(provider.tryAgain);
             }
             return Scaffold(
               key: lsnScaffoldKey,

@@ -1,11 +1,24 @@
-//lesson_dialog.dart
+//custom_alert_dialog.dart
 
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
-class LessonAlertDialog extends StatelessWidget {
-  const LessonAlertDialog({super.key});
+class LessonAlertDialog extends StatefulWidget {
+  const LessonAlertDialog({
+    Key? key,
+    required this.title,
+    required this.description,
+    required this.callBack,
+  }) : super(key: key);
 
+  final String title, description;
+  final dynamic callBack;
+
+  @override
+  LessonAlertDialogState createState() => LessonAlertDialogState();
+}
+
+class LessonAlertDialogState extends State<LessonAlertDialog> {
   @override
   Widget build(BuildContext context) {
     return Dialog(
@@ -44,7 +57,7 @@ class LessonAlertDialog extends StatelessWidget {
                   ),
                   child: TextButton(
                     onPressed: () {
-                      Navigator.of(context).pop();
+                      widget.callBack!();
                     },
                     child: Center(
                       child: Text(

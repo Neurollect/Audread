@@ -11,13 +11,13 @@ enum LessonStates {
 }
 
 class LessonDisplayProvider with ChangeNotifier {
-  LessonStates lessonState = LessonStates.loading;
+  LessonStates lessonState = LessonStates.fetchError;
 
   LessonModel lesson = LessonModel(
     lessonId: 'lessonId',
   );
 
-  Future getLesson() async {
+  void getLesson() async {
     try {
       final lessonBox = await Hive.openBox<LessonModel>('lessons');
       lesson = lessonBox.get('this_lesson')!;
@@ -26,6 +26,11 @@ class LessonDisplayProvider with ChangeNotifier {
       lessonState = LessonStates.fetchError;
       notifyListeners();
     }
+  }
+
+  void tryAgain() {
+    lessonState = LessonStates.loading;
+    notifyListeners();
   }
 
   stuctureLesson() {
