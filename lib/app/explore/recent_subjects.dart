@@ -4,7 +4,7 @@ import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:iconsax/iconsax.dart';
 
-import '../subject/subject.dart';
+import '../subject/grade/subject.dart';
 
 class RecentSubjects extends StatefulWidget {
   const RecentSubjects({Key? key}) : super(key: key);

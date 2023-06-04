@@ -53,6 +53,7 @@ dependencies:
   hive_flutter: ^1.1.0
   flashy_tab_bar2: ^0.0.6
   flutter_animate: ^4.1.1+1
+  card_loading: ^0.3.0
 
 dev_dependencies:
   build_runner: ^2.4.2
@@ -79,14 +80,15 @@ flutter:
   assets:
     - assets/images/
     - assets/images/stock/
+    - assets/images/error/
     - assets/images/home/
+    - assets/images/gif/err.gif
     - assets/images/avatars/
     - assets/images/subjects/
     - assets/images/subjects/biology/
     - assets/images/subjects/physics/
     - assets/images/subjects/chemistry/
     - lib/secrets.json
-    - lib/app/subject/topic/topic.json
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware

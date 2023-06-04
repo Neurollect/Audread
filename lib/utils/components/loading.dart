@@ -13,10 +13,10 @@ class Loading extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      color: Colors.white,
+      color: Theme.of(context).scaffoldBackgroundColor,
       padding: const EdgeInsets.all(30),
       alignment: Alignment.center,
-      child: LoadingAnimationWidget.threeArchedCircle(
+      child: LoadingAnimationWidget.staggeredDotsWave(
         color: utils.globalColors.primary,
         size: 50,
       ),

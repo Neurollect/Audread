@@ -1,24 +1,10 @@
 import 'package:audread/utils/utils.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'lesson_loader.dart';
 
 final utils = Utils();
 
-class LessonViewTestFunction {
-  loadLesson() async {
-    final Map<String, dynamic> less = await LessonLoader().load();
-    List lessList = [];
-    for (var i in less.values) {
-      i as Map<String, dynamic>;
-      for (var j in i.values) {
-        j as Map<String, dynamic>;
-        lessList.add(j);
-      }
-    }
-    return lessList;
-  }
-
+class LessonWidgetsStructurer {
   lessonPlacer(List lesson, context) {
     var lsnView = [];
     for (var lsn in lesson) {
