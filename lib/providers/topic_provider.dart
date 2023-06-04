@@ -1,3 +1,4 @@
+import 'package:audread/models/subtopic.dart';
 import 'package:audread/models/topic.dart';
 import 'package:flutter/material.dart';
 import 'package:hive/hive.dart';
@@ -15,7 +16,9 @@ class TopicDisplayProvider with ChangeNotifier {
     topicId: 'lessonId',
   );
 
-  getLesson() async {
+  bool isContinueFromPrevAvailable = false;
+
+  getTopic() async {
     try {
       final topicBox = await Hive.openBox<TopicModel>('topics');
       topic = topicBox.get('topic')!;
@@ -23,6 +26,18 @@ class TopicDisplayProvider with ChangeNotifier {
     } catch (e) {
       topicState = TopicViewState.fetchError;
       notifyListeners();
+    }
+  }
+
+  Future<List<SubtopicModel>> getSubtopics() async {
+    try {
+      final subtopicsBox = await Hive.openBox<List<SubtopicModel>>('subtopics');
+      var subtopics = subtopicsBox.get(topic.topicId)!;
+      return subtopics;
+    } catch (e) {
+      topicState = TopicViewState.fetchError;
+      notifyListeners();
+      return [];
     }
   }
 

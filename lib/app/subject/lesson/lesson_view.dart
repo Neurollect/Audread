@@ -24,12 +24,6 @@ class LessonViewState extends State<LessonView> {
     super.initState();
   }
 
-  loadLesson() {
-    WidgetsBinding.instance.addPostFrameCallback((_) {
-      context.read<LessonDisplayProvider>().getLesson();
-    });
-  }
-
   displayDialog(anyFunction) {
     SchedulerBinding.instance.addPostFrameCallback((_) {
       BuildContext lsntxt = lsnScaffoldKey.currentContext ?? context;
