@@ -11,13 +11,13 @@ enum LessonStates {
 }
 
 class LessonDisplayProvider with ChangeNotifier {
-  LessonStates lessonState = LessonStates.fetchError;
+  LessonStates lessonState = LessonStates.loading;
 
   LessonModel lesson = LessonModel(
     lessonId: 'lessonId',
   );
 
-  void getLesson() async {
+  getLesson() async {
     try {
       final lessonBox = await Hive.openBox<LessonModel>('lessons');
       lesson = lessonBox.get('this_lesson')!;

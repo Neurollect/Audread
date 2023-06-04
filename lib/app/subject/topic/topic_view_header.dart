@@ -4,7 +4,7 @@ import 'package:flutter/scheduler.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:iconsax/iconsax.dart';
 
-import '../../configs/themes/loading_theme.dart';
+import '../../../configs/themes/loading_theme.dart';
 
 var brightness =
     SchedulerBinding.instance.platformDispatcher.platformBrightness;

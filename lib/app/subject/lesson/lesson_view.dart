@@ -3,7 +3,7 @@ import 'package:flutter/scheduler.dart';
 import 'package:provider/provider.dart';
 
 import '../../../providers/lesson_provider.dart';
-import '../../widgets/topic_view_header.dart';
+import '../topic/topic_view_header.dart';
 import 'lesson_dialogue.dart';
 import 'lesson_loading.dart';
 import 'next_lesson.dart';
@@ -19,10 +19,21 @@ class LessonView extends StatefulWidget {
 class LessonViewState extends State<LessonView> {
   GlobalKey<ScaffoldState> lsnScaffoldKey = GlobalKey<ScaffoldState>();
 
+  @override
+  initState() {
+    super.initState();
+  }
+
+  loadLesson() {
+    WidgetsBinding.instance.addPostFrameCallback((_) {
+      context.read<LessonDisplayProvider>().getLesson();
+    });
+  }
+
   displayDialog(anyFunction) {
     SchedulerBinding.instance.addPostFrameCallback((_) {
       BuildContext lsntxt = lsnScaffoldKey.currentContext ?? context;
-      Future.delayed(const Duration(milliseconds: 10), () {
+      Future.delayed(const Duration(milliseconds: 1000), () {
         showDialog(
           barrierColor: const Color.fromARGB(5, 71, 71, 71),
           barrierDismissible: false,
@@ -44,10 +55,12 @@ class LessonViewState extends State<LessonView> {
     return ChangeNotifierProvider<LessonDisplayProvider>(
       create: (context) => LessonDisplayProvider(),
       builder: (context, _) {
+        WidgetsBinding.instance.addPostFrameCallback((_) {
+          context.read<LessonDisplayProvider>().getLesson();
+        });
         return Consumer<LessonDisplayProvider>(
           builder: (context, provider, child) {
             var lesson = provider.lesson;
-            //provider.getLesson();
             LessonStates lsnState = provider.lessonState;
             if (lsnState == LessonStates.fetchError) {
               displayDialog(provider.tryAgain);
