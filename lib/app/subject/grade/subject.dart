@@ -1,8 +1,17 @@
 import 'package:audread/app/subject/grade/grade_displays.dart';
-import 'package:audread/app/widgets/subject_view_header.dart';
+import 'package:audread/app/subject/grade/subject_loading.dart';
+import 'package:audread/app/widgets/heading.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_animate/flutter_animate.dart';
-import 'package:google_fonts/google_fonts.dart';
+import 'package:flutter/scheduler.dart';
+import '../../../models/subject.dart';
+import '../../../models/topic.dart';
+import '../topic/topic_dialog.dart';
+
+enum SjState {
+  loading,
+  loaded,
+  fetchError,
+}
 
 class SubjectView extends StatefulWidget {
   const SubjectView({Key? key}) : super(key: key);
@@ -12,15 +21,29 @@ class SubjectView extends StatefulWidget {
 }
 
 class SubjectViewState extends State<SubjectView> {
+  SubjectModel subject = SubjectModel(id: 'id');
+  List<TopicModel> topics = [];
+  SjState sjState = SjState.loading;
+
+  Future getSubject() async {}
+
+  Future getTopics() async {}
+
+  @override
+  void initState() {
+    super.initState();
+    getSubject();
+    getTopics();
+  }
+
   @override
   Widget build(BuildContext context) {
-    double height = MediaQuery.of(context).size.height / 5;
     return Scaffold(
       appBar: AppBar(
         backgroundColor: Theme.of(context).scaffoldBackgroundColor,
         elevation: 0,
-        leading: const SubjectViewHeader(
-          title: 'Physics',
+        leading: Heading(
+          title: subject.name,
         ),
         leadingWidth: double.infinity,
       ),
@@ -30,64 +53,39 @@ class SubjectViewState extends State<SubjectView> {
           padding: const EdgeInsets.all(30),
           child: Column(
             children: [
-              Container(
-                padding: const EdgeInsets.all(15),
-                width: double.infinity,
-                height: height,
-                decoration: BoxDecoration(
-                  color: Colors.blue.shade200,
-                  borderRadius: BorderRadius.circular(10),
-                  image: const DecorationImage(
-                    image: AssetImage('assets/images/home/wyltl.png'),
-                    alignment: Alignment.centerRight,
-                  ),
-                ),
-                child: Row(
-                  mainAxisAlignment: MainAxisAlignment.start,
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    Expanded(
-                      flex: 3,
-                      child: Column(
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: [
-                          Text(
-                            'Continue studying from where you left of?',
-                            style: Theme.of(context).textTheme.labelLarge,
-                          ),
-                          const SizedBox(height: 15),
-                          TextButton(
-                            onPressed: () {},
-                            style: TextButton.styleFrom(
-                              backgroundColor: Colors.white,
-                              foregroundColor: Colors.blue,
-                              padding: const EdgeInsets.all(6),
-                            ),
-                            child: Text(
-                              'Continue',
-                              style: GoogleFonts.urbanist(
-                                fontSize: 15,
-                                fontWeight: FontWeight.bold,
-                              ),
-                            ),
-                          )
-                        ],
-                      ),
-                    ),
-                    const Expanded(flex: 2, child: SizedBox()),
-                  ],
-                ),
-              ),
-              const SizedBox(height: 20),
-              const GradeDisplay(),
-            ].animate().fade(
-                  duration: const Duration(
-                    milliseconds: 1000,
-                  ),
-                ),
+              if (sjState == SjState.loading ||
+                  sjState == SjState.fetchError) ...[
+                SubjectLoading(),
+                if (sjState == SjState.fetchError) ...[
+                  displayDialog(getTopics())
+                ],
+              ] else ...[
+                const SizedBox(height: 20),
+                const GradeDisplay(),
+              ],
+            ],
           ),
         ),
       ),
     );
+  }
+
+  displayDialog(anyFunction) {
+    SchedulerBinding.instance.addPostFrameCallback((_) {
+      Future.delayed(const Duration(milliseconds: 1000), () {
+        showDialog(
+          barrierColor: const Color.fromARGB(5, 71, 71, 71),
+          barrierDismissible: false,
+          context: context,
+          builder: (context) {
+            return TopicDialog(
+              title: 'Error 3022',
+              description: 'Could not get Subject',
+              callBack: anyFunction,
+            );
+          },
+        );
+      });
+    });
   }
 }

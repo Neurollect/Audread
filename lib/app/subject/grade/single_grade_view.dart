@@ -1,5 +1,4 @@
-import 'package:audread/app/subject/topic/_topics.dart';
-import 'package:audread/app/widgets/subject_view_header.dart';
+import 'package:audread/app/widgets/heading.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_animate/flutter_animate.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -12,14 +11,14 @@ class SingleGradeView extends StatefulWidget {
 }
 
 class SingleGradeViewState extends State<SingleGradeView> {
-  final gradeTopics = GradeTopics().topics[0];
+  final gradeTopics = [];
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
         backgroundColor: Theme.of(context).scaffoldBackgroundColor,
         elevation: 0,
-        leading: const SubjectViewHeader(
+        leading: const Heading(
           title: 'Physics',
         ),
         leadingWidth: double.infinity,

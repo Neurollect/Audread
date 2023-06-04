@@ -21,7 +21,6 @@ class TopicProv extends StatefulWidget {
 class TopicProvState extends State<TopicProv> {
   displayDialog(anyFunction) {
     SchedulerBinding.instance.addPostFrameCallback((_) {
-      ;
       Future.delayed(const Duration(milliseconds: 1000), () {
         showDialog(
           barrierColor: const Color.fromARGB(5, 71, 71, 71),

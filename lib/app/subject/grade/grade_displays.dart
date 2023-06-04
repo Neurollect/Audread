@@ -1,4 +1,3 @@
-import 'package:audread/app/subject/topic/_topics.dart';
 import 'package:audread/app/subject/grade/single_grade_view.dart';
 import 'package:audread/app/subject/topic/topic_prov.dart';
 import 'package:flutter/material.dart';
@@ -14,7 +13,7 @@ class GradeDisplay extends StatefulWidget {
 }
 
 class GradeDisplayState extends State<GradeDisplay> {
-  final topics = GradeTopics().topics;
+  final topics = [];
   @override
   Widget build(BuildContext context) {
     return Column(
