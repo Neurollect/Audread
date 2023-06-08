@@ -1,4 +1,4 @@
-library authentication;
+library subject;
 
 abstract class SubjectRepository {
   Future getSubject(
