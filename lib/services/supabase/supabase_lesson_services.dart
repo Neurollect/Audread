@@ -28,4 +28,25 @@ class SupabaseLessonServices implements LessonRepository {
       return err;
     }
   }
+
+  @override 
+   Future getLessons(String subtopicId) async { 
+     final lessonBox = await Hive.openBox<LessonModel>('lesson_box'); 
+     try { 
+       final response = await _supabaseClient 
+           .from('lessons') 
+           .select('*') 
+           .eq('subtopic_id', id);
+  
+       final lessons = response.toList();
+       Future.wait([ 
+         lessonBox.put(lessons), 
+       ]); 
+  
+       return lessons; 
+     } catch (err) { 
+       //Other Errors 
+       return err; 
+     } 
+   }
 }
