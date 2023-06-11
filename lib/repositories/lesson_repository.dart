@@ -5,7 +5,7 @@ abstract class LessonRepository {
     String id,
   );
 
-  Future getLessons
+  Future getLessons(
     String subtopicId,
   );
 }
