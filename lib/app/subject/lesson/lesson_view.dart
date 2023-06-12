@@ -10,7 +10,9 @@ import 'next_lesson.dart';
 import 'lesson_structurer.dart';
 
 class LessonView extends StatefulWidget {
-  const LessonView({Key? key}) : super(key: key);
+  const LessonView({Key? key, required this.id}) : super(key: key);
+
+  final String id;
 
   @override
   LessonViewState createState() => LessonViewState();
@@ -50,7 +52,7 @@ class LessonViewState extends State<LessonView> {
       create: (context) => LessonDisplayProvider(),
       builder: (context, _) {
         WidgetsBinding.instance.addPostFrameCallback((_) {
-          context.read<LessonDisplayProvider>().getLesson();
+          context.read<LessonDisplayProvider>().getLesson(widget.id);
         });
         return Consumer<LessonDisplayProvider>(
           builder: (context, provider, child) {

@@ -17,10 +17,10 @@ class LessonDisplayProvider with ChangeNotifier {
     lessonId: 'lessonId',
   );
 
-  getLesson() async {
+  getLesson(String id) async {
     try {
       final lessonBox = await Hive.openBox<LessonModel>('lessons');
-      lesson = lessonBox.get('this_lesson')!;
+      lesson = lessonBox.get(id)!;
       notifyListeners();
     } catch (e) {
       lessonState = LessonStates.fetchError;

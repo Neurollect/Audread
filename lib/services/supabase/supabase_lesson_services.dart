@@ -19,7 +19,7 @@ class SupabaseLessonServices implements LessonRepository {
 
       final lesson = LessonModel.fromJson(response);
       Future.wait([
-        lessonBox.put('lesson', lesson),
+        lessonBox.put(id, lesson),
       ]);
 
       return lesson;
@@ -30,21 +30,28 @@ class SupabaseLessonServices implements LessonRepository {
   }
 
   @override
-  Future getLessons(String subtopicId) async {
-    final lessonBox = await Hive.openBox<LessonModel>('lesson_box');
+  Future getSubtopicLessons(String subtopicId) async {
     try {
       final response = await _supabaseClient
           .from('lessons')
           .select('*')
           .eq('subtopic_id', subtopicId);
 
-      final lessons = response.toList();
-      Future.wait([lessonBox.add(lessons)]);
+      final lessons = response.map((lesson) => LessonModel.fromJson(lesson));
+
+      Future.wait([addLessonsToLocalStorage(lessons)]);
 
       return lessons;
     } catch (err) {
       //Other Errors
       return err;
+    }
+  }
+
+  Future addLessonsToLocalStorage(lessons) async {
+    final lessonBox = await Hive.openBox<LessonModel>('lesson_box');
+    for (LessonModel lesson in lessons) {
+      await lessonBox.put(lesson.lessonId, lesson);
     }
   }
 }
