@@ -37,5 +37,13 @@ class HiveStorage {
       {'user_box', 'member_box'},
       path: directory.path,
     );
+
+    final subjectBox = await Hive.openBox<SubjectModel>('subject');
+    await subjectBox.put(
+        '20',
+        SubjectModel(
+          id: '20',
+          name: 'SubTest',
+        ));
   }
 }

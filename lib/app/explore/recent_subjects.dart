@@ -49,7 +49,9 @@ class RecentSubjectsState extends State<RecentSubjects> {
             ),
             TextButton(
               onPressed: () {
-                Get.to(const SubjectView());
+                Get.to(const SubjectView(
+                  subjectId: '20',
+                ));
               },
               style: TextButton.styleFrom(
                 backgroundColor: Colors.white,

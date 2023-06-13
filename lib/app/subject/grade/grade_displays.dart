@@ -1,21 +1,23 @@
 import 'package:audread/app/subject/grade/single_grade_view.dart';
 import 'package:audread/app/subject/topic/topic_prov.dart';
+import 'package:audread/models/topic.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:iconsax/iconsax.dart';
 
 class GradeDisplay extends StatefulWidget {
-  const GradeDisplay({Key? key}) : super(key: key);
+  const GradeDisplay({Key? key, required this.topics}) : super(key: key);
+  final List topics;
 
   @override
   GradeDisplayState createState() => GradeDisplayState();
 }
 
 class GradeDisplayState extends State<GradeDisplay> {
-  final topics = [];
   @override
   Widget build(BuildContext context) {
+    final topics = widget.topics;
     return Column(
       children: [
         for (var i in topics) ...[
@@ -23,7 +25,7 @@ class GradeDisplayState extends State<GradeDisplay> {
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
               Text(
-                i[0],
+                i.topicName.toString(),
                 style: Theme.of(context).textTheme.labelLarge,
               ),
               TextButton(

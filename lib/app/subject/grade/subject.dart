@@ -3,6 +3,7 @@ import 'package:audread/app/subject/grade/subject_loading.dart';
 import 'package:audread/app/widgets/heading.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/scheduler.dart';
+import 'package:hive_flutter/hive_flutter.dart';
 import '../../../models/subject.dart';
 import '../../../models/topic.dart';
 import '../topic/topic_dialog.dart';
@@ -14,7 +15,8 @@ enum SjState {
 }
 
 class SubjectView extends StatefulWidget {
-  const SubjectView({Key? key}) : super(key: key);
+  const SubjectView({Key? key, required this.subjectId}) : super(key: key);
+  final String subjectId;
 
   @override
   SubjectViewState createState() => SubjectViewState();
@@ -25,15 +27,34 @@ class SubjectViewState extends State<SubjectView> {
   List<TopicModel> topics = [];
   SjState sjState = SjState.loading;
 
-  Future getSubject() async {}
+  Future getSubject() async {
+    try {
+      final subjectBox = await Hive.openBox<SubjectModel>('subject');
+      setState(() {
+        subject = subjectBox.get(widget.subjectId)!;
+        sjState = SjState.loaded;
+      });
+    } catch (e) {
+      setState(() {
+        sjState = SjState.fetchError;
+      });
+    }
+  }
 
-  Future getTopics() async {}
+  Future getTopics() async {
+    try {
+      final topicBox = await Hive.openBox<TopicModel>('topics');
+    } catch (e) {
+      setState(() {
+        sjState = SjState.fetchError;
+      });
+    }
+  }
 
   @override
   void initState() {
     super.initState();
     getSubject();
-    getTopics();
   }
 
   @override
@@ -57,11 +78,13 @@ class SubjectViewState extends State<SubjectView> {
                   sjState == SjState.fetchError) ...[
                 SubjectLoading(),
                 if (sjState == SjState.fetchError) ...[
-                  displayDialog(getTopics())
+                  //displayDialog(getTopics())
                 ],
               ] else ...[
                 const SizedBox(height: 20),
-                const GradeDisplay(),
+                const GradeDisplay(
+                  topics: [],
+                ),
               ],
             ],
           ),
