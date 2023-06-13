@@ -1,23 +1,115 @@
 import 'package:audread/app/subject/grade/single_grade_view.dart';
 import 'package:audread/app/subject/topic/topic_prov.dart';
-import 'package:audread/models/topic.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:iconsax/iconsax.dart';
 
 class GradeDisplay extends StatefulWidget {
-  const GradeDisplay({Key? key, required this.topics}) : super(key: key);
-  final List topics;
+  const GradeDisplay({Key? key}) : super(key: key);
 
   @override
   GradeDisplayState createState() => GradeDisplayState();
 }
 
 class GradeDisplayState extends State<GradeDisplay> {
+  List topics = [
+    [
+      'Form One',
+      [
+        [
+          'Form 1',
+          'Equilibrium and Center Gravity',
+          Colors.redAccent.shade700,
+          'assets/images/subjects/physics/physics.png'
+        ],
+        [
+          'Form 1',
+          'Newtons Laws of Motion',
+          Colors.greenAccent.shade700,
+          'assets/images/subjects/physics/teoff.png'
+        ],
+        [
+          'Form 1',
+          'Fluid flow and Bernoulis',
+          Colors.pinkAccent.shade700,
+          'assets/images/subjects/physics/fluid_flow.png'
+        ],
+      ]
+    ],
+    [
+      'Form Two',
+      [
+        [
+          'Form 2',
+          'Structure and Bonding',
+          Colors.purpleAccent.shade700,
+          'assets/images/subjects/chemistry/teacher_stucture_bonding.png'
+        ],
+        [
+          'Form 2',
+          'Hydrogen and Water',
+          Colors.blueAccent.shade700,
+          'assets/images/subjects/chemistry/lab_equipments.png'
+        ],
+        [
+          'Form 3',
+          'Organic Chemistry II',
+          Colors.orangeAccent.shade700,
+          'assets/images/subjects/chemistry/organic_chemistry.png'
+        ],
+      ]
+    ],
+    [
+      'Form Three',
+      [
+        [
+          'Form 3',
+          'Structure and Bonding',
+          Colors.purpleAccent.shade700,
+          'assets/images/subjects/chemistry/teacher_stucture_bonding.png'
+        ],
+        [
+          'Form 3',
+          'Hydrogen and Water',
+          Colors.blueAccent.shade700,
+          'assets/images/subjects/chemistry/lab_equipments.png'
+        ],
+        [
+          'Form 3',
+          'Organic Chemistry II',
+          Colors.orangeAccent.shade700,
+          'assets/images/subjects/chemistry/organic_chemistry.png'
+        ],
+      ]
+    ],
+    [
+      'Form Four',
+      [
+        [
+          'Form 4',
+          'Structure and Bonding',
+          Colors.purpleAccent.shade700,
+          'assets/images/subjects/chemistry/teacher_stucture_bonding.png'
+        ],
+        [
+          'Form 4',
+          'Hydrogen and Water',
+          Colors.blueAccent.shade700,
+          'assets/images/subjects/chemistry/lab_equipments.png'
+        ],
+        [
+          'Form 4',
+          'Organic Chemistry II',
+          Colors.orangeAccent.shade700,
+          'assets/images/subjects/chemistry/organic_chemistry.png'
+        ],
+      ]
+    ],
+  ];
+
   @override
   Widget build(BuildContext context) {
-    final topics = widget.topics;
     return Column(
       children: [
         for (var i in topics) ...[
@@ -25,7 +117,7 @@ class GradeDisplayState extends State<GradeDisplay> {
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
               Text(
-                i.topicName.toString(),
+                i[0],
                 style: Theme.of(context).textTheme.labelLarge,
               ),
               TextButton(

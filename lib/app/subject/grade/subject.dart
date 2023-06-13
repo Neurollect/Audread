@@ -41,16 +41,6 @@ class SubjectViewState extends State<SubjectView> {
     }
   }
 
-  Future getTopics() async {
-    try {
-      final topicBox = await Hive.openBox<TopicModel>('topics');
-    } catch (e) {
-      setState(() {
-        sjState = SjState.fetchError;
-      });
-    }
-  }
-
   @override
   void initState() {
     super.initState();
@@ -71,7 +61,7 @@ class SubjectViewState extends State<SubjectView> {
       body: SafeArea(
         child: SingleChildScrollView(
           scrollDirection: Axis.vertical,
-          padding: const EdgeInsets.all(30),
+          padding: const EdgeInsets.only(left: 30, right: 30),
           child: Column(
             children: [
               if (sjState == SjState.loading ||
@@ -82,9 +72,7 @@ class SubjectViewState extends State<SubjectView> {
                 ],
               ] else ...[
                 const SizedBox(height: 20),
-                const GradeDisplay(
-                  topics: [],
-                ),
+                const GradeDisplay(),
               ],
             ],
           ),
