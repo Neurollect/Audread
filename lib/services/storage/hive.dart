@@ -43,7 +43,7 @@ class HiveStorage {
         '20',
         SubjectModel(
           id: '20',
-          name: 'SubTest',
+          name: 'Computer Studies',
         ));
   }
 }

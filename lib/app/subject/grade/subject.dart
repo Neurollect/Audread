@@ -1,8 +1,8 @@
 import 'package:audread/app/subject/grade/grade_displays.dart';
 import 'package:audread/app/subject/grade/subject_loading.dart';
-import 'package:audread/app/widgets/heading.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/scheduler.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'package:hive_flutter/hive_flutter.dart';
 import '../../../models/subject.dart';
 import '../../../models/topic.dart';
@@ -49,20 +49,15 @@ class SubjectViewState extends State<SubjectView> {
 
   @override
   Widget build(BuildContext context) {
+    double height = MediaQuery.of(context).size.height / 5;
     return Scaffold(
-      appBar: AppBar(
-        backgroundColor: Theme.of(context).scaffoldBackgroundColor,
-        elevation: 0,
-        leading: Heading(
-          title: subject.name,
-        ),
-        leadingWidth: double.infinity,
-      ),
       body: SafeArea(
         child: SingleChildScrollView(
           scrollDirection: Axis.vertical,
           padding: const EdgeInsets.only(left: 30, right: 30),
           child: Column(
+            mainAxisAlignment: MainAxisAlignment.start,
+            crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               if (sjState == SjState.loading ||
                   sjState == SjState.fetchError) ...[
@@ -71,6 +66,52 @@ class SubjectViewState extends State<SubjectView> {
                   //displayDialog(getTopics())
                 ],
               ] else ...[
+                const SizedBox(height: 10),
+                Text(
+                  subject.name.toString(),
+                  style: GoogleFonts.urbanist(
+                    fontSize: 30,
+                    fontWeight: FontWeight.bold,
+                    color: Theme.of(context).primaryColor,
+                  ),
+                ),
+                Text(
+                  'by Veritasium',
+                  style: GoogleFonts.urbanist(
+                    fontSize: 18,
+                    fontWeight: FontWeight.w600,
+                  ),
+                ),
+                const SizedBox(height: 20),
+                Container(
+                  padding: const EdgeInsets.all(15),
+                  width: double.infinity,
+                  height: height,
+                  decoration: BoxDecoration(
+                    color: Colors.blue.shade200,
+                    borderRadius: BorderRadius.circular(10),
+                    image: const DecorationImage(
+                      image: AssetImage('assets/images/stock/cs.png'),
+                    ),
+                  ),
+                ),
+                const SizedBox(height: 20),
+                Text(
+                  'About Subject',
+                  style: GoogleFonts.urbanist(
+                    fontSize: 24,
+                    fontWeight: FontWeight.w600,
+                  ),
+                ),
+                const SizedBox(height: 10),
+                Text(
+                  'We dont really know what Shakespeare looked like, Someone else wrote the Shakespeare play..',
+                  style: GoogleFonts.urbanist(
+                    fontSize: 18,
+                    fontWeight: FontWeight.w600,
+                  ),
+                  textAlign: TextAlign.justify,
+                ),
                 const SizedBox(height: 20),
                 const GradeDisplay(),
               ],
