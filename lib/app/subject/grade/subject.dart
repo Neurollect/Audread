@@ -1,4 +1,4 @@
-import 'package:audread/app/subject/grade/grade_list.dart';
+import 'package:audread/app/subject/grade/grade_displays.dart';
 import 'package:audread/app/subject/grade/subject_about.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/scheduler.dart';
@@ -76,14 +76,15 @@ class SubjectViewState extends State<SubjectView> {
                   genre: subject.genre?.name,
                 ),
                 const SizedBox(height: 20),
-                TextFormField(
-                  textAlign: TextAlign.center,
-                  decoration: utils.inputFields.searchButtonDecoration(context),
-                ),
-                const SizedBox(height: 20),
                 const SubjectAbout(),
                 const SizedBox(height: 20),
-                const GradeList()
+                TextFormField(
+                  textAlign: TextAlign.center,
+                  decoration:
+                      utils.inputFields.topicSearchButtonDecoration(context),
+                ),
+                const SizedBox(height: 20),
+                const GradeDisplay()
               ],
             ],
           ),
