@@ -147,7 +147,7 @@ class GradeDisplayState extends State<GradeDisplay> {
                   Container(
                     padding: const EdgeInsets.all(10),
                     width: MediaQuery.of(context).size.width * 0.6,
-                    height: 162,
+                    height: 152,
                     decoration: BoxDecoration(
                       color: a[2],
                       borderRadius: BorderRadius.circular(10),
@@ -177,7 +177,7 @@ class GradeDisplayState extends State<GradeDisplay> {
                                 maxLines: 2,
                                 overflow: TextOverflow.ellipsis,
                                 style: GoogleFonts.urbanist(
-                                  fontSize: 24,
+                                  fontSize: 20,
                                   fontWeight: FontWeight.bold,
                                   color: Colors.white,
                                 ),
@@ -185,7 +185,7 @@ class GradeDisplayState extends State<GradeDisplay> {
                             ),
                           ],
                         ),
-                        const SizedBox(height: 10),
+                        const Spacer(),
                         Row(
                           mainAxisAlignment: MainAxisAlignment.spaceBetween,
                           children: [
