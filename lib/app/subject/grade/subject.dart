@@ -1,10 +1,8 @@
+import 'package:audread/app/subject/grade/grade_list.dart';
 import 'package:audread/app/subject/grade/subject_about.dart';
-import 'package:audread/app/widgets/continue_last_lesson.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/scheduler.dart';
-import 'package:google_fonts/google_fonts.dart';
 import 'package:hive_flutter/hive_flutter.dart';
-import 'package:iconsax/iconsax.dart';
 
 import 'subject_header.dart';
 import 'subject_loading.dart';
@@ -83,66 +81,9 @@ class SubjectViewState extends State<SubjectView> {
                   decoration: utils.inputFields.searchButtonDecoration(context),
                 ),
                 const SizedBox(height: 20),
-                const ContinueLastLesson(),
-                const SizedBox(height: 20),
                 const SubjectAbout(),
                 const SizedBox(height: 20),
-                Container(
-                  padding: const EdgeInsets.all(10),
-                  decoration: BoxDecoration(
-                    color: Colors.blueGrey.shade50,
-                    borderRadius: BorderRadius.circular(10),
-                  ),
-                  child: Row(
-                    children: [
-                      const Image(
-                        width: 60,
-                        image: AssetImage(
-                          'assets/images/subjects/chemistry/teacher_stucture_bonding.png',
-                        ),
-                      ),
-                      const SizedBox(width: 15),
-                      Column(
-                        mainAxisAlignment: MainAxisAlignment.start,
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: [
-                          Text(
-                            'Form One',
-                            style: GoogleFonts.urbanist(
-                              fontSize: 24,
-                              fontWeight: FontWeight.w600,
-                            ),
-                          ),
-                          Text(
-                            'Study Form One Topics',
-                            style: GoogleFonts.urbanist(
-                              fontSize: 15,
-                            ),
-                          ),
-                        ],
-                      ),
-                      const Spacer(),
-                      Container(
-                        height: MediaQuery.of(context).size.width / 8 * 0.9,
-                        width: MediaQuery.of(context).size.width / 8 * 0.9,
-                        decoration: BoxDecoration(
-                          shape: BoxShape.circle,
-                          color: Colors.blue.shade50,
-                        ),
-                        child: TextButton(
-                          onPressed: () {},
-                          style: TextButton.styleFrom(
-                            padding: EdgeInsets.zero,
-                          ),
-                          child: Icon(
-                            Iconsax.play,
-                            color: Theme.of(context).primaryColor,
-                          ),
-                        ),
-                      ),
-                    ],
-                  ),
-                ),
+                const GradeList()
               ],
             ],
           ),

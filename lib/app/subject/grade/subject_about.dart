@@ -11,10 +11,24 @@ class SubjectAbout extends StatefulWidget {
 class SubjectAboutState extends State<SubjectAbout> {
   @override
   Widget build(BuildContext context) {
+    double height = MediaQuery.of(context).size.height / 5;
     return Column(
       mainAxisAlignment: MainAxisAlignment.start,
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
+        Container(
+          padding: const EdgeInsets.all(15),
+          width: double.infinity,
+          height: height,
+          decoration: BoxDecoration(
+            color: Colors.blue.shade200,
+            borderRadius: BorderRadius.circular(10),
+            image: const DecorationImage(
+              image: AssetImage('assets/images/home/wyltl.png'),
+            ),
+          ),
+        ),
+        const SizedBox(height: 20),
         Text(
           'About Subject',
           style: GoogleFonts.urbanist(
