@@ -1,3 +1,4 @@
+import 'package:audread/app/subject/grade/subject_header.dart';
 import 'package:audread/app/subject/topic/topic_loading.dart';
 import 'package:audread/providers/topic_provider.dart';
 import 'package:flutter/material.dart';
@@ -9,10 +10,10 @@ import '../../widgets/continue_last_lesson.dart';
 import 'next_topic.dart';
 import 'subtopics_list.dart';
 import 'topic_dialog.dart';
-import 'topic_view_header.dart';
 
 class TopicProv extends StatefulWidget {
-  const TopicProv({Key? key}) : super(key: key);
+  const TopicProv({Key? key, required this.topicId}) : super(key: key);
+  final String topicId;
 
   @override
   TopicProvState createState() => TopicProvState();
@@ -44,7 +45,7 @@ class TopicProvState extends State<TopicProv> {
       create: (context) => TopicDisplayProvider(),
       builder: (context, _) {
         WidgetsBinding.instance.addPostFrameCallback((_) {
-          context.read<TopicDisplayProvider>().getTopic();
+          context.read<TopicDisplayProvider>().getTopic(widget.topicId);
         });
         return Consumer<TopicDisplayProvider>(
           builder: (context, provider, child) {
@@ -54,15 +55,6 @@ class TopicProvState extends State<TopicProv> {
               displayDialog(provider.tryAgain);
             }
             return Scaffold(
-              appBar: AppBar(
-                backgroundColor: Theme.of(context).scaffoldBackgroundColor,
-                elevation: 0,
-                leading: TopicViewHeader(
-                  title: topic.topicName,
-                ),
-                leadingWidth: double.infinity,
-                toolbarHeight: 90,
-              ),
               body: SafeArea(
                 child: SingleChildScrollView(
                   scrollDirection: Axis.vertical,
@@ -75,12 +67,16 @@ class TopicProvState extends State<TopicProv> {
                         TopicLoading(),
                       ] else
                         ...[
+                          SubjectHeader(
+                            subject: topic.topicName,
+                            genre: 'genre',
+                          ),
                           if (provider.isContinueFromPrevAvailable) ...[
                             const ContinueLastLesson(),
                           ],
 
                           //Subtopics List
-                          SubtopicsList(getSubtopics: provider.getSubtopics),
+                          SubtopicsList(topicId: topic.topicId),
 
                           //Next Topic
                           const NextTopic(topic: 'Some Topic'),

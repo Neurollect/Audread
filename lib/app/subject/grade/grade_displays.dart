@@ -199,7 +199,9 @@ class GradeDisplayState extends State<GradeDisplay> {
                             ),
                             TextButton(
                               onPressed: () {
-                                Get.to(const TopicProv());
+                                Get.to(const TopicProv(
+                                  topicId: 'Bonding10',
+                                ));
                               },
                               style: TextButton.styleFrom(
                                 backgroundColor: Colors.white,

@@ -6,9 +6,9 @@ import 'package:iconsax/iconsax.dart';
 final utils = Utils();
 
 class SubtopicsList extends StatefulWidget {
-  const SubtopicsList({Key? key, required this.getSubtopics}) : super(key: key);
+  const SubtopicsList({Key? key, required this.topicId}) : super(key: key);
 
-  final dynamic getSubtopics;
+  final String topicId;
 
   @override
   SubtopicsListState createState() => SubtopicsListState();
@@ -19,60 +19,51 @@ class SubtopicsListState extends State<SubtopicsList> {
 
   List subtopics = [];
 
-  getSubtopics() async {
-    subtopics = await widget.getSubtopics;
-  }
+  getSubtopics() async {}
 
   @override
   void initState() {
     super.initState();
-    widget.getSubtopics;
+    getSubtopics();
   }
 
   @override
   Widget build(BuildContext context) {
     return Column(
       children: [
-        Row(
-          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-          crossAxisAlignment: CrossAxisAlignment.center,
-          children: [
-            Expanded(
-              child: Text(
-                'Subtopics',
-                style: GoogleFonts.urbanist(
-                  fontSize: 30,
-                  fontWeight: FontWeight.bold,
-                ),
-              ),
-            ),
-            if (_searching) ...[
+        const SizedBox(height: 20),
+        if (subtopics.isNotEmpty) ...[
+          Row(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            crossAxisAlignment: CrossAxisAlignment.center,
+            children: [
               Expanded(
-                child: TextFormField(
-                  textAlign: TextAlign.left,
-                  decoration:
-                      utils.inputFields.topicSearchButtonDecoration(context),
+                child: Text(
+                  'Subtopics',
                   style: GoogleFonts.urbanist(
-                    fontSize: 21,
+                    fontSize: 30,
+                    fontWeight: FontWeight.bold,
                   ),
                 ),
-              )
-            ] else ...[
-              IconButton(
-                onPressed: () {
-                  setState(() {
-                    _searching = true;
-                  });
-                },
-                icon: const Icon(
-                  Iconsax.search_normal_1,
-                  weight: 20,
+              ),
+              if (_searching) ...[
+                Expanded(
+                  child: TextFormField(
+                    textAlign: TextAlign.left,
+                    decoration: utils.inputFields.topicSearchButtonDecoration(
+                      context,
+                    ),
+                    style: GoogleFonts.urbanist(fontSize: 21),
+                  ),
+                )
+              ] else ...[
+                IconButton(
+                  onPressed: () => setState(() => _searching = true),
+                  icon: const Icon(Iconsax.search_normal_1, weight: 20),
                 ),
-              )
+              ],
             ],
-          ],
-        ),
-        if (subtopics.isNotEmpty) ...[
+          ),
           for (var st in subtopics) ...[
             Container(
               padding: const EdgeInsets.all(15),

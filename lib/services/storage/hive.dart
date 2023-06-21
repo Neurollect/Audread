@@ -40,10 +40,26 @@ class HiveStorage {
 
     final subjectBox = await Hive.openBox<SubjectModel>('subject');
     await subjectBox.put(
-        '20',
-        SubjectModel(
-          id: '20',
-          name: 'Computer Studies',
-        ));
+      '20',
+      SubjectModel(
+        id: '20',
+        name: 'Computer Studies',
+      ),
+    );
+
+    final topicBox = await Hive.openBox<TopicModel>('topics');
+    await topicBox.put(
+      'Bonding10',
+      TopicModel(topicId: 'Bonding10', topicName: 'Structure and Bonding'),
+    );
+
+    final subtopicBox = await Hive.openBox<SubtopicModel>('subtopics');
+    await subtopicBox.put(
+      'Bonding10',
+      SubtopicModel(
+        subtopicId: 'period10',
+        subtopicName: 'The Periodic Table',
+      ),
+    );
   }
 }
