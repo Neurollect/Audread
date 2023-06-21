@@ -32,24 +32,68 @@ class SubjectHeaderState extends State<SubjectHeader> {
       mainAxisAlignment: MainAxisAlignment.start,
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        Container(
-          height: side * 0.9,
-          width: side * 0.9,
-          decoration: BoxDecoration(
-            color: Colors.blue.shade50,
-            borderRadius: BorderRadius.circular(10),
-          ),
-          child: TextButton(
-            onPressed: () => Get.back(),
-            style: TextButton.styleFrom(
-              padding: EdgeInsets.zero,
+        Row(
+          children: [
+            Container(
+              height: side * 0.8,
+              width: side * 0.8,
+              decoration: BoxDecoration(
+                color: Colors.blue.shade50,
+                borderRadius: BorderRadius.circular(10),
+              ),
+              child: TextButton(
+                onPressed: () => Get.back(),
+                style: TextButton.styleFrom(
+                  padding: EdgeInsets.zero,
+                ),
+                child: Icon(
+                  Icons.arrow_back,
+                  size: side * 0.6,
+                  color: Theme.of(context).primaryColor,
+                ),
+              ),
             ),
-            child: Icon(
-              Icons.arrow_back,
-              size: side * 0.7,
-              color: Theme.of(context).primaryColor,
+            const Spacer(),
+            Container(
+              height: side * 0.8,
+              width: side * 0.8,
+              decoration: BoxDecoration(
+                color: Colors.blue.shade50,
+                borderRadius: BorderRadius.circular(10),
+              ),
+              child: TextButton(
+                onPressed: () => Get.back(),
+                style: TextButton.styleFrom(
+                  padding: EdgeInsets.zero,
+                ),
+                child: Icon(
+                  Icons.bookmark_border_outlined,
+                  size: side * 0.6,
+                  color: Theme.of(context).primaryColor,
+                ),
+              ),
             ),
-          ),
+            const SizedBox(width: 10),
+            Container(
+              height: side * 0.8,
+              width: side * 0.8,
+              decoration: BoxDecoration(
+                color: Colors.blue.shade50,
+                borderRadius: BorderRadius.circular(10),
+              ),
+              child: TextButton(
+                onPressed: () {},
+                style: TextButton.styleFrom(
+                  padding: EdgeInsets.zero,
+                ),
+                child: Icon(
+                  Icons.more_vert_outlined,
+                  size: side * 0.6,
+                  color: Theme.of(context).primaryColor,
+                ),
+              ),
+            ),
+          ],
         ),
         const SizedBox(height: 25),
         Row(
