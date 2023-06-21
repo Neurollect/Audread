@@ -1,7 +1,10 @@
-import 'package:audread/app/widgets/heading.dart';
+import 'package:audread/app/subject/grade/subject_header.dart';
+import 'package:audread/utils/utils.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_animate/flutter_animate.dart';
 import 'package:google_fonts/google_fonts.dart';
+
+final utils = Utils();
 
 class SingleGradeView extends StatefulWidget {
   const SingleGradeView({Key? key}) : super(key: key);
@@ -11,18 +14,32 @@ class SingleGradeView extends StatefulWidget {
 }
 
 class SingleGradeViewState extends State<SingleGradeView> {
-  final gradeTopics = [];
+  final gradeTopics = [
+    [],
+    [
+      [
+        'Form 3',
+        'Structure and Bonding',
+        Colors.purpleAccent.shade700,
+        'assets/images/subjects/chemistry/teacher_stucture_bonding.png'
+      ],
+      [
+        'Form 3',
+        'Hydrogen and Water',
+        Colors.blueAccent.shade700,
+        'assets/images/subjects/chemistry/lab_equipments.png'
+      ],
+      [
+        'Form 3',
+        'Organic Chemistry II',
+        Colors.orangeAccent.shade700,
+        'assets/images/subjects/chemistry/organic_chemistry.png'
+      ],
+    ]
+  ];
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        backgroundColor: Theme.of(context).scaffoldBackgroundColor,
-        elevation: 0,
-        leading: const Heading(
-          title: 'Physics',
-        ),
-        leadingWidth: double.infinity,
-      ),
       body: SafeArea(
         child: SingleChildScrollView(
           scrollDirection: Axis.vertical,
@@ -31,12 +48,14 @@ class SingleGradeViewState extends State<SingleGradeView> {
             mainAxisAlignment: MainAxisAlignment.start,
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              Text(
-                'Form One Topics',
-                textAlign: TextAlign.left,
-                style: Theme.of(context).textTheme.labelLarge,
+              const SubjectHeader(subject: 'Chemistry Form One', genre: ''),
+              const SizedBox(height: 20),
+              TextFormField(
+                textAlign: TextAlign.center,
+                decoration:
+                    utils.inputFields.topicSearchButtonDecoration(context),
               ),
-              const SizedBox(height: 10),
+              const SizedBox(height: 20),
               for (var a in gradeTopics[1]) ...[
                 Container(
                   padding: const EdgeInsets.all(15),
@@ -63,6 +82,10 @@ class SingleGradeViewState extends State<SingleGradeView> {
                               a[1],
                               style: Theme.of(context).textTheme.labelLarge,
                             ),
+                            Text(
+                              'We dont really know what Shakespeare looked like, Someone else wrote the Shakespeare play..',
+                              style: Theme.of(context).textTheme.bodyMedium,
+                            ),
                             const SizedBox(height: 15),
                             TextButton(
                               onPressed: () {},
@@ -82,7 +105,7 @@ class SingleGradeViewState extends State<SingleGradeView> {
                           ],
                         ),
                       ),
-                      const Expanded(flex: 2, child: SizedBox()),
+                      const Expanded(flex: 1, child: SizedBox()),
                     ],
                   ),
                 ),
