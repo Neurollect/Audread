@@ -1,4 +1,8 @@
+import 'package:audread/app/home.dart';
+import 'package:audread/app/settings/profile_settings.dart';
+import 'package:audread/app/settings/settings.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:iconsax/iconsax.dart';
 
@@ -21,6 +25,43 @@ class NavDrawer extends StatelessWidget {
       ['Settings', Iconsax.setting_3],
       ['BookMarks', Iconsax.bookmark_2],
     ];
+
+    navigateToPage(String page) {
+      switch (page) {
+        case 'Audread- Home':
+          Navigator.pop(context);
+          Get.to(const HomePage());
+          break;
+        case 'AudLabs':
+          Navigator.pop(context);
+          break;
+        case 'AudCoterie- Chat':
+          Navigator.pop(context);
+          break;
+        case 'AudTube':
+          Navigator.pop(context);
+          break;
+        case 'Help Center':
+          Navigator.pop(context);
+          break;
+        case 'Profile':
+          Navigator.pop(context);
+          Get.to(const ProfileSettings());
+          break;
+        case 'Notifications':
+          Navigator.pop(context);
+          break;
+        case 'Settings':
+          Navigator.pop(context);
+          Get.to(const SettingsScreen());
+          break;
+        case 'BookMarks':
+          Navigator.pop(context);
+          break;
+        default:
+      }
+    }
+
     return Drawer(
       width: MediaQuery.of(context).size.width * 1,
       child: Container(
@@ -44,7 +85,7 @@ class NavDrawer extends StatelessWidget {
               children: [
                 for (var i in menuItems) ...[
                   TextButton(
-                    onPressed: () {},
+                    onPressed: navigateToPage(i[0]),
                     style: TextButton.styleFrom(
                       padding: EdgeInsets.zero,
                     ),
@@ -90,7 +131,7 @@ class NavDrawer extends StatelessWidget {
               children: [
                 for (var i in lowerItems) ...[
                   TextButton(
-                    onPressed: () {},
+                    onPressed: navigateToPage(i[0]),
                     style: TextButton.styleFrom(
                       padding: EdgeInsets.zero,
                     ),
