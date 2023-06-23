@@ -54,6 +54,7 @@ dependencies:
   flashy_tab_bar2: ^0.0.6
   flutter_animate: ^4.1.1+1
   card_loading: ^0.3.0
+  video_player: ^2.6.1
 
 dev_dependencies:
   build_runner: ^2.4.2
