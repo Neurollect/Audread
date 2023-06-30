@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:loading_animation_widget/loading_animation_widget.dart';
 
 class ErrorScreen extends StatefulWidget {
   const ErrorScreen({Key? key}) : super(key: key);
@@ -24,6 +25,11 @@ class ErrorScreenState extends State<ErrorScreen> {
               fontWeight: FontWeight.w500,
             ),
           ),
+          const SizedBox(height: 10),
+          LoadingAnimationWidget.twoRotatingArc(
+            color: Theme.of(context).primaryColor,
+            size: 8,
+          )
         ],
       ),
     );
