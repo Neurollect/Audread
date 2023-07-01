@@ -10,6 +10,22 @@ class ErrorScreen extends StatefulWidget {
 }
 
 class ErrorScreenState extends State<ErrorScreen> {
+  bool isLoading = true;
+  checkConnectionStatus() async {
+    await Future.delayed(
+      const Duration(milliseconds: 3000),
+    );
+    setState(() {
+      isLoading = !isLoading;
+    });
+  }
+
+  @override
+  void initState() {
+    checkConnectionStatus();
+    super.initState();
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -26,10 +42,33 @@ class ErrorScreenState extends State<ErrorScreen> {
             ),
           ),
           const SizedBox(height: 10),
-          LoadingAnimationWidget.twoRotatingArc(
-            color: Theme.of(context).primaryColor,
-            size: 8,
-          )
+          if (isLoading == true) ...[
+            LoadingAnimationWidget.twoRotatingArc(
+              color: Theme.of(context).primaryColor,
+              size: 8,
+            ),
+          ] else ...[
+            Row(
+              mainAxisAlignment: MainAxisAlignment.center,
+              crossAxisAlignment: CrossAxisAlignment.center,
+              children: [
+                Expanded(
+                  child: ElevatedButton(
+                    onPressed: () {},
+                    style: Theme.of(context).elevatedButtonTheme.style,
+                    child: Text(
+                      'Try Again',
+                      textAlign: TextAlign.center,
+                      style: GoogleFonts.roboto(
+                        fontWeight: FontWeight.bold,
+                        fontSize: 20,
+                      ),
+                    ),
+                  ),
+                ),
+              ],
+            ),
+          ],
         ],
       ),
     );
