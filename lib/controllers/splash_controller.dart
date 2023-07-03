@@ -1,4 +1,5 @@
 import 'package:audread/app/auth/welcome/welcome.dart';
+import 'package:audread/app/errors/error_screen.dart';
 import 'package:audread/app/home.dart';
 import 'package:audread/models/user.dart';
 import 'package:get/get.dart';
@@ -30,7 +31,7 @@ class SplashScreenController extends GetxController {
         Get.to(const WelcomeScreen());
       }
     } catch (e) {
-      Get.to(const WelcomeScreen());
+      Get.to(const ErrorScreen());
     }
   }
 

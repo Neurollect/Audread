@@ -18,10 +18,11 @@ class TopicDisplayProvider with ChangeNotifier {
 
   bool isContinueFromPrevAvailable = false;
 
-  getTopic() async {
+  getTopic(String topicId) async {
     try {
       final topicBox = await Hive.openBox<TopicModel>('topics');
-      topic = topicBox.get('topic')!;
+      topic = topicBox.get(topicId)!;
+      topicState = TopicViewState.loaded;
       notifyListeners();
     } catch (e) {
       topicState = TopicViewState.fetchError;

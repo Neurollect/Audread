@@ -21,6 +21,7 @@ class NavDrawer extends StatelessWidget {
       ['Settings', Iconsax.setting_3],
       ['BookMarks', Iconsax.bookmark_2],
     ];
+
     return Drawer(
       width: MediaQuery.of(context).size.width * 1,
       child: Container(
@@ -44,7 +45,9 @@ class NavDrawer extends StatelessWidget {
               children: [
                 for (var i in menuItems) ...[
                   TextButton(
-                    onPressed: () {},
+                    onPressed: () {
+                      Navigator.pop(context);
+                    },
                     style: TextButton.styleFrom(
                       padding: EdgeInsets.zero,
                     ),

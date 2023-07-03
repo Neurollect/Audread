@@ -1,11 +1,17 @@
 import 'package:audread/app/subject/grade/grade_displays.dart';
-import 'package:audread/app/subject/grade/subject_loading.dart';
-import 'package:audread/app/widgets/heading.dart';
+import 'package:audread/app/subject/grade/subject_about.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/scheduler.dart';
+import 'package:hive_flutter/hive_flutter.dart';
+
+import 'subject_header.dart';
+import 'subject_loading.dart';
+import '../topic/topic_dialog.dart';
 import '../../../models/subject.dart';
 import '../../../models/topic.dart';
-import '../topic/topic_dialog.dart';
+import '../../../utils/utils.dart';
+
+final utils = Utils();
 
 enum SjState {
   loading,
@@ -14,7 +20,8 @@ enum SjState {
 }
 
 class SubjectView extends StatefulWidget {
-  const SubjectView({Key? key}) : super(key: key);
+  const SubjectView({Key? key, required this.subjectId}) : super(key: key);
+  final String subjectId;
 
   @override
   SubjectViewState createState() => SubjectViewState();
@@ -25,43 +32,59 @@ class SubjectViewState extends State<SubjectView> {
   List<TopicModel> topics = [];
   SjState sjState = SjState.loading;
 
-  Future getSubject() async {}
-
-  Future getTopics() async {}
+  Future getSubject() async {
+    try {
+      final subjectBox = await Hive.openBox<SubjectModel>('subject');
+      setState(() {
+        subject = subjectBox.get(widget.subjectId)!;
+        sjState = SjState.loaded;
+      });
+    } catch (e) {
+      setState(() {
+        sjState = SjState.fetchError;
+      });
+    }
+  }
 
   @override
   void initState() {
     super.initState();
     getSubject();
-    getTopics();
   }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        backgroundColor: Theme.of(context).scaffoldBackgroundColor,
-        elevation: 0,
-        leading: Heading(
-          title: subject.name,
-        ),
-        leadingWidth: double.infinity,
-      ),
       body: SafeArea(
         child: SingleChildScrollView(
           scrollDirection: Axis.vertical,
-          padding: const EdgeInsets.all(30),
+          padding: const EdgeInsets.only(left: 30, right: 30),
           child: Column(
+            mainAxisAlignment: MainAxisAlignment.start,
+            crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               if (sjState == SjState.loading ||
                   sjState == SjState.fetchError) ...[
                 SubjectLoading(),
                 if (sjState == SjState.fetchError) ...[
-                  displayDialog(getTopics())
+                  //displayDialog(getTopics())
                 ],
               ] else ...[
+                const SizedBox(height: 10),
+                SubjectHeader(
+                  subject: subject.name,
+                  genre: subject.genre?.name,
+                ),
                 const SizedBox(height: 20),
-                const GradeDisplay(),
+                const SubjectAbout(),
+                const SizedBox(height: 20),
+                TextFormField(
+                  textAlign: TextAlign.center,
+                  decoration:
+                      utils.inputFields.topicSearchButtonDecoration(context),
+                ),
+                const SizedBox(height: 20),
+                const GradeDisplay()
               ],
             ],
           ),

@@ -11,6 +11,7 @@ class NextTopic extends StatelessWidget {
       onPressed: () {},
       style: TextButton.styleFrom(
         foregroundColor: Colors.black,
+        padding: const EdgeInsets.only(left: 0, right: 5, top: 5, bottom: 5),
       ),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
