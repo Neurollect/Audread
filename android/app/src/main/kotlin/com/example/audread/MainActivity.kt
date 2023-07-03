@@ -1,4 +1,4 @@
-package com.relan.audread
+package com.neurolect.audread
 
 import io.flutter.embedding.android.FlutterActivity
 
