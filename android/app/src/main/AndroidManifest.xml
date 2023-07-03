@@ -1,5 +1,5 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.relan.audread">
+    package="com.neurolect.audread">
    <application
         android:label="audread"
         android:name="${applicationName}"
