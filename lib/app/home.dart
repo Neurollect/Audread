@@ -2,6 +2,7 @@ import 'package:audread/app/home/for_you_section.dart';
 import 'package:audread/app/widgets/bottom_nav.dart';
 import 'package:audread/app/widgets/header.dart';
 import 'package:audread/app/widgets/navigation_drawer.dart';
+import 'package:audread/mixins/loading_mixin.dart';
 import 'package:audread/utils/utils.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_animate/flutter_animate.dart';
@@ -16,7 +17,7 @@ class HomePage extends StatefulWidget {
   HomePageState createState() => HomePageState();
 }
 
-class HomePageState extends State<HomePage> {
+class HomePageState extends State<HomePage> with LoadingMixin {
   GlobalKey<ScaffoldState> homeScaffoldKey = GlobalKey<ScaffoldState>();
 
   @override
@@ -26,6 +27,7 @@ class HomePageState extends State<HomePage> {
 
   @override
   Widget build(BuildContext context) {
+    isLoading(false, context);
     double height = MediaQuery.of(context).size.height / 5;
     return Scaffold(
       key: homeScaffoldKey,
