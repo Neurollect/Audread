@@ -1,5 +1,5 @@
 import 'package:audread/app/subject/grade/single_grade_view.dart';
-import 'package:audread/app/subject/topic/topic_prov.dart';
+import 'package:audread/app/widgets/topic_container.dart';
 import 'package:audread/configs/themes/loading_theme.dart';
 import 'package:audread/models/grade.dart';
 import 'package:audread/services/storage/topic_storage.dart';
@@ -7,8 +7,6 @@ import 'package:card_loading/card_loading.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/scheduler.dart';
 import 'package:get/get.dart';
-import 'package:google_fonts/google_fonts.dart';
-import 'package:iconsax/iconsax.dart';
 
 final loadingTheme = CardLoadingAudTheme();
 var brightness =
@@ -24,10 +22,10 @@ class GradeDisplay extends StatefulWidget {
 
 class GradeDisplayState extends State<GradeDisplay> {
   List grades = [
-    GradeModel(gradeId: '1', gradeName: 'form_one'),
-    GradeModel(gradeId: '2', gradeName: 'form_two'),
-    GradeModel(gradeId: '3', gradeName: 'form_three'),
-    GradeModel(gradeId: '4', gradeName: 'form_four'),
+    GradeModel(gradeId: '1', gradeName: 'Form One'),
+    GradeModel(gradeId: '2', gradeName: 'Form Two'),
+    GradeModel(gradeId: '3', gradeName: 'Form Three'),
+    GradeModel(gradeId: '4', gradeName: 'Form Four'),
   ];
 
   final cardLoadingTheme = !isDarkMode
@@ -84,79 +82,7 @@ class GradeDisplayState extends State<GradeDisplay> {
                   return Row(
                     children: [
                       for (var topic in topics) ...[
-                        Container(
-                          padding: const EdgeInsets.all(10),
-                          width: MediaQuery.of(context).size.width * 0.6,
-                          height: 152,
-                          decoration: BoxDecoration(
-                            color: Colors.orangeAccent.shade700,
-                            borderRadius: BorderRadius.circular(10),
-                            image: const DecorationImage(
-                              image: AssetImage(
-                                  'assets/images/subjects/physics/physics.png'),
-                              alignment: Alignment.centerRight,
-                              opacity: 0.4,
-                            ),
-                          ),
-                          child: Column(
-                            crossAxisAlignment: CrossAxisAlignment.start,
-                            children: [
-                              Text(
-                                grade.gradeName.toString(),
-                                style: GoogleFonts.urbanist(
-                                  fontSize: 14,
-                                  color: Colors.white,
-                                  fontWeight: FontWeight.bold,
-                                ),
-                              ),
-                              const SizedBox(height: 8),
-                              Row(
-                                children: [
-                                  Expanded(
-                                    child: Text(
-                                      topic.topicName,
-                                      maxLines: 2,
-                                      overflow: TextOverflow.ellipsis,
-                                      style: GoogleFonts.urbanist(
-                                        fontSize: 20,
-                                        fontWeight: FontWeight.bold,
-                                        color: Colors.white,
-                                      ),
-                                    ),
-                                  ),
-                                ],
-                              ),
-                              const Spacer(),
-                              Row(
-                                mainAxisAlignment:
-                                    MainAxisAlignment.spaceBetween,
-                                children: [
-                                  Text(
-                                    '20 Min',
-                                    style: GoogleFonts.urbanist(
-                                      fontSize: 14,
-                                      color: Colors.white,
-                                      fontWeight: FontWeight.bold,
-                                    ),
-                                  ),
-                                  TextButton(
-                                    onPressed: () {
-                                      Get.to(const TopicProv(
-                                        topicId: 'Bonding10',
-                                      ));
-                                    },
-                                    style: TextButton.styleFrom(
-                                      backgroundColor: Colors.white,
-                                      foregroundColor: Colors.black,
-                                      shape: const CircleBorder(),
-                                    ),
-                                    child: const Icon(Iconsax.play),
-                                  ),
-                                ],
-                              ),
-                            ],
-                          ),
-                        ),
+                        TopicContainer(grade: grade, topic: topic),
                         const SizedBox(width: 20),
                       ],
                     ],
