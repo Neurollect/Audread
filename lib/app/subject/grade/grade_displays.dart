@@ -71,7 +71,6 @@ class GradeDisplayState extends State<GradeDisplay> {
               ),
             ],
           ),
-          const SizedBox(height: 10),
           SingleChildScrollView(
             scrollDirection: Axis.horizontal,
             child: FutureBuilder(
@@ -80,11 +79,23 @@ class GradeDisplayState extends State<GradeDisplay> {
                 if (snapshot.hasData) {
                   final topics = snapshot.data;
                   return Row(
+                    mainAxisAlignment: MainAxisAlignment.start,
+                    crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
-                      for (var topic in topics) ...[
+                      for (var topic in topics!) ...[
+                        const SizedBox(height: 10),
                         TopicContainer(grade: grade, topic: topic),
                         const SizedBox(width: 20),
                       ],
+                      if (topics.isEmpty) ...[
+                        const SizedBox(height: 5),
+                        const SizedBox(
+                          width: double.maxFinite,
+                          child: Text(
+                            '${grade.gradeName.toString().toUpperCase()} TOPICS NOT FOUND',
+                          ),
+                        )
+                      ]
                     ],
                   );
                 } else {
@@ -94,7 +105,9 @@ class GradeDisplayState extends State<GradeDisplay> {
                     children: [
                       for (var i = 1; i < 4; i++) ...[
                         loadingCard(
-                            162, MediaQuery.of(context).size.width * 0.6),
+                          162,
+                          MediaQuery.of(context).size.width * 0.6,
+                        ),
                         const SizedBox(width: 10),
                       ],
                     ],

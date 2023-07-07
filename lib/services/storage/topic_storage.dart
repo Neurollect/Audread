@@ -18,7 +18,7 @@ class TopicStorage implements TopicRepository {
   }
 
   @override
-  Future getTopicsByGrade(String gradeId) async {
+  Future<List<TopicModel>> getTopicsByGrade(String gradeId) async {
     final topicBox = await Hive.openBox<TopicModel>('topic_box');
     List<TopicModel> topics = [];
 
