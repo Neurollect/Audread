@@ -2,6 +2,7 @@ import 'package:audread/app/subject/grade/single_grade_view.dart';
 import 'package:audread/app/widgets/topic_container.dart';
 import 'package:audread/configs/themes/loading_theme.dart';
 import 'package:audread/models/grade.dart';
+import 'package:audread/models/subject.dart';
 import 'package:audread/services/storage/topic_storage.dart';
 import 'package:card_loading/card_loading.dart';
 import 'package:flutter/gestures.dart';
@@ -15,7 +16,8 @@ var brightness =
 bool isDarkMode = brightness == Brightness.dark;
 
 class GradeDisplay extends StatefulWidget {
-  const GradeDisplay({Key? key}) : super(key: key);
+  const GradeDisplay({Key? key, required this.subject}) : super(key: key);
+  final SubjectModel subject;
 
   @override
   GradeDisplayState createState() => GradeDisplayState();
@@ -58,7 +60,10 @@ class GradeDisplayState extends State<GradeDisplay> {
               ),
               TextButton(
                 onPressed: () {
-                  Get.to(const SingleGradeView());
+                  Get.to(SingleGradeView(
+                    grade: grade,
+                    subject: widget.subject,
+                  ));
                 },
                 style: TextButton.styleFrom(
                   backgroundColor: Colors.white,
