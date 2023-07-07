@@ -84,7 +84,7 @@ class SubjectViewState extends State<SubjectView> {
                       utils.inputFields.topicSearchButtonDecoration(context),
                 ),
                 const SizedBox(height: 20),
-                const GradeDisplay()
+                GradeDisplay(subject: subject)
               ],
             ],
           ),

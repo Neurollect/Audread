@@ -1,4 +1,5 @@
 // ignore_for_file: depend_on_referenced_packages
+import 'package:audread/services/storage/demos/topic_data.dart';
 import 'package:path_provider/path_provider.dart';
 import 'package:hive_flutter/hive_flutter.dart';
 
@@ -47,11 +48,10 @@ class HiveStorage {
       ),
     );
 
-    final topicBox = await Hive.openBox<TopicModel>('topics');
-    await topicBox.put(
-      'Bonding10',
-      TopicModel(topicId: 'Bonding10', topicName: 'Structure and Bonding'),
-    );
+    final topicBox = await Hive.openBox<TopicModel>('topic_box');
+    for (var topic in TopicsDemoData().randomTopics) {
+      await topicBox.put(topic.topicId, topic);
+    }
 
     final subtopicBox = await Hive.openBox<SubtopicModel>('subtopics');
     await subtopicBox.put(
