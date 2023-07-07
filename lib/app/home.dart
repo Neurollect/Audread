@@ -109,7 +109,6 @@ class HomePageState extends State<HomePage> with LoadingMixin {
               Container(
                 padding: const EdgeInsets.all(15),
                 width: double.infinity,
-                height: height * 1.1,
                 decoration: BoxDecoration(
                   color: Colors.red.shade200,
                   borderRadius: BorderRadius.circular(10),
