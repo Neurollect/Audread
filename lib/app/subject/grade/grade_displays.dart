@@ -4,6 +4,7 @@ import 'package:audread/configs/themes/loading_theme.dart';
 import 'package:audread/models/grade.dart';
 import 'package:audread/services/storage/topic_storage.dart';
 import 'package:card_loading/card_loading.dart';
+import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/scheduler.dart';
 import 'package:get/get.dart';
@@ -89,10 +90,24 @@ class GradeDisplayState extends State<GradeDisplay> {
                       ],
                       if (topics.isEmpty) ...[
                         const SizedBox(height: 5),
-                        const SizedBox(
+                        SizedBox(
                           width: double.maxFinite,
-                          child: Text(
-                            '${grade.gradeName.toString().toUpperCase()} TOPICS NOT FOUND',
+                          child: RichText(
+                            text: TextSpan(
+                              text:
+                                  '${grade.gradeName.toString()} Topics not Found!',
+                              style: const TextStyle(color: Colors.redAccent),
+                              children: <TextSpan>[
+                                TextSpan(
+                                  text: '\nDownload?',
+                                  style: TextStyle(
+                                    color: Theme.of(context).primaryColor,
+                                  ),
+                                  recognizer: TapGestureRecognizer()
+                                    ..onTap = () {},
+                                ),
+                              ],
+                            ),
                           ),
                         )
                       ]
