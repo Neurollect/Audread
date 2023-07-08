@@ -1,3 +1,5 @@
+import 'dart:math';
+
 import 'package:audread/models/grade.dart';
 import 'package:audread/models/topic.dart';
 import 'package:flutter/material.dart';
@@ -13,6 +15,19 @@ class TopicContainer extends StatelessWidget {
   final TopicModel topic;
   final GradeModel grade;
 
+  Color getRandomColor() {
+    List<Color> colors = [
+      Colors.blueAccent.shade400,
+      Colors.redAccent.shade400,
+      Colors.greenAccent.shade400,
+      Colors.yellowAccent.shade400,
+      Colors.pinkAccent.shade400,
+      Colors.orangeAccent.shade400,
+      Colors.purpleAccent.shade400,
+    ];
+    return colors[Random().nextInt(6)];
+  }
+
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -20,7 +35,7 @@ class TopicContainer extends StatelessWidget {
       width: MediaQuery.of(context).size.width * 0.6,
       height: 152,
       decoration: BoxDecoration(
-        color: Colors.orangeAccent.shade700,
+        color: getRandomColor(),
         borderRadius: BorderRadius.circular(10),
         image: const DecorationImage(
           image: AssetImage('assets/images/subjects/physics/physics.png'),
