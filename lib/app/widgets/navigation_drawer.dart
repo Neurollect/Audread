@@ -12,9 +12,10 @@ class NavDrawer extends StatelessWidget {
     final List menuItems = [
       ['Home', Iconsax.stop],
       ['AudLabs', Iconsax.d_cube_scan],
-      ['AudCoterie- Chat', Iconsax.message_2],
       ['AudTube', Iconsax.video_square],
-      ['Help Center', Iconsax.document],
+      ['AudBubble', Iconsax.message_2],
+      ['AudAssistant', Iconsax.pet],
+      ['EssAi', Iconsax.document],
     ];
     final List lowerItems = [
       ['Profile', Iconsax.profile_2user],
@@ -38,7 +39,7 @@ class NavDrawer extends StatelessWidget {
               style: GoogleFonts.urbanist(
                 fontSize: 25,
                 color: Theme.of(context).primaryColor,
-                fontWeight: FontWeight.w500,
+                fontWeight: FontWeight.bold,
               ),
             ),
             const SizedBox(height: 20),
