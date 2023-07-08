@@ -1,3 +1,4 @@
+import 'package:audread/app/settings/settings.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:iconsax/iconsax.dart';
@@ -9,11 +10,12 @@ class NavDrawer extends StatelessWidget {
   Widget build(BuildContext context) {
     double side = MediaQuery.of(context).size.width / 8;
     final List menuItems = [
-      ['Audread- Home', Iconsax.barcode],
+      ['Home', Iconsax.stop],
       ['AudLabs', Iconsax.d_cube_scan],
-      ['AudCoterie- Chat', Iconsax.message_2],
       ['AudTube', Iconsax.video_square],
-      ['Help Center', Iconsax.document],
+      ['AudBubble', Iconsax.message_2],
+      ['AudAssistant', Iconsax.pet],
+      ['EssAi', Iconsax.document],
     ];
     final List lowerItems = [
       ['Profile', Iconsax.profile_2user],
@@ -49,7 +51,7 @@ class NavDrawer extends StatelessWidget {
                       Navigator.pop(context);
                     },
                     style: TextButton.styleFrom(
-                      padding: EdgeInsets.zero,
+                      padding: const EdgeInsets.all(8),
                     ),
                     child: Row(
                       children: [
@@ -93,9 +95,9 @@ class NavDrawer extends StatelessWidget {
               children: [
                 for (var i in lowerItems) ...[
                   TextButton(
-                    onPressed: () {},
+                    onPressed: () => pageNavigator(context, i[0]),
                     style: TextButton.styleFrom(
-                      padding: EdgeInsets.zero,
+                      padding: const EdgeInsets.all(8),
                     ),
                     child: Row(
                       children: [
@@ -126,5 +128,57 @@ class NavDrawer extends StatelessWidget {
         ),
       ),
     );
+  }
+
+  void pageNavigator(context, String page) {
+    switch (page) {
+      case 'Home':
+        Navigator.pop(context);
+        break;
+
+      case 'AudLabs':
+        Navigator.pop(context);
+        break;
+
+      case 'AudTube':
+        Navigator.pop(context);
+        break;
+
+      case 'AudBubble':
+        Navigator.pop(context);
+        break;
+
+      case 'AudAssistant':
+        Navigator.pop(context);
+        break;
+
+      case 'EssAi':
+        Navigator.pop(context);
+        break;
+
+      case 'Profile':
+        Navigator.pop(context);
+        break;
+
+      case 'Notifications':
+        Navigator.pop(context);
+        break;
+
+      case 'Settings':
+        Navigator.pop(context);
+        Navigator.of(context).push(
+          MaterialPageRoute(
+            builder: (BuildContext context) => const SettingsScreen(),
+          ),
+        );
+        break;
+
+      case 'BookMarks':
+        Navigator.pop(context);
+        break;
+
+      default:
+        Navigator.pop(context);
+    }
   }
 }
