@@ -140,15 +140,19 @@ class NavDrawer extends StatelessWidget {
         Navigator.pop(context);
         break;
 
-      case 'AudCoterie- Chat':
-        Navigator.pop(context);
-        break;
-
       case 'AudTube':
         Navigator.pop(context);
         break;
 
-      case 'Help Center':
+      case 'AudBubble':
+        Navigator.pop(context);
+        break;
+
+      case 'AudAssistant':
+        Navigator.pop(context);
+        break;
+
+      case 'EssAi':
         Navigator.pop(context);
         break;
 
