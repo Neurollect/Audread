@@ -20,12 +20,16 @@ class SubtopicModel {
   @HiveField(4)
   String? subtopicDescription;
 
+  @HiveField(5)
+  String? previewImage;
+
   SubtopicModel({
     required this.subtopicId,
     this.subtopicName,
     this.subtopicNo,
     this.subtopicTopic,
     this.subtopicDescription,
+    this.previewImage,
   });
 
   static SubtopicModel fromJson(Map<String, dynamic> json) => SubtopicModel(
@@ -34,6 +38,7 @@ class SubtopicModel {
         subtopicNo: json['subtopic_no'] as int?,
         subtopicTopic: TopicModel.fromJson(json['subtopic_topic']),
         subtopicDescription: json['subtopic_name'] as String?,
+        previewImage: json['preview_image'] as String?,
       );
 
   Map<String, dynamic> toJson() => <String, dynamic>{
@@ -42,5 +47,6 @@ class SubtopicModel {
         'subtopic_no': subtopicNo,
         'subtopic_subject': subtopicTopic,
         'subtopic_description': subtopicDescription,
+        'preview_image': previewImage,
       };
 }

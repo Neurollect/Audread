@@ -25,6 +25,9 @@ class TopicModel {
   @HiveField(5)
   String? topicDescription;
 
+  @HiveField(6)
+  String? previewImage;
+
   TopicModel({
     required this.topicId,
     this.topicName,
@@ -32,6 +35,7 @@ class TopicModel {
     this.topicSubject,
     this.topicGrade,
     this.topicDescription,
+    this.previewImage,
   });
 
   static TopicModel fromJson(Map<String, dynamic> json) => TopicModel(
@@ -41,6 +45,7 @@ class TopicModel {
         topicSubject: SubjectModel.fromJson(json['topic_subject']),
         topicGrade: GradeModel.fromJson(json['topic_level']),
         topicDescription: json['topic_description'] as String?,
+        previewImage: json['preview_image'] as String?,
       );
 
   Map<String, dynamic> toJson() => <String, dynamic>{
@@ -50,5 +55,6 @@ class TopicModel {
         'topic_subject': topicSubject,
         'topic_grade': topicGrade,
         'topic_description': topicDescription,
+        'preview_image': previewImage,
       };
 }
