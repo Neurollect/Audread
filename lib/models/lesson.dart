@@ -23,6 +23,9 @@ class LessonModel {
   @HiveField(5)
   String? lessonTitle;
 
+  @HiveField(6)
+  String? previewImage;
+
   LessonModel({
     required this.lessonId,
     this.lessonTitle,
@@ -30,6 +33,7 @@ class LessonModel {
     this.lessonNo,
     this.lessonSubtopic,
     this.lessonDescription,
+    this.previewImage,
   });
 
   static LessonModel fromJson(Map<String, dynamic> json) => LessonModel(
@@ -39,6 +43,7 @@ class LessonModel {
         lessonNo: json['lesson_no'] as int?,
         lessonSubtopic: SubtopicModel.fromJson(json['lesson_subtopic']),
         lessonDescription: json['lesson_name'] as String?,
+        previewImage: json['preview_image'] as String?,
       );
 
   Map<String, dynamic> toJson() => <String, dynamic>{
@@ -48,5 +53,6 @@ class LessonModel {
         'lesson_no': lessonNo,
         'lesson_subtopic': lessonSubtopic,
         'lesson_description': lessonDescription,
+        'preview_image': previewImage,
       };
 }
